@@ -1,0 +1,71 @@
+{% extends "frontend/layouts/post.html" %}
+{% load static i18n humanize %}
+
+
+{% block sub_content %}
+<article>
+    <div class="jumbotron mb-3 py-3 text-center">
+        <div class="container py-5">
+            <h1 class='fw-bold'>{{ object.title }}</h1>
+            <div class='post-attrs px-1 small'>
+                {% if object.author.first_name %}
+                    <span class="me-3">
+                        <i class="fa fa-user"></i> {{ object.author.get_full_name }}
+                    </span>
+                {% endif %}
+                <span class="me-3">
+                    <i class="fa fa-calendar"></i> {{ object.publish_date|naturaltime }}
+                </span>
+                <span class="me-3"><i class="fa fa-th"></i> {{ post.category.name }}</span>
+                <span class="me-3">
+                    <i class="fa fa-eye"></i> {{ post.meta.view_count|intword|default:'0' }}
+                    {% trans "views" %}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="container"  style="min-height: 75vh">
+        <div class="post-thumbnail">
+            {% if object.thumbnail %}
+                <img class="img-thumbnail w-75 mx-auto d-block" src="{{ object.thumbnail.url }}" alt="{{ object.title }}" />
+            {% else %}
+                <img class="img-thumbnail w-75 mx-auto d-block" src="{% static 'frontend/media/default-post.jpg' %}" alt="{{ object.title }}" />
+            {% endif %}
+        </div>
+        <div class="post-content my-3">
+            {% autoescape off %}
+                {{ object.content }}
+            {% endautoescape %}
+        </div>
+        {% if post.media.count > 0 %}
+            <div class='post-media bg-light p-3 border'>
+                <h2 class='mt-0 h6 font-weight-bold'><i class='fa fa-file'></i> {% trans "Files" %}:</h2>
+                <ol class='post-media-list px-3 m-0'>
+                    {% for media in post.media.all  %}
+                        <li>
+                        {% if post.password %}
+                            <a class='modal-unlock-media' href="javascript:void(0)" data-media="{{ media.id }}" title='{{ media.filename}}' data-post="{{ post.slugname }}">
+                                <i class='fa fa-download'></i> {{ media }}
+                                {% if post.password %}<i class='fa fa-lock'></i>{% endif %}
+                                <span class='badge badge-info'>
+                                    {{ media.meta.view_count|intword|default:'0' }} {% trans "download" %}
+                                </span>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'aurora.frontend.media.download' post.slugname media.id %}" title='{{ media.filename}}' data-id='{{ media.id }}'>
+                                <i class='fa fa-download'></i> {{ media }}
+                                <span class='badge badge-info'>
+                                    {{ media.meta.view_count|intword|default:'0' }} {% trans "download" %}
+                                </span>
+                            </a>
+                        {% endif %}
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        {% endif %}
+    </div>
+</article>
+<!-- Modal -->
+{% include 'frontend/elements/modal_protected_media.html' %}
+{% endblock %}

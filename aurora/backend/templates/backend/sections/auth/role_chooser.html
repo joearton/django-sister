@@ -1,0 +1,45 @@
+{% extends "backend/layouts/role.html" %}
+{% load static i18n crispy_forms_tags %}
+
+{% block sub_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="bg-white mt-3 border">
+                <h5 class="p-3 border-bottom mb-0">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    {% trans "Choose Role" %}
+                </h5>
+                <div class="p-3">
+                    <form name="choose-role" method="POST">
+                        {% for role in request.user.groups.all %}
+                            <div class='py-1 mb-1 text-primary d-flex'>
+                                <div class='w-75 fw-bold'>{{ role|title }}</div>
+                                <div class='w-25'>
+                                    <a class='btn btn-outline-primary btn-sm btn-role' data-role="{{ role }}" href="#">{% trans "Activate" %}</a>
+                                </div>
+                            </div>
+                            {{ form.role }}
+                        {% endfor %}
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $('.btn-role').click(function(){
+            var role = $(this).attr('data-role');
+            $('input[name="role"]').val(role);
+            $('form[name="choose-role"]').submit();
+        })
+    })
+</script>
+
+
+{% endblock %}

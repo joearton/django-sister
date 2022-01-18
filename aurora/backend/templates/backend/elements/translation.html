@@ -1,0 +1,33 @@
+{% load i18n static extra_filters humanize %}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+
+<div id="translation" class='translation'>
+    {% for language in languages %}
+        <div class="language {% if language.code == LANGUAGE_CODE %}current{% endif %}" data-language-code="{{ language.code }}">
+            <span class='language-name'>{{ language.name_local }}</span>
+            <span class='language-code'>{{ language.code }}</span>
+        </div>
+    {% endfor %}
+    <form class="d-none" name='set-language' action="{% url 'set_language' %}" method="post">{% csrf_token %}
+        <input name="next" type="hidden" value="{{ redirect_to }}" />
+        <input name="language" type="hidden" value="{{ LANGUAGE_CODE }}" />
+    </form>
+</div>
+
+
+<script type='text/javascript'>
+    $(document).ready(function () {
+        $('#translation').click(function(){
+            $(this).toggleClass('active');
+        })
+        $(".language").not('.current').click(function() {
+            var language_code = $(this).attr('data-language-code');
+            $("input[name='language']").val(language_code);
+            $("form[name='set-language']").submit();
+        })
+    })
+</script>

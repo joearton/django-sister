@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <meta name="description" content="" />
+    <title>{{ section_title }} | {{ f_config.title }}</title>
+    {% include 'backend/elements/assets.html' %}
+</head>
+
+<body id='page-{{ section_name }}' class="{{ section_name }} {{ config.backend.theme_mode }}-{{ config.backend.theme_accent }}">
+
+<div id='main-contain-phd'>
+    {% block content %}
+    {% endblock %}
+</div>
+
+{# include 'backend/elements/messages.html' #}
+
+{% load sweetify %}{% sweetify %}
+
+{% include 'backend/elements/translation.html' %}
+
+</body>
+</html>

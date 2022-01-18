@@ -1,0 +1,33 @@
+{% extends "backend/layouts/base.html" %}
+
+
+{% block content %}
+    <div class="layout-{{ config.backend.theme_style|default:'default' }}">
+
+        <nav id='navbar-top' class='navbar sticky-top shadow-lg navbar-expand-lg navbar-dark'>
+            {% include 'backend/elements/navbar_top.html' %}
+        </nav>
+    
+        <div class="page-container">
+            {% if not fluid_width %}
+                <aside class="page-sidebar d-none d-lg-block">
+                    <div {% if config.backend.theme_style == 'sw' %}class="container"{% endif %}>
+                        {% include 'backend/elements/sidebar.html' %}
+                    </div>
+                </aside>
+            {% endif %}
+            <main class="{% if not fluid_width %} page-main {% endif %} {% if config.backend.theme_style == 'sw' %}container p-0{% endif %}">
+                {% block sub_content %}
+                {% endblock %}
+            </main>
+            <div class="footer text-light shadow d-none d-md-block">
+                {% include "backend/elements/credit.html" %}
+            </div>
+        </div>
+
+        <nav id='navbar-bottom' class='navbar fixed-bottom shadow-lg navbar-expand-lg navbar-dark d-md-none'>
+            {% include 'backend/elements/navbar_bottom.html' %}
+        </nav>
+
+    </div>
+{% endblock %}

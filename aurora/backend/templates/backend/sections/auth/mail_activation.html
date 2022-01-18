@@ -1,0 +1,9 @@
+{% load i18n %}
+{% autoescape off %}
+
+{% trans "Hello" %} {{ user_type }}!
+{% trans "Please click the link below to complete registration:" %}
+{{ site_url }}{% url 'aurora.backend.signup_activation' uid=uid token=token %}
+
+
+{% endautoescape %}

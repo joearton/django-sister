@@ -1,0 +1,58 @@
+{% load static %}
+{% load i18n %}
+{% load extra_filters %}
+
+
+<a class="navbar-brand" href="{{ config.backend.home_url }}">
+    <img src="{% static config.backend.logo.url %}" alt="{% trans 'Logo' %}" style="height: {{ config.backend.logo.height|default:'30px' }}" />
+    {% if config.backend.logo.use_text %}
+        {% if config.backend.site_title %}
+            {{ config.backend.site_title|upper }}
+        {% else %}
+            {% trans "Aurora Backend" %}
+        {% endif %}
+    {% endif %}
+</a>
+
+
+<button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapseUser" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    {% with request.user.get_profile_picture as picture %}
+        {% if picture %}
+            <img id="navbar-userpic" src="{{ request.user.get_profile_picture }}" />
+        {% else %}
+            <i class="fas fa-user"></i>
+        {% endif %}
+    {% endwith %}
+</button>
+
+
+<div class="collapse navbar-collapse justify-content-end" id="navbarCollapseUser">
+    <ul class="navbar-nav">
+        {% for key, value in config.backend.navigation_top.items %}
+            {% if value.type == 'dropdown' %}
+                <a class="nav-link dropdown-toggle position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ value.label }}
+                </a>
+            {% else %}
+                <a id="{{ key }}" href="{{ value.url }}" class="nav-link">
+                    <i class="{{ value.icon }} sidebar-icon"></i> {{ value.label }}
+                </a>
+            {% endif %}
+            {% if value.type == 'dropdown' %}
+                <ul class="dropdown-menu dropdown-menu-right">
+                    {% for item in value.submenu %}
+                        <li><a class='nav-link' href="{{ item.url }}">{{ item.label }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+
+        {% if request.user.is_authenticated %}
+            {% include 'backend/elements/dropdown_user.html' %}
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'aurora.backend.signin' %}"><i class="fas fa-user"></i> {% trans "Sign In" %}</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>

@@ -1,0 +1,40 @@
+{% load i18n static %}
+
+<!doctype html>
+<title>{% trans "Site Maintenance" %}</title>
+<style>
+    body {
+        text-align: center;
+        padding: 135px 150px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    body {
+        font: 20px Helvetica, sans-serif;
+        color: #333;
+    }
+
+    article {
+        display: block;
+        text-align: left;
+        width: 675px;
+        margin: 0 auto;
+    }
+
+    a {
+        color: #dc8100;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #333;
+        text-decoration: none;
+    }
+</style>
+
+<article>
+    {% block content %}{% endblock %}
+</article>

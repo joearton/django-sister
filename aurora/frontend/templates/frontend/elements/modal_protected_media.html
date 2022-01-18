@@ -1,0 +1,53 @@
+{% load i18n %}
+
+<div class="modal fade" id="modalUnlockMedia" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalUnlockMediaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="modalUnlockMediaLabel">{% trans "Media Diproteksi" %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id='form-modal-unlock' method='post' action="{% url 'aurora.frontend.media.unlock' %}">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="password" class="col-form-label">{% trans "Enter Password" %}</label>
+                        <input type="password" name='password' class="form-control" id="password" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+                    <button type="submit" class="btn btn-primary">{% trans "Download" %}</button>
+                </div>
+                {% csrf_token %}
+                <input type='hidden' id='media-id' name='media-id' />
+                <input type='hidden' id='post-id' name='post-id' />
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type='text/javascript'>
+$(document).ready(function(){
+
+    var modal_unlock_media = $('#modalUnlockMedia');
+
+    $('.modal-unlock-media').click(function () {
+        var media = $(this).attr('data-media');
+        var post = $(this).attr('data-post');
+        modal_unlock_media.modal('show');
+        $('#media-id').val(media);
+        $('#post-id').val(post);
+    })
+
+    modal_unlock_media.find('button[type="submit"]').click(function(event){
+        event.preventDefault();
+        modal_unlock_media.modal('hide');
+        setTimeout(function(){
+            $('#form-modal-unlock').submit();
+        }, 1000);
+    })
+
+})
+</script>

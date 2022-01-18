@@ -1,0 +1,51 @@
+{% load static i18n extra_filters %}
+
+<div class="card card-primary card-outline">
+    <div class="card-header"><h6 class="m-0">{% trans "Redis Server" %}</h6></div>
+    <div class="card-body text-center">
+        <div class="custom-control custom-switch disabled">
+            <input name="activate_redis_server" type="checkbox" class="custom-control-input ajax-handler"
+                id="id_redis_server" data-call="toggle_redis_server" {% if redis_server %}checked{% endif %}>
+            <label id="service-label" class="custom-control-label" for="id_redis_server">
+                {% if redis_server %}
+                    {% trans "On" %}
+                {% else %}
+                    {% trans "Off" %}
+                {% endif %}
+            </label>
+        </div>
+        <div id="service-info" class="text-xs my-1">
+            {% if redis_server %}
+                <div>{% trans "PID" %}: {{ redis_server.pid }} | {% trans "User" %}: {{ redis_server.username }}</div>
+            {% else %}
+                {% trans "Deactivated" %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    var toggle_redis_server = function(elem, response) {
+        var card = elem.parentsUntil('.card');
+        if (elem.prop('checked') == true) {
+            card.find('#service-label').text('{% trans "On" %}');
+        } else {
+            card.find('#service-label').text('{% trans "Off" %}');
+        }
+
+        if (response.status == true) {
+            card.find('#service-info').text(response.data);
+            if (elem.prop('checked') == true) {
+                card.find('#service-info').text(response.data);
+            } else {
+                card.find('#service-info').text('{% trans "Deactivated" %}');
+            }
+        } else {
+            card.find('#service-label').text('{% trans "Failed" %}');
+            card.find('#service-info').text(response.message);
+        }
+    }
+
+</script>

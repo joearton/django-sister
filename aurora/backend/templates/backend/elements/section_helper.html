@@ -1,0 +1,22 @@
+{% load extra_filters %}
+
+<div class="row py-2 mb-3 bg-white position-relative border-bottom">
+    <div class="col-sm-6">
+        <h5 id="section-title" class="{% if section_action_button_right %}position-absolute{% endif %} mt-1">{{ section_title }}</h5>
+        {% for btn in section_action_button_left %}
+            <a class="btn {% if btn.class %}{{ btn.url }}{% else %}btn-primary{% endif %}" href="{{ btn.url }}">
+                <i class="{{ btn.icon }}"></i> {{ btn.label }}
+            </a>
+        {% endfor %}
+    </div>
+    <div class="col-sm-6 section_action_button_right">
+        {% if section_action_button_right %}
+            {% for btn in section_action_button_right %}
+                <a class="btn float-end {% if btn.class %}{{ btn.class }}{% else %}btn-primary{% endif %}" href="{{ btn.url|reverse_url }}">
+                    <i class="{{ btn.icon }}"></i> {{ btn.label }}
+                </a>
+            {% endfor %}
+        {% endif %}
+        {% block block_section_right %}{% endblock %}
+    </div>
+</div>

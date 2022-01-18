@@ -1,0 +1,9 @@
+config/database.py
+.backup/
+.vscode/
+.logs/
+.cache/
+__pycache__/
+static/
+media/
+*.pyc

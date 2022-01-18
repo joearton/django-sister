@@ -1,0 +1,67 @@
+{% load i18n static extra_filters humanize %}
+
+<div class="{{ config.post.container|default:'container'}} py-5 my-3 post-list">
+    <h1 class="mb-5 text-center fw-bold">{% trans "Latest Posts" %}</h1>
+
+    {% if config.post.layout == 'grid' %}
+        <div class="row grid-layout">
+            {% for object in object_list %}
+            <div class='col-md-3'>
+                <div class='card mb-3'>
+                    {% if object.thumbnail %}
+                        <div class="img-thumbnail" style="background: url({{ object.thumbnail.url }}); background-size: cover"></div>
+                    {% else %}
+                        <div class="img-thumbnail" style="background: url({% static 'backend/media/no-image.jpg' %}); background-size: cover"></div>
+                    {% endif %}
+                    <div class='card-body'>
+                        <a href="{% url 'aurora.frontend.post.detail' object.date_created.year object.date_created.month object.date_created.day object.slugname  %}" class='d-block' style="height: 70px;">
+                            {{ object.title|truncatechars_html:75 }}
+                        </a>
+                        <div class="small mb-3"><i class='fa fa-calendar-alt'></i> {{ object.publish_date|naturaltime }}</div>
+                        <div class="small py-1" style="height: 150px;">
+                            {% autoescape off %}
+                                {{ object.content|truncatechars_html:150 }}
+                            {% endautoescape %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <div class='list-layout'>
+            {% for object in object_list %}
+            <div class="row mb-5">
+                <div class='col-md-4'>
+                    {% if object.thumbnail %}
+                        <div class="img-thumbnail" style="background: url({{ object.thumbnail.url }}); background-size: cover"></div>
+                    {% else %}
+                        <div class="img-thumbnail" style="background: url({% static 'backend/media/no-image.jpg' %}); background-size: cover"></div>
+                    {% endif %}
+                </div>
+                <div class='col-md-8'>
+                    <a class="h3 d-block" href="{% url 'aurora.frontend.post.detail' object.publish_date.year object.publish_date.month object.publish_date.day object.slugname  %}">
+                        {{ object.title|truncatechars_html:100 }}
+                    </a>
+                    <div class="small">
+                        <span class='me-3'><i class='fa fa-calendar-alt'></i> {{ object.publish_date|naturaltime }}</span>
+                        <span class='me-3'><i class='fa fa-list-alt'></i> {{ object.category }}</span>
+                    </div>
+                    <div class="h5 py-1">
+                        {% autoescape off %}
+                            {{ object.content|truncatechars_html:275 }}
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class='row'>
+        <div class='col-md-12 text-center mt-3'>
+            <a class='btn btn-outline-primary btn-lg' href="{% url 'aurora.frontend.post.list' %}">{% trans "View More Posts" %}</a>
+        </div>
+    </div>
+</div>

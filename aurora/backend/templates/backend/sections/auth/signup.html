@@ -1,0 +1,14 @@
+{% extends "backend/layouts/auth.html" %}
+{% load static i18n crispy_forms_tags %}
+
+
+{% block form %}
+    {% crispy form %}
+{% endblock form %}
+
+{% block auth_footer %}
+    <div class="mt-1 text-center">    
+        {% trans "Already Have Account" %}?
+        <a href="{% url env.backend.signin_url %}">{% trans "Sign In Here" %} </a>
+    </div>
+{% endblock %}

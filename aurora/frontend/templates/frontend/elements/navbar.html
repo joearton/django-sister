@@ -1,0 +1,107 @@
+{% load static i18n %}
+
+<a class="navbar-brand" href="{% url 'aurora.frontend.index' %}">
+    {% if f_config.logo %}
+        <img class="logo" src="{{ f_config.logo.url }}" alt="{{ f_config.title }}" style="width: {{ config.logo_width|default:'235px' }};" />
+    {% else %}
+        <img class="logo" src="{% static 'backend/media/logo.png' %}" alt="{{ f_config.title }}" />
+    {% endif %}
+</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse justify-content-start" id="navbarCollapse">
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'aurora.frontend.index' %}">
+                {% if navbar.icon  %}<i class="fa fa-home"></i> {% endif %} {% trans "Home" %}
+            </a>
+        </li>
+        {% for nav_key, nav_value in f_config.navbar.items %}
+            {% if not nav_value.childern %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ nav_value.url }}">
+                        {% if navbar.icon  %}<i class="{{ nav_value.icon }}"></i>{% endif %} {{ nav_value.title }}
+                    </a>
+                </li>
+            {% else %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% if navbar.icon  %}<i class="{{ nav_value.icon }}"></i> {% endif %}
+                        {{ nav_value.title }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% for subnav_item in nav_value.childern %}
+                            <li>
+                                <a class="nav-link" href="{{ subnav_item.url }}">
+                                    {% if subnav_item.icon and navbar.icon %}
+                                        <i class="{{ subnav_item.icon }}"></i>
+                                    {% endif %}
+                                    {{ subnav_item.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% if request.user.is_authenticated %}
+            <li class="nav-item dropdown justify-content-right">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-user"></i> {% trans "My Account" %}
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="{% url 'aurora.backend.account' %}">
+                            {{ request.user.first_name|default:request.user.username }}
+                            {{ request.user.last_name|default:'' }}
+                        </a>
+                    </li>
+                    {% if request.user.groups.count > 1 %}
+                        <li>
+                            <a class="dropdown-item" href="{% url 'aurora.backend.account.role' %}">
+                                {% trans "Switch Role" %}
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        <a class="dropdown-item" href="{% url env.backend.signout_url %}">
+                            {% trans "Sign Out" %}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url env.backend.signin_url %}"><i class="fa fa-user"></i>
+                    {% trans "Sign In" %}
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+
+
+{% if navbar.transparent %}
+<script type="text/javascript">
+    $(function(){
+        var navbar = $('#navbar');
+        var adaptive_navbar = function() {
+            var pos = $(window).scrollTop();
+            if (pos > navbar.height()) {
+                if (!navbar.hasClass('mini')) {
+                    navbar.addClass('mini');
+                }
+            } else {
+                navbar.removeClass('mini');
+            }
+        }
+        $(window).scroll(function(){
+            adaptive_navbar();
+        })
+        adaptive_navbar(); 
+    })
+</script>
+{% endif %}

@@ -1,0 +1,26 @@
+{% extends "frontend/layouts/base_without_sidebar.html" %}
+{% load i18n static extra_filters humanize %}
+
+
+{% block before_sub_content %}
+
+    {% if f_config.slideshow %}
+        {% include 'frontend/elements/slideshow.html' %}
+    {% endif %}
+
+
+    {% if f_config.jumbotron %}
+        {% include 'frontend/elements/jumbotron.html' %}
+    {% endif %}
+
+
+    {% if config.post.visible %}
+        {% include 'frontend/elements/post_list.html' %}
+    {% endif %}
+
+    {% if config.post.featured_post %}
+        {% include 'frontend/elements/featured_post.html' %}
+    {% endif %}
+
+
+{% endblock %}

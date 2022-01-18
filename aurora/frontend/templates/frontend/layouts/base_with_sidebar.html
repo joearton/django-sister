@@ -1,0 +1,17 @@
+{% extends 'frontend/layouts/base.html' %}
+
+{% block main %}
+    <div class='before-sub-content'>
+        {% block before_sub_content %}
+        {% endblock %}    
+    </div>
+    <div class='row py-3'>
+        <div class='col-md-9 main-content'>
+            {% block content %}
+            {% endblock %}    
+        </div>
+        <div class='col-md-3 sidebar'>
+            {% include 'frontend/elements/sidebar.html' %}
+        </div>
+    </div>
+{% endblock main %}

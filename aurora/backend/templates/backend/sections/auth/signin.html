@@ -1,0 +1,23 @@
+{% extends "backend/layouts/auth.html" %}
+{% load static i18n crispy_forms_tags %}
+
+
+{% block form %}
+    {% crispy form %}
+{% endblock form %}
+
+
+{% block auth_footer %}
+    <div class="mt-2 text-center">
+        {% if request.session.signup_url %}
+            <div class="d-grid gap-2">
+                <a class="btn btn-success" href="{% url env.backend.signup_url %}">
+                    <i class="fa fa-user" aria-hidden="true"></i> {% trans "Sign Up New Account Here" %}
+                </a>
+            </div>
+        {% else %}
+            {% trans "No Account" %}?
+            <a href="{% url env.backend.signup_url %}">{% trans "Sign Up Here" %} </a>
+        {% endif %}
+    </div>
+{% endblock %}

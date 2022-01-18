@@ -1,0 +1,36 @@
+{% load static i18n extra_filters %}
+
+<div class="collapse navbar-collapse" id="navbarCollapseSidebar">
+    <ul class="navbar-nav">
+        {% for key, value in env.backend.sidebar.items %}
+            {% if request.user|in_group:value.users %}
+                <li class="nav-item {% if value.type == 'dropdown' %}dropdown{% endif %}">
+                    {% if value.type == 'dropdown' %}
+                        <a class="nav-link dropdown-toggle position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ value.label }}
+                        </a>
+                    {% else %}
+                        <a id="{{ key }}" href="{{ value.url }}" class="nav-link">
+                            <i class="{{ value.icon }} sidebar-icon"></i> {{ value.label }}
+                        </a>
+                    {% endif %}
+                    {% if value.type == 'dropdown' %}
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            {% for item in value.submenu %}
+                                <li><a class='nav-link' href="{{ item.url }}">{{ item.label }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<a class="navbar-brand text-sm" href="{{ config.backend.home_url }}">
+    {% trans "Navigation Menu" %}
+</a>
+
+<button class="navbar-toggler px-1 py-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapseSidebar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+</button>

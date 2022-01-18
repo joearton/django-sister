@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <meta name='description' content='{{ f_config.description }}' />
+    <meta name='keywords' content='{{ f_config.keywords }}' />
+    <title>{{ section_title }} | {{ f_config.title }}</title>
+    {% if section_headers.length > 0 %}
+        {{ section_headers|safe }}
+    {% else %}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="{{ section_title }} | {{ f_config.title }}" />
+        <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    {% endif %}
+    {% include 'frontend/elements/assets.html' %}
+    {% if f_config.icon %}
+        <link rel="icon" href="{{ f_config.icon.url }}" type="image/png" />
+    {% endif %}
+</head>
+
+
+{% with config.frontend as config %}
+<body class="{{ section_name }} {{ config.theme_mode }}-{{ config.theme_accent }}">
+    
+    {% with config.topbar as topbar %}
+        <div id='topbar' class='d-flex justify-content-{{ topbar.align }} topbar-{{ topbar.background }} topbar-{{ topbar.transparent }}'>
+            {% include 'frontend/elements/topbar.html' %}
+        </div>
+    {% endwith %}
+
+    {% with config.navbar as navbar %}
+        <nav id='navbar' class='navbar navbar-expand-lg {{ navbar.class }} navbar-{{ config.theme_mode }} navbar-{{ navbar.transparent }} {{ navbar.position|default:"sticky-top" }}'>
+            <div class="{{ navbar.container|default:'container' }}">
+                {% include 'frontend/elements/navbar.html' %}
+            </div>
+        </nav>
+    {% endwith %}
+    
+    <header>
+        {% include 'frontend/elements/header.html' %}
+    </header>
+
+    <div class='container{% if fluid_width %}-fluid m-0 p-0{% endif %}'>
+        <main class='bg-white'>
+            {% block main %}
+            {% endblock main %}        
+        </main>
+    </div>
+
+    {% with config.footer as footer %}
+        <footer class='footer'>
+            <div class="{{ footer.container|default:'container' }}">
+                {% include 'frontend/elements/footer.html' %}
+            </div>
+        </footer>
+    {% endwith %}
+
+    <div class='bg-dark text-light'>
+        <div class="container-fluid">
+            {% include 'backend/elements/credit.html' %}
+        </div>
+    </div>
+
+    {% include 'backend/elements/messages.html' %}
+    {% include 'backend/elements/translation.html' %}
+
+</body>
+{% endwith %}
+
+</html>

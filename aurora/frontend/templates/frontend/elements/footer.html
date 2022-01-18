@@ -1,0 +1,22 @@
+{% load static %}
+{% load i18n %}
+
+<div class='row'>
+    <div class="col-md-12 site-info">
+        <div class="border-bottom pb-2 mb-2">
+            <h5 class="m-0">{% trans "Contact Us" %}</h5>
+            <h6 class="m-0">{{ f_config.title }}</h6>
+        </div>
+        <div class="py-1">
+            <i class="fa fa-map"></i> {{ f_config.address }}
+        </div>
+        <div class="py-1">
+            <i class="fa fa-envelope"></i> {{ f_config.email }}
+        </div>
+        <div class="py-1">
+            <i class="fa fa-phone"></i>
+            <span class="phonenumber">{{ f_config.phone }}</span>
+        </div>
+        <div class="py-1"><i class="fa fa-globe"></i> {{ f_config.website }}</div>
+    </div>
+</div>

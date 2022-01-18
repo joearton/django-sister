@@ -1,0 +1,50 @@
+{% load static i18n extra_filters %}
+
+<div class="card card-primary card-outline">
+    <div class="card-header"><h6 class="m-0">{% trans "Celery Worker" %}</h6></div>
+    <div class="card-body text-center">
+        <div class="custom-control custom-switch">
+            <input name="activate_celery_worker" type="checkbox" class="custom-control-input ajax-handler"
+                id="id_celery_worker" data-call="toggle_celery_worker" {% if celery_worker %}checked{% endif %}>
+            <label id="service-label" class="custom-control-label" for="id_celery_worker">
+                {% if celery_worker %}
+                    {% trans "On" %}
+                {% else %}
+                    {% trans "Off" %}
+                {% endif %}
+            </label>
+        </div>
+        <div id="service-info" class="text-xs my-1">
+            {% if celery_worker %}
+                <div>{% trans "PID" %}: {{ celery_worker.pid }} | {% trans "User" %}: {{ celery_worker.username }}</div>
+            {% else %}
+                {% trans "Deactivated" %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var toggle_celery_worker = function(elem, response) {
+        var card = elem.parentsUntil('.card');
+        if (elem.prop('checked') == true) {
+            card.find('#service-label').text('{% trans "On" %}');
+        } else {
+            card.find('#service-label').text('{% trans "Off" %}');
+        }
+
+        if (response.status == true) {
+            card.find('#service-info').text(response.data);
+            if (elem.prop('checked') == true) {
+                card.find('#service-info').text(response.data);
+            } else {
+                card.find('#service-info').text('{% trans "Deactivated" %}');
+            }
+        } else {
+            card.find('#service-label').text('{% trans "Failed" %}');
+            card.find('#service-info').text(response.message);
+        }
+    }
+
+</script>

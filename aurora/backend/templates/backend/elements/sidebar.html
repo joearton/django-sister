@@ -1,0 +1,31 @@
+{% load i18n extra_filters %}
+
+
+{# automatic sidebar item configurator #}
+<ul class="sidebar-nav">
+    {% for nav_key, nav_value in env.backend.sidebar.items %}
+        {% if request.user|in_group:nav_value.users %}
+            <li class="sidebar-item">
+                <a id="{{ nav_key }}" href="{{ nav_value.url }}" class="{% if nav_value.type == 'dropdown' %}has-dropdown{% endif %}">
+                    <i class="{{ nav_value.icon }} sidebar-icon"></i> {{ nav_value.label }}
+                </a>
+                {% if nav_value.type == 'dropdown' %}
+                    <ul class="sidebar-dropdown">
+                        {% for item in nav_value.submenu %}
+                            <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+
+{% if section_name %}
+    <script type="text/javascript">
+        $(function(){
+            $('#{{ section_name }}').addClass('active');
+        })
+    </script>
+{% endif %}

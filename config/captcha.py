@@ -1,0 +1,7 @@
+# Django Captcha
+CAPTCHA_FONT_SIZE = 27
+CAPTCHA_LETTER_ROTATION = (-45, 45)
+CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_dots',)
+CAPTCHA_IMAGE_SIZE = (150, 35)
+CAPTCHA_LENGTH = 5
+

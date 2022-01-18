@@ -1,0 +1,13 @@
+{% load static i18n humanize %}
+
+<div class="card card-primary card-outline">
+    <div class="card-header"><h6 class="m-0">{% trans "Last User Login" %}</h6></div>
+    <div class="card-body">
+        {% for user in last_login_users %}
+            <a href="{% url 'admin:auth_user_change' user.pk %}" class="small mb-2 d-block">
+                <i class="fa fa-user" aria-hidden="true"></i> {{ user.get_full_name|truncatechars:21 }}
+                <span class="badge badge-light">{{ user.last_login|naturaltime }}</span>
+            </a>
+        {% endfor %}
+    </div>
+</div>        

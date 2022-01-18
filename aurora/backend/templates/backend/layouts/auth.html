@@ -1,0 +1,37 @@
+{% extends "backend/layouts/base.html" %}
+{% load static i18n %}
+
+{% block content %}
+
+<div class="row g-0">
+    <div class="col-md-8 position-relative d-none d-md-block" style="{% if auth_info.background %}background: url({{ auth_info.background }}); background-size: cover{% endif %};">
+        <div class="p-5">
+            {% if auth_info.overlay %}
+                <div class='position-absolute w-100 top-0 start-0 h-100 bg-{{ auth_info.overlay }}' style='opacity:{{ auth_info.opacity }}'></div>
+            {% endif %}
+            <div class="px-3 py-5 mt-5 position-relative text-{{ auth_info.color }}">
+                <h1 class="h2 mt-5 mb-0 fw-bold">{{ auth_info.title }}</h1>
+                <p class="h6">{{ auth_info.description }}</p>
+                <a href="{% url 'aurora.frontend.index' %}" class="btn btn-primary btn-lg me-3">{% trans "Homepage" %}</a>
+                <a href="{{ auth_info.link.url }}" class="btn btn-{{ auth_info.color }} btn-lg"
+                    target="{{ auth_info.link.target }}"> {{ auth_info.link.label }}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="bg-light vh-100 p-5 position-relative">
+            <div class="py-3 px-3">
+                <h1 class="text-center mt-1 {% if not auth_help %}mb-5{% endif %} text-primary">{{ section_title }} </h1>
+                {% if auth_help %}
+                    <div class='mb-5 text-center'>{{ auth_help }}</div>
+                {% endif %}
+                {% block form %}{% endblock %}
+            </div>
+            <div class="px-2 text-center">
+                {% block auth_footer %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

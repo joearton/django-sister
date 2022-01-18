@@ -1,0 +1,35 @@
+{% load i18n static extra_filters humanize %}
+
+{% load static %}
+<div id="featured-posts" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        {% for post in object_list  %}
+            <button type="button" data-bs-target="#featured-posts" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"
+                aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
+        {% endfor %}
+    </div>
+
+    <div class="carousel-inner">
+        {% for p in object_list  %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}"  style="background: url({{ p.thumbnail.url }}); background-size: cover;">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class='h2 fw-bold'>
+                        <a class='text-white' href="{% url 'aurora.frontend.post.detail' p.publish_date.year p.publish_date.month p.publish_date.day p.slugname  %}">
+                            {{ p.title }}
+                        </a>
+                    </h1>
+                    <div class='h5'>{{ p.content|safe|truncatechars_html:215 }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#featured-posts" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#featured-posts" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

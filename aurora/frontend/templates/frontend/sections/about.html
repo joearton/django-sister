@@ -1,0 +1,20 @@
+{% extends "frontend/layouts/base_without_sidebar.html" %}
+{% load i18n static humanize %}
+
+{% block content %}
+<article>
+    <div class="jumbotron mb-3">
+        <div class="container py-5">
+            <h1 class='fw-bold'>
+               <i class='fa fa-question'></i> {{ section_title }}
+            </h1>
+        </div>
+    </div>
+    <div class="container py-3" style="min-height: 75vh">
+        <h3>{{ f_config.title }}</h3>
+        <h6>{{ f_config.slogan }}</h6>
+        <div class="mt-3">{{ f_config.description }}</div>
+    </div>
+</article>
+
+{% endblock %}

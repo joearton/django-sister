@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<locale app_name="frontend" name="id-id" full_name="Bahasa Indonesia">
+    <translate key="models.title">Judul</translate>
+    <translate key="models.files.ext_jpg_png">Media pendukung berformat jpg, jpeg, atau png</translate>
+</locale>

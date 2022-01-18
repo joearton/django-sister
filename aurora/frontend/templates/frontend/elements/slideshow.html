@@ -1,0 +1,13 @@
+<div class="slideshow mb-0">
+    {% if slideshow_desktop %}
+        <div id="carousel-desktop" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
+            {% include "frontend/elements/slideshow_desktop.html" %}
+        </div>
+    {% endif %}
+
+    {% if slideshow_mobile %}
+        <div id="carousel-mobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+            {% include "frontend/elements/slideshow_mobile.html" %}
+        </div>
+    {% endif %}
+</div>

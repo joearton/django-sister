@@ -1,0 +1,46 @@
+{% load static i18n %}
+
+<div class="card card-primary card-outline">
+    <div class="card-header"><h6 class="m-0">{% trans "System Information" %}</h6></div>
+    <div class="card-body">
+        <div class="mb-1">
+            <div class="small text-muted">{% trans "Site" %}:</div>
+            <div class="small text-primary">{{ request.site }}</div>
+        </div>
+        <div class="mb-1">
+            <div class="small text-muted">{% trans "Platform" %}:</div>
+            <div class="small text-primary">{{ sys_info.platform }}</div>
+        </div>
+        <div class="mb-1">
+            <div class="small text-muted">{% trans "Operation System" %}:</div>
+            <div class="small text-primary">{{ sys_info.system }} {{ sys_info.version }}</div>
+        </div>
+        <div class="mb-1">
+            <div class="small text-muted">{% trans "Architecture" %}:</div>
+            <div class="small text-primary">{{ sys_info.architecture }}</div>
+        </div>
+        <div class="mb-1">
+            <div class="small text-muted">{% trans "Processor" %}:</div>
+            <div class="small text-primary">{{ sys_info.processor }}</div>
+        </div>
+        <div class="mb-1">
+            <div class="small text-muted">{% trans "CPU Usage" %}:</div>
+            <div class="small text-primary">{{ sys_info.cpu_percent }}</div>
+        </div>
+        <div class="mb-1">
+            <div class="small text-muted">{% trans "RAM Usage" %}:</div>
+            <div class="small text-primary">
+                {{ sys_info.virtual_memory.used|filesizeformat }} {% trans "of" %} {{ sys_info.virtual_memory.available|filesizeformat }}
+                ({{ sys_info.virtual_memory.free|filesizeformat }} {% trans "free" %})
+            </div>
+        </div>
+        <div class="mb-1">
+            <div class="small text-muted">{% trans "Storage Usage" %}:</div>
+            <div class="small text-primary">
+                {{ sys_info.disk_usage.used|filesizeformat }}
+                {% trans "of" %} 
+                {{ sys_info.disk_usage.free|filesizeformat }}
+            </div>
+        </div>
+    </div>
+</div>        

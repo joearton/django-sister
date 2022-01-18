@@ -1,0 +1,32 @@
+{% load static i18n crispy_forms_tags  %}
+
+
+<div class='formset'>
+    {{ formset.management_form|crispy }}
+    {% for form in formset.forms %}
+        <div class="form-group formset_row-{{ formset.prefix }}">
+            {% for field in form.visible_fields %}
+                {# Include the hidden fields in the form #}
+                {% if forloop.first %}
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+                {% endif %}
+                {{ field.errors.as_ul }}
+                {{ field|as_crispy_field }}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+<script src="{% static 'backend/scripting/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+    $('.formset_row-{{ formset.prefix }}').formset({
+        addText: '{% trans "Add New Data" %}',
+        deleteText: '{% trans "Remove" %}',
+        prefix: '{{ formset.prefix }}',
+    });
+    {% if formset.can_delete == False %}
+        $('.delete-row').hide();
+    {% endif %}
+</script>

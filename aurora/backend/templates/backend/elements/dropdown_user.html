@@ -1,0 +1,44 @@
+{% load static %}
+{% load i18n %}
+{% load extra_filters %}
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {% with request.user.get_profile_picture as picture %}
+            {% if picture %}
+                <div id="navbar-userpic" class='d-none d-md-block' style="background:url({{ request.user.get_profile_picture }}); background-size: cover;"></div>
+            {% else %}
+                <i class="fas fa-user"></i>
+            {% endif %}
+        {% endwith %}
+        {{ request.user.get_full_name }}
+    </a>
+    <ul class="dropdown-menu dropdown-menu-right">
+        {% if request.user.is_superuser %}
+            <li>
+                <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">
+                    {% trans "Administrator" %}
+                </a>
+            </li>
+        {% endif %}
+        {% for nav_key, nav_value in env.backend.user_tools.items %}
+            {% if request.user|in_group:nav_value.users %}
+                <li>
+                    <a id="{{ nav_key }}" href="{{ nav_value.url }}" class="nav-link">
+                        <i class="{{ nav_value.icon }} sidebar-icon"></i> {{ nav_value.label }}
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% if request.user.groups.count > 1 %}
+            <li>
+                <a class="nav-link" href="{% url 'aurora.backend.account.role' %}">
+                    {% trans "Switch Role" %}
+                </a>
+            </li>
+        {% endif %}
+        <li>
+            <a class="nav-link" href="{% url 'aurora.backend.signout' %}">{% trans "Sign Out" %}</a>
+        </li>
+    </ul>
+</li>

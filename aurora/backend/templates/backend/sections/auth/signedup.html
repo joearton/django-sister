@@ -1,0 +1,17 @@
+{% extends "backend/layouts/auth.html" %}
+{% load static i18n %}
+
+
+{% block form %}
+    <div class="mb-3">
+        <p>
+            {% trans "Account created, we have sent activation email to " %}
+            <strong class="text-success">{{ user.email }} <i class="fa fa-check-circle" aria-hidden="true"></i></strong>
+        </p>
+        <p>{% trans "Please check your inbox or spam folder" %}</p>
+    </div>
+    <div class="text-center d-grid gap-2">
+        <a class="btn btn-primary" href="{% url 'aurora.backend.signin' %}">{% trans "Sign In" %}</a>
+    </div>
+{% endblock form %}
+

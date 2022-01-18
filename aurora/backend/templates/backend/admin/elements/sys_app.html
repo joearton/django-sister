@@ -1,0 +1,47 @@
+{% load static i18n extra_filters %}
+
+<div class="card {% if app_props.editable %}card-primary{% else %}card-secondary{% endif %} card-outline">
+    <div class="card-header position-relative px-2">
+        <h6 class="m-0">
+            {{ app_props.name|title }}
+            {% if app_props.parent %} <sub class="text-muted">{{ app_props.parent }}</sub> {% endif %}
+        </h6>
+        <div class="custom-control custom-switch position-absolute" style='top: 11px; right: 0'>
+            <input name="manage_apps" type="checkbox" class="custom-control-input ajax-handler" {% if not app_props.editable %}disabled{% endif %}
+                id="id_{{ app_props.name }}" data-call="toggle_app" data-app-name="{{ app_name }}" {% if app_props.autoload %}checked{% endif %}>
+            <label id="app-label" class="custom-control-label" for="id_{{ app_props.name }}"></label>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class='small'>
+            <span class='text-{% if app_props.templatetags %}primary font-weight-bold{% else %}muted{% endif %} d-inline-block' style='width: 17px;'>
+                {{ app_props.templatetags_count }}
+            </span> <span class='text-muted'>{% trans "Template Tags" %}</span>
+        </div>
+        <div class='small'>
+            <span class='text-{% if app_props.middlewares %}primary font-weight-bold{% else %}muted{% endif %} d-inline-block' style='width: 17px;'>
+                {{ app_props.middlewares|length }}
+            </span> <span class='text-muted'>{% trans "Midlewares" %}</span>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    var toggle_app = function(elem, response) {
+        var card = elem.parentsUntil('.card');
+        if (elem.prop('checked') == true) {
+            card.removeClass('card-secondary').addClass('card-primary');
+        } else {
+            card.removeClass('card-primary').addClass('card-secondary');
+        }
+
+        if (response.status == true) {
+            card.removeClass('card-secondary').addClass('card-primary');
+        } else {
+            card.removeClass('card-primary').addClass('card-secondary');
+        }
+    }
+
+</script>

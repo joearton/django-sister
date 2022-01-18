@@ -1,0 +1,29 @@
+{% extends "frontend/layouts/base_without_sidebar.html" %}
+{% load i18n static humanize %}
+
+{% block content %}
+<article>
+    <div class="jumbotron mb-3">
+        <div class="container py-5">
+            <h1 class='fw-bold'>
+               <i class='fa fa-envelope'></i> {{ section_title }}
+            </h1>
+        </div>
+    </div>
+    <div class="container py-3" style="min-height: 75vh">
+        <div class="mb-3">
+            <div class='small'>{% trans "Address" %}:</div>
+            <div>{{ f_config.address }}</div>
+        </div>
+        <div class="mb-3">
+            <div class='small'>{% trans "E-mail" %}:</div>
+            <div>{{ f_config.email }}</div>
+        </div>
+        <div class="mb-3">
+            <div class='small'>{% trans "Phonenumber" %}:</div>
+            <div>{{ f_config.phone }}</div>
+        </div>
+    </div>
+</article>
+
+{% endblock %}

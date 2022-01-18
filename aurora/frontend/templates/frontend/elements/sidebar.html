@@ -1,0 +1,20 @@
+{% load i18n static extra_filters %}
+
+
+
+{% for pintasan in grupPintasan %}
+    <div class='pintasan'>
+        <h2 class='pintasan-title'>
+            <i class='{{ pintasan.icon }}'></i> {{ pintasan.name }}
+        </h2>
+        <ul class='pintasan-items'>
+            {% for pintasan_item in pintasan.pintasan_set.all %}
+                <li>
+                    <a {% if pintasan_item.target %}target='_blank'{% endif %} href='{{ pintasan_item.url }}'>
+                        <i class='fa fa-angle-double-right'></i> {{ pintasan_item.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endfor %}

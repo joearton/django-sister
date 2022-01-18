@@ -1,0 +1,55 @@
+{% extends "frontend/layouts/base_without_sidebar.html" %}
+{% load static i18n humanize %}
+
+{% block before_sub_content %}
+    <div class="jumbotron mb-3">
+        <div class="container py-5 text-center">
+            <h1 class='fw-bold'><i class='fa fa-newspaper-o'></i> {{ section_title }}</h1>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container" style="min-height: 75vh">
+        {% for object in object_list %}
+            <article class='row mt-1 mb-5'>
+                <div class="col-md-4">
+                    {% if object.thumbnail %}
+                        <img class='w-100 img-thumbnail' src="{{ object.thumbnail.url }}" alt="{{ object.title }}">
+                    {% else %}
+                        <img class='w-100 img-thumbnail' src="{% static 'backend/media/no-image.jpg' %}" alt="{{ object.title }}">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <h1 class='h3'>
+                        <a href="{% url 'aurora.frontend.post.detail' object.publish_date.year object.publish_date.month object.publish_date.day object.slugname  %}">
+                            {{ object.title }}
+                        </a>
+                    </h1>
+                    <div class='text-muted small'>
+                        {% if object.author.first_name %}
+                            <span class="me-3">
+                                <i class="fa fa-user"></i> {{ object.author.first_name }}
+                                {{ object.author.last_name }}
+                            </span>
+                        {% endif %}
+                        <span class="me-3">
+                            <i class="fa fa-calendar"></i> {{ object.date_created|date:'d F Y H:m' }}
+                        </span>
+                        <span class="me-3"><i class="fa fa-th"></i> {{ post.category.name }}</span>
+                        <span class="me-3"><i class="fa fa-eye"></i> {{ post.meta.view_count|intword|default:'0' }}</span>
+                    </div>
+                    <div class="py-1">
+                        {% autoescape off %}
+                            {{ object.content|truncatewords_html:25 }}
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </article>
+        {% empty %}
+            <h5>{% trans "No posts available" %}</h5>
+        {% endfor %}
+    </div>
+    {% include 'backend/elements/pagination.html' %}
+{% endblock %}

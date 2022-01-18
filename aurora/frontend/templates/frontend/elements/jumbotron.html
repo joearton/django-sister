@@ -1,0 +1,27 @@
+{% load static %}
+{% load i18n %}
+
+{% with config.jumbotron as jumbotron %}
+    <div class="jumbotron position-relative" style="margin: auto; {% if f_config.jumbotron_bg %}background: url('{{ f_config.jumbotron_bg.url }}'){% endif %}; background-size: cover;">
+        <div class="jumbotron-overlay" style="background-color: {{ jumbotron.overlay_bg|default:'rgba(255,255,255,.70)'}};"></div>
+        <div class="position-relative w-100 h-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-{{ jumbotron.align|default:'center' }} text-{{ jumbotron.color }}">
+                        <div style="padding: {{ jumbotron.padding|default:'30vh 0px' }};">
+                            <h1 class="{{ jumbotron.title_class }}">{{ f_config.slogan }}</h1>
+                            <p class="{{ jumbotron.subtitle_class }}">{{ f_config.description }}</p>
+                            <div class='my-1'>
+                                {% for button in jumbotron.buttons  %}
+                                    <a class="btn {{ button.class }} me-1" href="{{ button.url }}">
+                                        <i class='{{ button.icon }}'></i> {{ button.label }}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endwith %}

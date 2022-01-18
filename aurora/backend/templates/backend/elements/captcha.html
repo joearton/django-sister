@@ -1,0 +1,13 @@
+{% load i18n %}
+{% spaceless %}
+
+    {{ label }}
+    {% if audio %}
+        <a title="{% trans " Play CAPTCHA as audio file" %}" href="{{ audio }}">
+    {% endif %}
+    <img src="{{ image }}" alt="captcha" class="captcha p-1 img-thumbnail mb-1" />
+    {% for widget in widget.subwidgets %}
+        <input type="{{ widget.type }}" id="{{ widget.attrs.id }}" class="form-control {{ widget.attrs.class }}" name="{{ widget.name }}" required="{{ widget.attrs.required }}" {% if widget.value %}value="{{ widget.value }}"{% endif %} />
+    {% endfor %}
+
+{% endspaceless %}

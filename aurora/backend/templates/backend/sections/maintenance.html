@@ -1,0 +1,17 @@
+{% extends "backend/layouts/maintenance.html" %}
+
+
+{% block content %}
+{% load i18n %}
+
+<h1 style='margin: 0px;'>{% trans "System Updating" %}</h1>
+<div>{{ config.host }}{{ request.get_host }}</div>
+<div>
+    <p>{% trans "Sorry, we are currently updating the website to get more features and stability. Please come again another time." %}</p>
+    {% if maintenance_message %}
+        <p>{{ maintenance_message }}</p>
+    {% endif %}
+    <p>&mdash; {% trans "Web Administrator" %}</p>
+</div>
+
+{% endblock %}

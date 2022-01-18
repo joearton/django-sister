@@ -1,0 +1,19 @@
+{% load i18n static %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'backend/styling/css/global.css' %}" />
+
+<script type="text/javascript">
+    var current_url = "{{ request.path }}";
+    var language_code = "{{ LANGUAGE_CODE }}";
+    {% if request.is_secure %}
+        var base_url = "https://{{ request.get_host }}";
+    {% else %}
+        var base_url = "http://{{ request.get_host }}";
+    {% endif %}
+</script>
+<script type="text/javascript" src="{% static 'backend/scripting/script.common.js' %}"></script>
+
+{% if config.debug %}
+    <script type="text/javascript" src="{% static 'backend/scripting/debug.js' %}"></script>
+{% endif %}

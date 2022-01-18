@@ -1,0 +1,18 @@
+{% extends "backend/layouts/base.html" %}
+
+
+{% block content %}
+    <nav id='navbar-top' class='navbar sticky-top shadow-lg navbar-expand-lg navbar-dark'>
+        {% include 'backend/elements/navbar_top.html' %}
+    </nav>
+    <div class="page-container">
+        <main>
+            {% block sub_content %}
+            {% endblock %}
+        </main>
+    </div>
+    <div class="footer fixed-bottom text-light shadow zindex-fixed">
+        {% include "backend/elements/credit.html" %}
+    </div>
+{% endblock %}
+

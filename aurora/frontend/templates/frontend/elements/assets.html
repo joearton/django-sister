@@ -1,0 +1,26 @@
+{% load static %}
+
+{# load all styles #}
+<link rel="icon" href="{% static 'backend/media/logo.png' %}" type="image/png" />
+
+{% if config.frontend.bootstrap_theme == 'default' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'backend/styling/bootstrap/css/bootstrap.css' %}" />
+{% else %}
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'backend/styling/bootstrap/themes/bootstrap' %}-{{ config.frontend.bootstrap_theme }}.min.css" />
+{% endif %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'backend/styling/fontawesome/css/all.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'frontend/styling/css/style.css' %}" />
+
+{# load all scripts #}
+<script type="text/javascript" src="{% static 'backend/scripting/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'backend/scripting/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'backend/styling/bootstrap/js/bootstrap.min.js' %}"></script>
+
+{% include 'backend/elements/global_assets.html' %}
+
+{# custom fonts #}
+<link rel="stylesheet" type="text/css" href="{% static 'backend/styling/fonts/poppins.css' %}" />
+
+<script type="text/javascript" src="{% static 'frontend/scripting/script.js' %}"></script>

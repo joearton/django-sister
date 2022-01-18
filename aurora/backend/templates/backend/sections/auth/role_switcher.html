@@ -1,0 +1,52 @@
+{% extends "backend/layouts/role.html" %}
+{% load static i18n crispy_forms_tags %}
+
+{% block sub_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="bg-white mt-3 border">
+                <h6 class="px-3 py-2 border-bottom mb-0">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    {% trans "Switch Role" %}
+                </h6>
+                <div class="p-3">
+                    <form name="choose-role" method="POST" class="px-3">
+                        {% for role in request.user.groups.all %}
+                            <div class='py-1 mb-1 text-primary d-flex'>
+                                <div class='w-50 fw-bold'>{{ role.name|title }}</div>
+                                <div class='w-50 text-center'>
+                                    <a class='btn btn-outline-primary btn-sm btn-role {% if role.name == request.session.role %} disabled {% endif %}' data-role="{{ role.name }}" href="#">
+                                        {% trans "Activate" %}
+                                    </a>
+                                </div>
+                            </div>
+                            {{ form.role }}
+                        {% empty %}
+                            <div>{% trans "You don't have any roles, please contact administrator" %}</div>
+                            <div class="text-center py-3">
+                                <a class="btn btn-primary" href="{% url 'aurora.backend.signout' %}">{% trans "Sign Out" %}</a>
+                            </div>
+                        {% endfor %}
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $('.btn-role').click(function(){
+            var role = $(this).attr('data-role');
+            $('input[name="role"]').val(role);
+            $('form[name="choose-role"]').submit();
+        })
+    })
+</script>
+
+
+{% endblock %}

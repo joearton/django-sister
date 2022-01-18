@@ -1,0 +1,25 @@
+{% if f_config.phone %}
+    <a class="" href="https://wa.me/{{ f_config.phone }}/?text=[{{ f_config.title }}]" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+{% endif %}
+{% if f_config.email %}
+    <a class="" href="mailto:{{ f_config.email }}" target="_blank">
+        <i class="fa fa-envelope"></i>
+    </a>
+{% endif %}
+{% if f_config.facebook %}
+    <a class="" href="{{ f_config.facebook }}" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+{% endif %}
+{% if f_config.youtube %}
+    <a class="" href="{{ f_config.youtube }}" target="_blank">
+        <i class="fab fa-youtube"></i>
+    </a>
+{% endif %}
+{% if f_config.instagram %}
+    <a class="" href="{{ f_config.instagram }}" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+{% endif %}
