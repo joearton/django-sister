@@ -6,4 +6,5 @@ config/database.py
 __pycache__/
 static/
 media/
+reset.py
 *.pyc
