@@ -14,6 +14,11 @@
     {% endif %}
 
 
+    {% if f_config.jumbotron %}
+        {% include 'frontend/elements/hr_general_info.html' %}
+    {% endif %}
+
+
     {% if config.post.visible %}
         {% include 'frontend/elements/post_list.html' %}
     {% endif %}

@@ -25,3 +25,5 @@ psutil
 django-nested-admin
 daphne
 channels
+validators
+pyyaml

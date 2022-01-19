@@ -15,7 +15,11 @@ from aurora.backend.views.auth import DefaultDashboardView
 from django.conf import settings
 from aurora.backend.views.auth.activation import shared_activate_user
 from aurora.backend.views.admin import backend
-from aurora.backend.library.ui import html
+from aurora.backend.library.ui.html import HTMLUI
+
+
+ui = HTMLUI()
+
 
 class backendAdmin(admin.ModelAdmin, AdminFeatures):
     actions = ["export_as_csv"]
@@ -42,8 +46,8 @@ class UserAdmin(UserAdmin, AdminFeatures, DefaultDashboardView):
         if fullname:
             username += ' ({0}) '.format(fullname)
         return format_html('{} {}',
-            divs('{0}'.format(obj.email), text_color),
-            divs('{0}'.format(username), 'text-primary'),
+            ui.divs('{0}'.format(obj.email), text_color),
+            ui.divs('{0}'.format(username), 'text-primary'),
         )
     fullname.short_description = _('Account')
 
@@ -52,16 +56,16 @@ class UserAdmin(UserAdmin, AdminFeatures, DefaultDashboardView):
         html = ''
         group_list = obj.groups.all()
         if obj.is_superuser:
-            html = badge_block(_('SUPER USER'), 'success')
+            html = ui.badge_block(_('SUPER USER'), 'success')
         else:
             if group_list:
                 for i in group_list:
                     bg_color = 'light'
                     if hasattr(i, 'get_group_color'):
                         bg_color = i.get_group_color()
-                    html += badge_block(i.name.upper(), bg_color)
+                    html += ui.badge_block(i.name.upper(), bg_color)
             else:
-                html = badge_block(_('NO GROUP'), 'dark')
+                html = ui.badge_block(_('NO GROUP'), 'dark')
         return format_html(html)
     group.short_description = _('Group')
 

@@ -9,6 +9,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('captcha/', include('captcha.urls')),
     path('administrator/', admin.site.urls),
+    path('backend/', include('aurora.backend.urls')),
 
     # frontend and public urls
     path('', include('aurora.frontend.urls')),
@@ -31,3 +32,4 @@ if settings.DEBUG:
     if 'debug_toolbar' in settings.INSTALLED_APPS:
         import debug_toolbar
         urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
+

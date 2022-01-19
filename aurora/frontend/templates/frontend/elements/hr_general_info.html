@@ -1,0 +1,42 @@
+{% load i18n %}
+
+{% if university_info %}
+{% with university_info.data as info %}
+<div class='py-5 border-top border-bottom bg-primary text-light'>
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <h1 class='text-center m-0'>{{ info.nama_perguruan_tinggi }}</h1>
+                <div class='text-center m-0'>
+                    <a class='text-light' href="{{ info.website }}" target="_blank">{{ info.website }}</a> |
+                    <a class='text-light' href="mailto:{{ info.email }}" target="_blank">{{ info.email }}</a>
+                </div>
+                <div class='text-center'>
+                    <span class='fa fa-map-pin'></span>
+                    {{ info.jalan }} {{ info.kelurahan }} {{ info.nama_wilayah }} {{ info.kode_pos }}
+                </div>
+            </div>
+        </div>
+        <div class='row text-center mb-5'>
+            <div class="col-md-3">
+                <div>
+                    <div class="round">
+                        <span class='fa fa-user fa-3x'></span>
+                    </div>
+                    <div>{{ info.unit_kerja|length }} {% trans "Units" %}</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endwith %}
+{% endif %}
