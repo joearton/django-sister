@@ -1,4 +1,3 @@
-import imp
 from django.views.generic import View, ListView
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
@@ -7,6 +6,8 @@ from aurora.frontend.views import frontendView
 from django.utils.translation import gettext as _
 from aurora.backend.vendors.sister import sister
 from random import choice
+
+sister_api = sister.SisterAPI()
 
 
 class FrontendDefault(frontendView, ListView):
@@ -18,10 +19,11 @@ class FrontendDefault(frontendView, ListView):
 
 
     def get_university_info(self):
-        sister_api = sister.SisterAPI()
         profil_pt  = sister_api.get_referensi_profil_pt()
         unit_kerja = sister_api.get_referensi_unit_kerja(id_perguruan_tinggi=profil_pt.get('data').get('id_perguruan_tinggi'))
+        pegawai    = sister_api.get_referensi_sdm()
         profil_pt.get('data')['unit_kerja'] = unit_kerja.get('data')
+        profil_pt.get('data')['sdm'] = pegawai.get('data')
         return profil_pt
 
 
