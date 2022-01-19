@@ -13,15 +13,11 @@ lxml
 SOAPpy
 django-autocomplete-light
 django-debug-toolbar
-html-creator
-python-barcode
 pyquery
 pymysql
 django-jazzmin
 celery
-django-mptt
 django-formset-js
-django-celery-email
 mysqlclient
 redis
 sweetify

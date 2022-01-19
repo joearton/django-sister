@@ -1,8 +1,11 @@
-# Pilar
-
-Pilar is Django based application for managing educational/competence program in school or university.
+# Django Sister
+Access your Sister API (Sistem Informasi Terintegrasi), and show what you want
 
 ## Features
-1. Multisite capability
-2. Auto sass compilation
-3. Auto reload on changes
+1. Django administrator
+2. Easy to customize
+3. Auto sass compilation
+4. Auto reload on changes
+5. Multisite support
+6. Easy setting/configuration
+7. WSGI and ASGI ready
