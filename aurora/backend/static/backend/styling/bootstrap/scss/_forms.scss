@@ -1,0 +1,25 @@
+@import "forms/labels";
+@import "forms/form-text";
+@import "forms/form-control";
+@import "forms/form-select";
+@import "forms/form-check";
+@import "forms/form-range";
+@import "forms/floating-labels";
+@import "forms/input-group";
+@import "forms/validation";
+
+
+fieldset {
+    background: $light;
+    border: 1px solid darken($light, 21%);
+    padding-top: $btn-padding-x;
+    padding-bottom: $btn-padding-x-lg;
+    padding-left: $btn-padding-x-lg;
+    padding-right: $btn-padding-x-lg;
+    margin-bottom: 21px;
+}
+
+legend {
+    font-size: $h4-font-size;
+    margin-bottom: .85rem;
+}

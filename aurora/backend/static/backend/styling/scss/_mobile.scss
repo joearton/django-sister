@@ -1,0 +1,61 @@
+@media only screen and (max-width: 768px) {
+
+    body {
+        background: $white;
+    }
+
+    .navbar-nav {
+        .nav-link {
+            padding: 11px 0px;
+            font-size: $font-size-sm;            
+        }
+        .nav-item.dropdown {
+            .nav-link {
+                padding: 5px 11px;
+            }
+        }
+    }
+
+    #navbar-top {
+        padding: 7px 7px;
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-brand {
+            font-size: 15px;
+            img {
+                width: auto;
+                height: 35px;
+            }
+        }
+    }
+
+    .page-container {
+        .page-main {
+            width: auto;
+            padding: 0px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .row-section {
+            padding: 0px;
+            #section-title {
+                position: relative !important;
+                font-size: 17px;
+                margin: 0px;
+            }
+        
+            .section_action_button_right {
+                text-align: left !important;
+            }    
+        }
+
+        .deep-content {
+            padding: 5px !important;
+            box-shadow: none !important;
+        }
+    
+    }
+
+}
+

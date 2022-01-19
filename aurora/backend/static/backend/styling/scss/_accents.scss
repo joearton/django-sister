@@ -1,0 +1,35 @@
+$aurora-black       :#000000;
+$aurora-white       :#ffffff;
+$aurora-dark        :#16202b;
+$aurora-light       :#ffffff;
+$aurora-army        :#01344d;
+$aurora-purple      :#3d033f;
+$aurora-deep        :#171636;
+$aurora-blue        :#094183;
+$aurora-softblue    :#006ea3;
+$aurora-green       :#0a740a;
+$aurora-softgreen   :#0f4068;
+$aurora-elegant     :#18385a;
+$aurora-canva       :#008ddd;
+$aurora-orange      :#ffcc00;
+$aurora-red         :#c71f1e;
+$aurora-softdark    :#2b3c4e;
+
+$accents-as-list: (
+    "black"     : $aurora-black,
+    "white"     : $aurora-white,
+    "dark"      : $aurora-dark,
+    "light"     : $aurora-light,
+    "army"      : $aurora-army,
+    "purple"    : $aurora-purple,
+    "deep"      : $aurora-deep,
+    "blue"      : $aurora-blue,
+    "softblue"  : $aurora-softblue,
+    "green"     : $aurora-green,
+    "softgreen" : $aurora-softgreen,
+    "elegant"   : $aurora-elegant,
+    "canva"     : $aurora-canva,
+    "orange"    : $aurora-orange,
+    "red"       : $aurora-red,
+    "softdark"  : $aurora-softdark
+);

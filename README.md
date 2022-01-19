@@ -1,5 +1,6 @@
 # Django Sister
-Access your Sister API (Sistem Informasi Terintegrasi), and show what you want
+Access your Sister API (Sistem Informasi Terintegrasi), and show what you want. You can read about sister in:
+https://sister.kemdikbud.go.id/
 
 ## Features
 1. Django administrator

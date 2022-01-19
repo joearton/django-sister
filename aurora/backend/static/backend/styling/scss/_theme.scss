@@ -1,0 +1,146 @@
+/** Backend theme list */
+
+@mixin theme-light($accent, $sidebar-pct:11%, $hover-pct: 5%) {
+    .navbar {
+        background: $accent;
+        a, .nav-link {
+            color: color-contrast($accent);
+            &:hover {
+                background: lighten($accent, $hover-pct);
+            }
+        }
+        .dropdown-menu {
+            background: $accent;
+            a, .nav-link {
+                color: color-contrast($accent);
+                &:hover {
+                    background: darken(color-contrast($accent), 5%);
+                    color: $accent;
+                }
+            }
+        }
+    }
+    .btn-group {
+        .dropdown-menu {
+            background: $white;
+            color: $dark;
+            a {
+                color: $dark;
+                font-size: $font-size-sm;
+                &:hover {
+                    background: darken($white, 5%);
+                    color: $accent;
+                }
+            }
+        }
+    }
+    .page-sidebar {
+        background: $white;
+        a {
+            border-bottom-color: darken($white, $hover-pct);
+            color: $dark;
+            &.active {
+                background: darken($white, $hover-pct + 3);
+            }
+            &:hover {
+                background: darken($white, $hover-pct);
+            }
+        }
+        ul.sidebar-dropdown {
+            border-bottom-color: darken(#ffffff, $hover-pct);
+            a {
+                &:hover {
+                    background: darken($white, $hover-pct);
+                }
+                &::before {
+                    content: "- ";
+                }
+            }
+        }
+    }
+    .footer {
+        background: $accent;
+    }
+    @media only screen and (max-width: 768px) {
+        .navbar-nav {
+            .nav-link {
+                border-bottom: 1px solid lighten($accent, $hover-pct);
+            }
+        }
+    }
+}
+
+
+@mixin theme-dark($accent, $sidebar-pct:11%, $hover-pct: 17%) {
+    .navbar {
+        background: $accent;
+        a, .nav-link {
+            color: color-contrast($accent);
+            &:hover {
+                background: lighten($accent, $hover-pct);
+            }
+        }
+        .dropdown-menu {
+            background: $accent;
+            a, .nav-link {
+                color: color-contrast($accent);
+                &:hover {
+                    background: darken(color-contrast($accent), 5%);
+                    color: $accent;
+                }
+            }
+        }
+    }
+    .page-sidebar {
+        background: lighten($accent, $sidebar-pct);
+        a {
+            border-bottom-color: lighten($accent, $hover-pct);
+            color: $white;
+            &.active {
+                background: lighten($accent, $hover-pct + 3);
+            }
+            &:hover {
+                background: lighten($accent, $hover-pct);
+            }
+        }
+    }
+    ul.sidebar-dropdown {
+        border-bottom-color: lighten($accent, $hover-pct);
+        a {
+            &:hover {
+                background: lighten($accent, $hover-pct);
+            }
+            &::before {
+                content: "- ";
+            }
+        }
+    }
+    #section-title {
+        color: $accent;
+    }
+    .footer {
+        background: $accent;
+    }
+    @media only screen and (max-width: 768px) {
+        .navbar-nav {
+            .nav-item.dropdown {
+                border-bottom: 1px solid lighten($accent, $hover-pct);
+                .nav-link {
+                    border-bottom: 1px solid lighten($accent, $hover-pct);
+                }
+            }
+        }
+    }
+}
+
+
+/* function for generating theme */
+@each $name, $color in $accents-as-list {
+    body.light-#{$name} {
+        @include theme-light($color);
+    }
+    body.dark-#{$name} {
+        @include theme-dark($color);
+    }
+}
+
