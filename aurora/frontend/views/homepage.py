@@ -7,6 +7,7 @@ from django.utils.translation import gettext as _
 from aurora.backend.vendors.sister import sister
 from random import choice
 
+
 sister_api = sister.SisterAPI()
 
 
@@ -19,11 +20,23 @@ class FrontendDefault(frontendView, ListView):
 
 
     def get_university_info(self):
-        profil_pt  = sister_api.get_referensi_profil_pt()
-        unit_kerja = sister_api.get_referensi_unit_kerja(id_perguruan_tinggi=profil_pt.get('data').get('id_perguruan_tinggi'))
-        pegawai    = sister_api.get_referensi_sdm()
-        profil_pt.get('data')['unit_kerja'] = unit_kerja.get('data')
-        profil_pt.get('data')['sdm'] = pegawai.get('data')
+        profil_pt = sister_api.get_referensi_profil_pt()
+        unit_kerja = sister_api.get_referensi_unit_kerja(id_perguruan_tinggi=profil_pt.data.get('id_perguruan_tinggi'))
+        sdm = sister_api.get_referensi_sdm()
+        pendidikan_s2, pendidikan_s3 = 0, 0
+        for index in sdm.data:
+            pendidikan_formal = sister_api.get_pendidikan_formal(id_sdm=index['id_sdm'])
+            print(pendidikan_formal.data)
+            for pendidikan in pendidikan_formal.data:
+                if 'jenjang_pendidikan' in pendidikan:
+                    if pendidikan['jenjang_pendidikan'] == 'S2':
+                        pendidikan_s2 += 1
+                    elif pendidikan['jenjang_pendidikan'] == 'S3':
+                        pendidikan_s3 += 1
+        profil_pt.get('data')['unit_kerja'] = unit_kerja.data
+        profil_pt.get('data')['sdm'] = sdm.data
+        profil_pt.get('data')['pendidikan_s2'] = pendidikan_s2
+        profil_pt.get('data')['pendidikan_s3'] = pendidikan_s3
         return profil_pt
 
 
