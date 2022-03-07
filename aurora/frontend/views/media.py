@@ -19,14 +19,14 @@ def transfer_file(request, media):
     else:
         media.meta = {'view_count': 1}
     media.save()
-    return redirect(media.media.url)
+    return redirect(media.upload.url)
 
 
 def media_unlock(request):
     password = request.POST.get('password')
     post_slugname = request.POST.get('post-id')
     media_id = request.POST.get('media-id')
-    post = Post.objects.get(slugname=post_slugname)
+    post = Post.objects.get(slugname = post_slugname)
     media = Files.objects.get(pk = media_id)
     if password:
         if check_password(password, post.password):

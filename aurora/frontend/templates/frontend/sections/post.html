@@ -32,16 +32,16 @@
                 <img class="img-thumbnail w-75 mx-auto d-block" src="{% static 'frontend/media/default-post.jpg' %}" alt="{{ object.title }}" />
             {% endif %}
         </div>
-        <div class="post-content my-3">
+        <div class="post-content mt-3 mb-1">
             {% autoescape off %}
                 {{ object.content }}
             {% endautoescape %}
         </div>
-        {% if post.media.count > 0 %}
-            <div class='post-media bg-light p-3 border'>
+        {% if post.files.count > 0 %}
+            <div class='post-media bg-light p-3 border mb-3'>
                 <h2 class='mt-0 h6 font-weight-bold'><i class='fa fa-file'></i> {% trans "Files" %}:</h2>
                 <ol class='post-media-list px-3 m-0'>
-                    {% for media in post.media.all  %}
+                    {% for media in post.files.all  %}
                         <li>
                         {% if post.password %}
                             <a class='modal-unlock-media' href="javascript:void(0)" data-media="{{ media.id }}" title='{{ media.filename}}' data-post="{{ post.slugname }}">
@@ -66,6 +66,7 @@
         {% endif %}
     </div>
 </article>
+
 <!-- Modal -->
 {% include 'frontend/elements/modal_protected_media.html' %}
 {% endblock %}

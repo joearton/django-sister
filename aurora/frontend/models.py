@@ -39,14 +39,16 @@ class Navbar(BaseModel):
 
 def save_file(instance, filename):
     [name, ext] = os.path.splitext(filename)
-    filename = F"{slugify(instance.name)}{ext}"
+    filename = f"{slugify(instance.name)}"
+    if not filename.lower().endswith(ext.lower()):
+        filename += f"{ext}"
     return os.path.join('frontend/files', str(instance.date_created.year),
         str(instance.date_created.month), filename)
 
 
 class Files(BaseModel):
-    validator = Validators(max_size=(3000), filetype='image/docs')
-    name = models.CharField(_("Name"), max_length=1000)
+    validator = Validators(max_size=(7500), filetype='image/docs')
+    name = models.CharField(_("Name"), max_length=1000, null=True, blank=True)
     upload = models.FileField(_("Upload"), upload_to=save_file, validators=[validator.validate],
         help_text=validator.help_text, max_length=1024)
     meta = models.JSONField(_("Meta"), null=True, blank=True, editable=False)
@@ -61,7 +63,7 @@ class Files(BaseModel):
 
     def __str__(self):
         ext = os.path.splitext(self.upload.name)[1].lower()
-        return "[{0}] {1}{2}".format(readable_filesize(self.upload.size), self.name, ext)
+        return f"[{readable_filesize(self.upload.size)}] {self.name} [{ext[1:].upper()}]"
 
 
 @receiver(pre_delete, sender=Files)

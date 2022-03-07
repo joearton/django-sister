@@ -3,7 +3,7 @@ from aurora.backend.library.bootstrap.static import get_static
 
 
 BACKEND_SETTINGS = {
-    'site_title'        : _('Research and Community Service Management'),
+    'site_title'        : _('Human Resource'),
     'site_subtitle'     : 'Universitas Muhammadiyah Kotabumi',
     'navigation_top'    : {},
     'aurora_backend'    : True,
@@ -23,9 +23,9 @@ BACKEND_SETTINGS = {
     'signup_method'     : 'e-mail',
     'password_policy'   : {'min': 8, 'max': 32},
     'auth_info'         : {
-        'title'         : _('Research and Community Service Management'),
+        'title'         : _('Human Resource'),
         'description'   : _('This is sign in page. Use your e-mail or username and password before using our system.'),
-        'background'    : get_static('backend/media/simlitabmas.jpg'),
+        'background'    : get_static('backend/media/human_resource.jpg'),
         'color'         : 'light',
         'overlay'       : 'primary',
         'opacity'       : '.55',

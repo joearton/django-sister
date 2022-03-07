@@ -1,5 +1,6 @@
 from django.views.generic import View, ListView
 from django.urls import reverse_lazy
+from django.contrib import messages
 from django.views.generic.base import TemplateView
 from aurora.frontend.models import Slideshow, Post, Configuration
 from aurora.frontend.views import frontendView
@@ -26,7 +27,6 @@ class FrontendDefault(frontendView, ListView):
         pendidikan_s2, pendidikan_s3 = 0, 0
         for index in sdm.data:
             pendidikan_formal = sister_api.get_pendidikan_formal(id_sdm=index['id_sdm'])
-            print(pendidikan_formal.data)
             for pendidikan in pendidikan_formal.data:
                 if 'jenjang_pendidikan' in pendidikan:
                     if pendidikan['jenjang_pendidikan'] == 'S2':
@@ -53,5 +53,8 @@ class FrontendDefault(frontendView, ListView):
             context_data['slideshow_mobile'] = Slideshow.objects.filter(
                 site = self.request.site,
                 mobile = True).order_by('date_created')
-        context_data['university_info'] = self.get_university_info()
+        if sister_api.check_config():
+            context_data['university_info'] = self.get_university_info()
+        else:
+            messages.warning(self.request, _("Sister server can't be reached"))
         return context_data

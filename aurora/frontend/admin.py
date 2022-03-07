@@ -25,6 +25,7 @@ class NavbarForm(forms.ModelForm):
         default_urls = [
             ('#', '-----'),
             (reverse('aurora.frontend.post.list'), _('Posts')),
+            (reverse('aurora.frontend.directory'), _('Directory')),
             (reverse('aurora.frontend.contact'), _('Contact')),
             (reverse('aurora.frontend.about'), _('About'))
         ]
@@ -97,8 +98,11 @@ class SidebarAdmin(admin.ModelAdmin):
 @admin.register(Files)
 class FilesAdmin(admin.ModelAdmin):
     search_fields = ['name']
-    def has_module_permission(self, request):
-        return False
+
+    def save_model(self, request, obj, form, change):
+        if not obj.name:
+            obj.name, ext = os.path.splitext(obj.upload.name)
+        super().save_model(request, obj, form, change)
 
 
 @admin.register(Category)

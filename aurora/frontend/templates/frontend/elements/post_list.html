@@ -35,9 +35,9 @@
             <div class="row mb-5">
                 <div class='col-md-4'>
                     {% if object.thumbnail %}
-                        <div class="img-thumbnail" style="background: url({{ object.thumbnail.url }}); background-size: cover"></div>
+                        <div class="img-thumbnail" style="background: url({{ object.thumbnail.url }}) center center; background-size: cover"></div>
                     {% else %}
-                        <div class="img-thumbnail" style="background: url({% static 'backend/media/no-image.jpg' %}); background-size: cover"></div>
+                        <div class="img-thumbnail" style="background: url({% static 'backend/media/no-image.jpg' %}) center center; background-size: cover"></div>
                     {% endif %}
                 </div>
                 <div class='col-md-8'>

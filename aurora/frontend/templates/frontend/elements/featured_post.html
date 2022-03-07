@@ -11,8 +11,12 @@
 
     <div class="carousel-inner">
         {% for p in object_list  %}
-            <div class="carousel-item {% if forloop.first %}active{% endif %}"  style="background: url({{ p.thumbnail.url }}); background-size: cover;">
-                <div class="carousel-caption d-none d-md-block">
+            {% if p.thumbnail %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}"  style="background: url({{ p.thumbnail.url }}); background-size: cover;">
+            {% else %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}"  style="background: url({% static 'backend/media/no-image.jpg' %}); background-size: cover;">
+            {% endif %}
+                    <div class="carousel-caption d-none d-md-block">
                     <h1 class='h2 fw-bold'>
                         <a class='text-white' href="{% url 'aurora.frontend.post.detail' p.publish_date.year p.publish_date.month p.publish_date.day p.slugname  %}">
                             {{ p.title }}

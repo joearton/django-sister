@@ -64,9 +64,4 @@ class SignInForm(forms.Form):
                     HTML(f'<button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-sign-in-alt"></i> {_("Sign In")}</button>'),
                     css_class="d-grid gap-2 mb-3 text-center"),
             ),
-            Div(
-                HTML('<a href="{}" class="btn btn-secondary btn-lg"><i class="fa fa-graduation-cap"></i> {}</a>'.format(
-                    reverse('aurora.int.signin'), _('Sign In Using Siakad'))),
-                css_class = "text-center d-grid gap-2"
-            )
         )
