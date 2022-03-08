@@ -1,4 +1,5 @@
 from os import write
+from attr import has
 from django.contrib import admin, messages
 from django.contrib.admin.decorators import display
 from django.utils.text import slugify, Truncator
@@ -12,7 +13,7 @@ from aurora.frontend.models import *
 from aurora.backend.admin import backendAdmin
 from aurora.backend.library.validators import readable_filesize
 from aurora.backend.library.site import get_current_domain
-
+from aurora.frontend.urls import urlpatterns as frontend_urls
 
 
 class NavbarForm(forms.ModelForm):
@@ -21,14 +22,15 @@ class NavbarForm(forms.ModelForm):
         widgets = {} 
         fields = '__all__'
     
+
     def __init__(self, *args, **kwargs):
-        default_urls = [
-            ('#', '-----'),
-            (reverse('aurora.frontend.post.list'), _('Posts')),
-            (reverse('aurora.frontend.directory'), _('Directory')),
-            (reverse('aurora.frontend.contact'), _('Contact')),
-            (reverse('aurora.frontend.about'), _('About'))
-        ]
+        default_urls = [['#', '-----']]
+        for navbar_url in frontend_urls:
+            pattern = str(navbar_url.pattern)
+            if pattern.find('<') == -1:
+                if not pattern:
+                    pattern = "Index"
+                default_urls.append([reverse(navbar_url.name), f"{pattern.title()} - {navbar_url.name}"])
         choices = default_urls + self.get_page_urls() + self.get_category_urls()
         self.base_fields['url'] = forms.ChoiceField(choices=choices)
         self.base_fields['url'].initial = '#'
@@ -58,6 +60,7 @@ class NavbarForm(forms.ModelForm):
             category_url = reverse('aurora.frontend.category.list', kwargs={'category': category.slugname})
             category_urls.append([category_url, '[Category] {}'.format(category.name)])
         return category_urls
+
 
 
 class NavbarInline(admin.StackedInline):

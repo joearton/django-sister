@@ -1,0 +1,62 @@
+{% extends "frontend/layouts/base_without_sidebar.html" %}
+{% load i18n static humanize %}
+
+
+{% block before_sub_content %}
+    <div class="jumbotron mb-3">
+        <div class="container py-5 text-center">
+            <h1 class='fw-bold'><i class='fa fa-newspaper-o'></i> {{ section_title }}</h1>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+
+    <div class="mb-5">
+        <h3>{% trans "Faculty" %}</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>{% trans "Unit" %}</th>
+                    <th>{% trans "Type" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for faculty in faculties %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ faculty.nama }}</td>
+                        <td>{{ faculty.id_jenis_unit }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mb-5">
+        <h3>{% trans "Department" %}</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>{% trans "Unit" %}</th>
+                    <th>{% trans "Type" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for department in departments %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ department.nama }}</td>
+                        <td>{{ department.id_jenis_unit }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}
