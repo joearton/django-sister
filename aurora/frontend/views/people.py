@@ -6,24 +6,21 @@ from aurora.frontend.models import Post
 from aurora.frontend.views import frontendView
 from django.shortcuts import get_object_or_404
 from aurora.backend.library import site
-from django.utils.html import strip_tags
+from aurora.sister.models import Unit, SDM
 from aurora.backend.vendors.sister import sister
+from django.utils.text import slugify
 
 
 sister_api = sister.SisterAPI()
 
-
-class PeopleLV(frontendView, TemplateView):
+class PeopleLV(frontendView, ListView):
     section_title = _('People')
-    template_name = 'frontend/sections/directory.html'
-    fluid_width = True    
+    template_name = 'frontend/sections/people.html'
+    fluid_width = True
+    model = SDM
+    paginate_by = 10
     
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
-        profil_pt = sister_api.get_referensi_profil_pt()
-        unit_kerja = sister_api.get_referensi_unit_kerja(
-            id_perguruan_tinggi=profil_pt.data.get('id_perguruan_tinggi'))
-        sdm = sister_api.get_referensi_sdm(nama="dewi")
-        print(sdm)
         return context_data
         

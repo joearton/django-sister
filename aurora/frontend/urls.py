@@ -4,6 +4,7 @@ from aurora.frontend.views.media import MediaDownload, media_unlock
 from aurora.frontend.views.page import ContactPage, AboutPage
 from aurora.frontend.views.post import *
 from aurora.frontend.views.directory import DirectoryLV
+from aurora.frontend.views.people import PeopleLV
 from aurora.frontend.views.category import CategoryLV
 
 
@@ -13,6 +14,7 @@ urlpatterns = [
     # default post and page URL
     path('posts', PostLV.as_view(), name = 'aurora.frontend.post.list'),
     path('directory', DirectoryLV.as_view(), name = 'aurora.frontend.directory'),
+    path('people', PeopleLV.as_view(), name = 'aurora.frontend.people'),
     path('contact', ContactPage.as_view(), name = 'aurora.frontend.contact'),
     path('about', AboutPage.as_view(), name = 'aurora.frontend.about'),
 

@@ -6,11 +6,12 @@ from aurora.frontend.models import Post
 from aurora.frontend.views import frontendView
 from django.shortcuts import get_object_or_404
 from aurora.backend.library import site
-from django.utils.html import strip_tags
+from aurora.sister.models import Unit, SDM
 from aurora.backend.vendors.sister import sister
 
 
 sister_api = sister.SisterAPI()
+
 
 class DirectoryLV(frontendView, TemplateView):
     section_title = _('Directory')
