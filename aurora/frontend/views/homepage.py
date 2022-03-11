@@ -1,3 +1,4 @@
+from typing import Iterable
 from django.views.generic import View, ListView
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -24,19 +25,20 @@ class FrontendDefault(frontendView, ListView):
         profil_pt = sister_api.get_referensi_profil_pt()
         unit_kerja = sister_api.get_referensi_unit_kerja(id_perguruan_tinggi=profil_pt.data.get('id_perguruan_tinggi'))
         sdm = sister_api.get_referensi_sdm()
-        pendidikan_s2, pendidikan_s3 = 0, 0
+        edu_s2, edu_s3 = 0, 0
         for index in sdm.data:
-            pendidikan_formal = sister_api.get_pendidikan_formal(id_sdm=index['id_sdm'])
-            for pendidikan in pendidikan_formal.data:
-                if 'jenjang_pendidikan' in pendidikan:
-                    if pendidikan['jenjang_pendidikan'] == 'S2':
-                        pendidikan_s2 += 1
-                    elif pendidikan['jenjang_pendidikan'] == 'S3':
-                        pendidikan_s3 += 1
+            edu_formal = sister_api.get_pendidikan_formal(id_sdm=index['id_sdm'])
+            for edu in edu_formal.data:
+                if type(edu) == list:
+                    if 'jenjang_pendidikan' in edu:
+                        if edu['jenjang_pendidikan'] == 'S2':
+                            edu_s2 += 1
+                        elif edu['jenjang_pendidikan'] == 'S3':
+                            edu_s3 += 1
         profil_pt.get('data')['unit_kerja'] = unit_kerja.data
         profil_pt.get('data')['sdm'] = sdm.data
-        profil_pt.get('data')['pendidikan_s2'] = pendidikan_s2
-        profil_pt.get('data')['pendidikan_s3'] = pendidikan_s3
+        profil_pt.get('data')['edu_s2'] = edu_s2
+        profil_pt.get('data')['edu_s3'] = edu_s3
         return profil_pt
 
 

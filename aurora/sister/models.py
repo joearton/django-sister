@@ -21,6 +21,12 @@ class Unit(BaseModel):
 
 
 class SDM(BaseModel):
+    ACTIVE   = 1
+    INACTIVE = 0
+    CHOICES_STATUS = [
+        [ACTIVE, _('Active')],
+        [INACTIVE, _('Inactive')]
+    ]
     id_sdm = models.UUIDField(_('ID SDM'))
     nama_sdm = models.CharField(_('Nama SDM'), max_length=128)
     slugname = models.SlugField(_('ID Unik'), max_length=128, unique=True)
@@ -28,6 +34,8 @@ class SDM(BaseModel):
     nip = models.CharField(_('NIP'), max_length=28, null=True, blank=True)
     jenis_sdm = models.CharField(_('Jenis SDM'), max_length=16, null=True, blank=True)
     unit = models.ForeignKey(Unit, on_delete=models.SET_NULL, null=True, blank=True)
+    metadata = models.JSONField(_('Metadata'), null=True, blank=True)
+    status = models.IntegerField(_('Status'), default=1, choices=CHOICES_STATUS)
 
     class Meta:
         verbose_name = _('SDM')

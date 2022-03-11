@@ -28,7 +28,9 @@
                 {% for obj in object_list %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ obj.nama_sdm }}</td>
+                        <td>
+                            <a href="{% url 'aurora.frontend.people.detail' obj.slugname %}">{{ obj.nama_sdm }}</a>
+                        </td>
                         <td>{{ obj.nidn }}</td>
                         <td>{{ obj.jenis_sdm }}</td>
                         <td>{{ obj.unit|default:'-' }}</td>

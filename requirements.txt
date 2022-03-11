@@ -1,6 +1,6 @@
 django==3.2
 djangorestframework
-requests
+requests[use_chardet_on_py3]==2.26.0
 pillow
 bs4
 Weasyprint

@@ -17,5 +17,5 @@ class UnitAdmin(backendAdmin):
 
 @admin.register(SDM)
 class SDMAdmin(backendAdmin):
-    list_display  = ['nama_sdm', 'nidn', 'jenis_sdm', 'unit']
-    list_editable = ['unit',]
+    list_display  = ['nama_sdm', 'nidn', 'jenis_sdm', 'unit', 'status']
+    list_editable = ['unit', 'status']
