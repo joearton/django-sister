@@ -29,12 +29,11 @@ class FrontendDefault(frontendView, ListView):
         for index in sdm.data:
             edu_formal = sister_api.get_pendidikan_formal(id_sdm=index['id_sdm'])
             for edu in edu_formal.data:
-                if type(edu) == list:
-                    if 'jenjang_pendidikan' in edu:
-                        if edu['jenjang_pendidikan'] == 'S2':
-                            edu_s2 += 1
-                        elif edu['jenjang_pendidikan'] == 'S3':
-                            edu_s3 += 1
+                if type(edu) == dict:
+                    if edu.get('jenjang_pendidikan') == 'S2':
+                        edu_s2 += 1
+                    elif edu.get('jenjang_pendidikan') == 'S3':
+                        edu_s3 += 1
         profil_pt.get('data')['unit_kerja'] = unit_kerja.data
         profil_pt.get('data')['sdm'] = sdm.data
         profil_pt.get('data')['edu_s2'] = edu_s2
