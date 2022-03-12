@@ -3,10 +3,10 @@ from django.utils.translation import gettext_lazy as _
 
 FRONTEND_SETTINGS = {
     'bootstrap_theme'   : 'default', # 
-    'theme_mode'        : 'light', # light or dark
-    'theme_accent'      : 'white', # army, ubuntu, deep, blue, softblue, softgreen, green, elegant
+    'theme_mode'        : 'dark', # light or dark
+    'theme_accent'      : 'softgreen', # army, ubuntu, deep, blue, softblue, softgreen, green, elegant
     'topbar'            : {
-        'background'    : 'blue',
+        'background'    : 'black',
         'align'         : 'center',
         'transparent'   : '',
         'integrated'    : True,

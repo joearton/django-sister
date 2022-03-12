@@ -1,0 +1,77 @@
+{% load i18n static humanize %}
+
+<div class="row">
+    <div class="col-md-6">
+        <table style="border: none; width: 100%;">
+            <tr>
+                <td style="width: 100px;">{% trans "Name" %}</td>
+                <td style="width: 5px;">:</td>
+                <td class="fw-bold">{{ object.nama_sdm }}</td>
+            </tr>
+            <tr>
+                <td>{% trans "NIDN" %}</td>
+                <td>:</td>
+                <td class="fw-bold">{{ object.nidn }}</td>
+            </tr>
+            {% if object.nip|length > 1 %}
+                <tr>
+                    <td>{% trans "NIP" %}</td>
+                    <td>:</td>
+                    <td class="fw-bold">{{ object.nip }}</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <td>{% trans "Sex" %}</td>
+                <td>:</td>
+                <td class="fw-bold">
+                    {% if profil.data.jenis_kelamin == P %}
+                        <span>{% trans "Female" %}</span>
+                    {% else %}
+                        <span>{% trans "Male" %}</span>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>{% trans "Position" %}</td>
+                <td>:</td>
+                <td class="fw-bold">{{ object.jenis_sdm }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <table style="border: none; width: 100%;">
+            <tr>
+                <td style="width: 100px;">{% trans "E-mail" %}</td>
+                <td style="width: 5px;">:</td>
+                <td>
+                    {% if alamat.data.email %}
+                        <a href="mailto:{{ alamat.data.email }}">{{ alamat.data.email }}</a>
+                    {% else %} -
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>{% trans "Unit" %}</td>
+                <td>:</td>
+                <td class="fw-bold">{{ object.unit|default_if_none:'-'  }}</td>
+            </tr>
+            <tr>
+                <td>{% trans "Sinta ID" %}</td>
+                <td>:</td>
+                <td class="fw-bold">{{ object.sinta_id|default_if_none:'-'  }}</td>
+            </tr>
+            <tr>
+                <td>{% trans "Scopus ID" %}</td>
+                <td>:</td>
+                <td class="fw-bold">{{ object.scopus_id|default_if_none:'-'  }}</td>
+            </tr>
+            <tr>
+                <td>{% trans "Google Scholar" %}</td>
+                <td>:</td>
+                <td class="fw-bold">{{ object.gs_url|default_if_none:'-'  }}</td>
+            </tr>
+        </table>
+                
+    </div>
+</div>
+

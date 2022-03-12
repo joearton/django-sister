@@ -20,7 +20,7 @@ class PeopleLV(frontendView, ListView):
     template_name = 'frontend/sections/people.html'
     fluid_width = True
     model = SDM
-    paginate_by = 10
+    paginate_by = 15
     
     def get_context_data(self, *args, **kwargs):
         context_data = super().get_context_data(*args, **kwargs)
@@ -46,9 +46,15 @@ class PeopleDV(frontendView, DetailView):
     def get_context_data(self, *args, **kwargs):
         obj = self.get_object()
         context_data = super().get_context_data(*args, **kwargs)
-        context_data['profil'] = sister_api.get_data_pribadi_profil_bypath(id_sdm=str(obj.id_sdm))
-        context_data['alamat'] = sister_api.get_data_pribadi_alamat_bypath(id_sdm=str(obj.id_sdm))
-        context_data['ilmu']   = sister_api.get_data_pribadi_bidang_ilmu_bypath(id_sdm=str(obj.id_sdm))
+        context_data['profil']     = sister_api.get_data_pribadi_profil_bypath(id_sdm=str(obj.id_sdm))
+        context_data['alamat']     = sister_api.get_data_pribadi_alamat_bypath(id_sdm=str(obj.id_sdm))
+        context_data['ilmu']       = sister_api.get_data_pribadi_bidang_ilmu_bypath(id_sdm=str(obj.id_sdm))
+        context_data['pendidikan'] = sister_api.get_pendidikan_formal(id_sdm=str(obj.id_sdm))
+        context_data['jabfung']    = sister_api.get_jabatan_fungsional(id_sdm=str(obj.id_sdm))
+        context_data['pangkat']    = sister_api.get_kepangkatan(id_sdm=str(obj.id_sdm))
+
+        context_data['penugasan']  = sister_api.get_penugasan(id_sdm=str(obj.id_sdm))
+        print(obj.id_sdm)
         return context_data
 
     def get_object(self, queryset=None):

@@ -1,0 +1,29 @@
+{% load i18n static humanize %}
+
+<div class='m-0'>
+    <table class="table m-0 mb-3">
+        <thead>
+            <tr>
+                <th></th>
+                <th>{% trans "Position" %}</th>
+                <th>{% trans "Legality" %}</th>
+                <th>{% trans "Start Date" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in pangkat.data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ p.pangkat_golongan }}</td>
+                    <td>{{ p.sk }}</td>
+                    <td>{{ p.tanggal_mulai }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td class="text-center" colspan="4">{% trans "No data available" %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
