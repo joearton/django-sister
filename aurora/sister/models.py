@@ -40,6 +40,7 @@ class SDM(BaseModel):
     metadata = models.JSONField(_('Metadata'), null=True, blank=True)
     status = models.IntegerField(_('Status'), default=1, choices=CHOICES_STATUS)
 
+
     class Meta:
         verbose_name = _('SDM')
         verbose_name_plural = _('SDM')
