@@ -13,13 +13,11 @@
                 <td>:</td>
                 <td class="fw-bold">{{ object.nidn }}</td>
             </tr>
-            {% if object.nip|length > 1 %}
-                <tr>
-                    <td>{% trans "NIP" %}</td>
-                    <td>:</td>
-                    <td class="fw-bold">{{ object.nip }}</td>
-                </tr>
-            {% endif %}
+            <tr>
+                <td>{% trans "Unit" %}</td>
+                <td>:</td>
+                <td class="fw-bold">{{ penugasan.data.0.unit_kerja  }}</td>
+            </tr>
             <tr>
                 <td>{% trans "Sex" %}</td>
                 <td>:</td>
@@ -40,25 +38,27 @@
     </div>
     <div class="col-md-6">
         <table style="border: none; width: 100%;">
+            {% if object.nip|length > 1 %}
+                <tr>
+                    <td>{% trans "NIP" %}</td>
+                    <td>:</td>
+                    <td class="fw-bold">{{ object.nip }}</td>
+                </tr>
+            {% endif %}
             <tr>
                 <td style="width: 100px;">{% trans "E-mail" %}</td>
                 <td style="width: 5px;">:</td>
-                <td>
-                    {% if alamat.data.email %}
+                <td class="fw-bold">
+                    {% if alamat.data.email|length > 1 %}
                         <a href="mailto:{{ alamat.data.email }}">{{ alamat.data.email }}</a>
                     {% else %} -
                     {% endif %}
                 </td>
             </tr>
             <tr>
-                <td>{% trans "Unit" %}</td>
-                <td>:</td>
-                <td class="fw-bold">{{ object.unit|default_if_none:'-'  }}</td>
-            </tr>
-            <tr>
                 <td>{% trans "Sinta ID" %}</td>
                 <td>:</td>
-                <td class="fw-bold">{{ object.sinta_id|default_if_none:'-'  }}</td>
+                <td class="fw-bold">{{ lain.data.nira  }}</td>
             </tr>
             <tr>
                 <td>{% trans "Scopus ID" %}</td>

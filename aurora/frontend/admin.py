@@ -1,5 +1,3 @@
-from os import write
-from attr import has
 from django.contrib import admin, messages
 from django.contrib.admin.decorators import display
 from django.utils.text import slugify, Truncator

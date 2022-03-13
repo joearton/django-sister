@@ -6,3 +6,4 @@ config/database.py
 __pycache__/
 reset.py
 *.pyc
+config.json

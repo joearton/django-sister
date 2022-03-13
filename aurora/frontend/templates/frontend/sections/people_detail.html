@@ -20,36 +20,118 @@
                 {% include "frontend/elements/pd_identity.html" %}
             </div>
 
-            <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion" id="peopleDetail">
+
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                    <h2 class="accordion-header" id="panel-education-history">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-education-history" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Education History" %}
                         </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                    <div id="content-education-history" class="accordion-collapse collapse" aria-labelledby="panel-education-history">
                         <div class="accordion-body">{% include "frontend/elements/pd_education.html" %}</div>
                     </div>
                 </div>
-            </div>
 
-            <div class="my-3">
-                <h2 class="h4">{% trans "Skill Specification" %}</h2>
-                <div class="p-3 bg-light border">
-                    {% include "frontend/elements/pd_specification.html" %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel-specification">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-specification" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {% trans "Skill Specification" %}
+                        </button>
+                    </h2>
+                    <div id="content-specification" class="accordion-collapse collapse" aria-labelledby="panel-specification">
+                        <div class="accordion-body">{% include "frontend/elements/pd_specification.html" %}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="my-3">
-                <h2 class="h4">{% trans "Functional Position" %}</h2>
-                <div class="p-3 bg-light border">
-                    {% include "frontend/elements/pd_functional.html" %}
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel-functional">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-functional" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {% trans "Functional Position" %}
+                        </button>
+                    </h2>
+                    <div id="content-functional" class="accordion-collapse collapse" aria-labelledby="panel-functional">
+                        <div class="accordion-body">{% include "frontend/elements/pd_functional.html" %}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="my-3">
-                <h2 class="h4">{% trans "Position" %}</h2>
-                <div class="p-3 bg-light border">
-                    {% include "frontend/elements/pd_position.html" %}
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel-position">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-position" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {% trans "Position" %}
+                        </button>
+                    </h2>
+                    <div id="content-position" class="accordion-collapse collapse" aria-labelledby="panel-position">
+                        <div class="accordion-body">{% include "frontend/elements/pd_position.html" %}</div>
+                    </div>
                 </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel-assignment">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-assignment" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {% trans "Assignment" %}
+                        </button>
+                    </h2>
+                    <div id="content-assignment" class="accordion-collapse collapse" aria-labelledby="panel-assignment">
+                        <div class="accordion-body">{% include "frontend/elements/pd_assignment.html" %}</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel-teaching">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-teaching" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {% trans "Teaching" %}
+                        </button>
+                    </h2>
+                    <div id="content-teaching" class="accordion-collapse collapse" aria-labelledby="panel-teaching">
+                        <div class="accordion-body">{% include "frontend/elements/pd_teaching.html" %}</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel-research">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-research" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {% trans "Research" %}
+                        </button>
+                    </h2>
+                    <div id="content-research" class="accordion-collapse collapse" aria-labelledby="panel-research">
+                        <div class="accordion-body">{% include "frontend/elements/pd_research.html" %}</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel-comservice">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-comservice" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {% trans "Community Service" %}
+                        </button>
+                    </h2>
+                    <div id="content-comservice" class="accordion-collapse collapse" aria-labelledby="panel-comservice">
+                        <div class="accordion-body">{% include "frontend/elements/pd_comservice.html" %}</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel-publication">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-publication" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {% trans "Publication" %}
+                        </button>
+                    </h2>
+                    <div id="content-publication" class="accordion-collapse collapse" aria-labelledby="panel-publication">
+                        <div class="accordion-body">{% include "frontend/elements/pd_publication.html" %}</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel-patent">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-patent" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {% trans "Patent and Intelectual Property" %}
+                        </button>
+                    </h2>
+                    <div id="content-patent" class="accordion-collapse collapse" aria-labelledby="panel-patent">
+                        <div class="accordion-body">{% include "frontend/elements/pd_patent.html" %}</div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="col-md-1"></div>

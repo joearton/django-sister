@@ -1,0 +1,31 @@
+{% load i18n static humanize %}
+
+<div class='m-0'>
+    <table class="table m-0 mb-3">
+        <thead>
+            <tr>
+                <th></th>
+                <th>{% trans "Title" %}</th>
+                <th>{% trans "Category" %}</th>
+                <th>{% trans "Type" %}</th>
+                <th>{% trans "Date" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in publikasi.data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ p.judul }}</td>
+                    <td>{{ p.kategori_kegiatan }}</td>
+                    <td>{{ p.jenis_publikasi }}</td>
+                    <td>{{ p.tanggal }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td class="text-center" colspan="5">{% trans "No data available" %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+

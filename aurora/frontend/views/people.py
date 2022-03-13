@@ -44,17 +44,25 @@ class PeopleDV(frontendView, DetailView):
     model = SDM
     
     def get_context_data(self, *args, **kwargs):
-        obj = self.get_object()
+        obj    = self.get_object()
+        id_sdm = str(obj.id_sdm)
+        smt     = sister_api.get_referensi_semester()
         context_data = super().get_context_data(*args, **kwargs)
-        context_data['profil']     = sister_api.get_data_pribadi_profil_bypath(id_sdm=str(obj.id_sdm))
-        context_data['alamat']     = sister_api.get_data_pribadi_alamat_bypath(id_sdm=str(obj.id_sdm))
-        context_data['ilmu']       = sister_api.get_data_pribadi_bidang_ilmu_bypath(id_sdm=str(obj.id_sdm))
-        context_data['pendidikan'] = sister_api.get_pendidikan_formal(id_sdm=str(obj.id_sdm))
-        context_data['jabfung']    = sister_api.get_jabatan_fungsional(id_sdm=str(obj.id_sdm))
-        context_data['pangkat']    = sister_api.get_kepangkatan(id_sdm=str(obj.id_sdm))
-
-        context_data['penugasan']  = sister_api.get_penugasan(id_sdm=str(obj.id_sdm))
-        print(obj.id_sdm)
+        context_data['profil']     = sister_api.get_data_pribadi_profil_bypath(id_sdm=id_sdm)
+        context_data['alamat']     = sister_api.get_data_pribadi_alamat_bypath(id_sdm=id_sdm)
+        context_data['lain']       = sister_api.get_data_pribadi_lain_bypath(id_sdm=id_sdm)
+        context_data['ilmu']       = sister_api.get_data_pribadi_bidang_ilmu_bypath(id_sdm=id_sdm)
+        context_data['pendidikan'] = sister_api.get_pendidikan_formal(id_sdm=id_sdm)
+        context_data['jabfung']    = sister_api.get_jabatan_fungsional(id_sdm=id_sdm)
+        context_data['pangkat']    = sister_api.get_kepangkatan(id_sdm=id_sdm)
+        context_data['penugasan']  = sister_api.get_penugasan(id_sdm=id_sdm)
+        context_data['smt_akhir']  = smt.data[1]
+        context_data['pengajaran'] = sister_api.get_pengajaran(id_sdm=id_sdm)
+        context_data['penelitian'] = sister_api.get_penelitian(id_sdm=id_sdm)
+        context_data['abdimas']    = sister_api.get_pengabdian(id_sdm=id_sdm)
+        context_data['publikasi']  = sister_api.get_publikasi(id_sdm=id_sdm)
+        context_data['ki']         = sister_api.get_kekayaan_intelektual(id_sdm=id_sdm)
+        print(id_sdm)
         return context_data
 
     def get_object(self, queryset=None):
