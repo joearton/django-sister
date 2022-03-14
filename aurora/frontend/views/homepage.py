@@ -7,7 +7,7 @@ from aurora.frontend.models import Slideshow, Post, Configuration
 from aurora.frontend.views import frontendView
 from django.utils.translation import gettext as _
 from aurora.backend.vendors.sister import sister
-from random import choice
+from django.conf import settings
 
 
 sister_api = sister.SisterAPI()

@@ -8,16 +8,19 @@ import os
 
 
 class Unit(BaseModel):
-    unit_id = models.UUIDField(_('Unit'))
+    unit_id = models.UUIDField(_('Unit'), editable=False)
     nama = models.CharField(_('Nama'), max_length=128)
     jenis = models.IntegerField(_('Jenis'))
+    parent = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='children')
 
     class Meta:
         verbose_name = _('Unit')
         verbose_name_plural = _('Unit')
+        ordering = ['jenis']
 
     def __str__(self):
         return self.nama
+
 
 
 class SDM(BaseModel):
@@ -27,16 +30,13 @@ class SDM(BaseModel):
         [ACTIVE, _('Active')],
         [INACTIVE, _('Inactive')]
     ]
-    id_sdm = models.UUIDField(_('ID SDM'))
+    id_sdm = models.UUIDField(_('ID SDM'), editable=False)
     nama_sdm = models.CharField(_('Nama SDM'), max_length=128)
     slugname = models.SlugField(_('ID Unik'), max_length=128, unique=True)
     nidn = models.CharField(_('NIDN'), max_length=16, null=True, blank=True, unique=True)
     nip = models.CharField(_('NIP'), max_length=28, null=True, blank=True)
-    sinta_id  = models.CharField(_('Sinta ID'), max_length=8, null=True, blank=True)
-    scopus_id = models.CharField(_('Scopus ID'), max_length=32, null=True, blank=True)
-    gs_url = models.URLField(_('Google Scholar'), null=True, blank=True)
     jenis_sdm = models.CharField(_('Jenis SDM'), max_length=16, null=True, blank=True)
-    unit = models.ForeignKey(Unit, on_delete=models.SET_NULL, null=True, blank=True)
+    unit = models.ForeignKey(Unit, on_delete=models.SET_NULL, null=True, blank=True, related_name='people')
     metadata = models.JSONField(_('Metadata'), null=True, blank=True)
     status = models.IntegerField(_('Status'), default=1, choices=CHOICES_STATUS)
 
@@ -48,5 +48,6 @@ class SDM(BaseModel):
 
     def __str__(self):
         return self.nama_sdm
-
+    
+    
 

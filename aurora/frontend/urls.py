@@ -15,8 +15,8 @@ urlpatterns = [
     path('posts', PostLV.as_view(), name = 'aurora.frontend.post.list'),
     path('directory', DirectoryLV.as_view(), name = 'aurora.frontend.directory'),
     path('people', PeopleLV.as_view(), name = 'aurora.frontend.people'),
-    path('u/<slug:slugname>', PeopleDV.as_view(), name = 'aurora.frontend.people.detail'),
-    path('u/<slug:slugname>/image', peoplePicture, name = 'aurora.frontend.people.picture'),
+    path('p/<slug:slugname>', PeopleDV.as_view(), name = 'aurora.frontend.people.detail'),
+    path('p/<slug:slugname>/picture', peoplePicture, name = 'aurora.frontend.people.picture'),
     path('contact', ContactPage.as_view(), name = 'aurora.frontend.contact'),
     path('about', AboutPage.as_view(), name = 'aurora.frontend.about'),
 

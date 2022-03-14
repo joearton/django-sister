@@ -12,7 +12,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for p in pengajaran.data %}
+            {% for p in pengajaran.data|slice:":30" %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
                     <td>{{ p.mata_kuliah }}</td>

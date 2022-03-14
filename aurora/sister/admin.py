@@ -10,10 +10,26 @@ from aurora.sister.models import Unit, SDM
 from aurora.backend.library.site import get_current_domain
 
 
+class UnitInline(admin.TabularInline):
+    model = Unit
+    extra = 1
+
+
 @admin.register(Unit)
 class UnitAdmin(backendAdmin):
-    pass
+    list_display  = ['nama', 'jenis', 'parent', 'subunit']
+    list_editable = ['jenis', 'parent']
+    inlines = [UnitInline]
+    list_per_page = 10
 
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs
+
+    @admin.display(description=_('SubUnit'))
+    def subunit(self, obj):
+        return obj.children.count()
+    
 
 @admin.register(SDM)
 class SDMAdmin(backendAdmin):

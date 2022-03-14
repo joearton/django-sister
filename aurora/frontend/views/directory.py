@@ -1,3 +1,4 @@
+from django import dispatch
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, TemplateView
@@ -13,18 +14,28 @@ from aurora.backend.vendors.sister import sister
 sister_api = sister.SisterAPI()
 
 
-class DirectoryLV(frontendView, TemplateView):
-    section_title = _('Directory')
+class DirectoryLV(frontendView, ListView):
+    section_title = _('University Directory')
     template_name = 'frontend/sections/directory.html'
     fluid_width = True
+    model = Unit
+    paginate_by = 10
     
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.filter(jenis=3)
+        return qs
     
-    def get_context_data(self, *args, **kwargs):
-        context_data = super().get_context_data(*args, **kwargs)
+    def dispatch(self, request, *args, **kwargs):
         profil_pt  = sister_api.get_referensi_profil_pt()
         unit_kerja = sister_api.get_referensi_unit_kerja(
             id_perguruan_tinggi=profil_pt.data.get('id_perguruan_tinggi'))
-        context_data['faculties']   = [x for x in unit_kerja['data'] if x['id_jenis_unit'] == 1]
-        context_data['departments'] = [x for x in unit_kerja['data'] if x['id_jenis_unit'] == 3]
-        return context_data
+        for index in unit_kerja.data:
+            if not Unit.objects.filter(unit_id=index.get('id')).exists():
+                unit = Unit.objects.create(
+                    unit_id=index.get('id'),
+                    nama=index.get('nama'),
+                    jenis=index.get('id_jenis_unit')
+                )
+        return super().dispatch(request, *args, **kwargs)
         

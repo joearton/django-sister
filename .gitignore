@@ -3,6 +3,7 @@ config/database.py
 .vscode/
 .logs/
 .cache/
+media/
 __pycache__/
 reset.py
 *.pyc
