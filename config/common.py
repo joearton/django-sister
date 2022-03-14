@@ -2,7 +2,7 @@
 # using HTTPS or HTTP 
 HOST_PROTOCOL = "https://"
 
-LOGIN_URL = '/int/signin'
+LOGIN_URL = '/backend/signin'
 
 LOGIN_REDIRECT_URL = '/backend/signin'
 

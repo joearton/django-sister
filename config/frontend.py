@@ -3,10 +3,10 @@ from django.utils.translation import gettext_lazy as _
 
 FRONTEND_SETTINGS = {
     'bootstrap_theme'   : 'default', # 
-    'theme_mode'        : 'dark', # light or dark
-    'theme_accent'      : 'softgreen', # army, ubuntu, deep, blue, softblue, softgreen, green, elegant
+    'theme_mode'        : 'light', # light or dark
+    'theme_accent'      : 'white', # army, ubuntu, deep, blue, softblue, softgreen, green, elegant
     'topbar'            : {
-        'background'    : 'black',
+        'background'    : 'green',
         'align'         : 'center',
         'transparent'   : '',
         'integrated'    : True,
@@ -21,9 +21,9 @@ FRONTEND_SETTINGS = {
         'icon'          : True,
     },
     'jumbotron'         : {
-        'overlay_bg'    : 'rgba(0,0,0,.45)',
+        'overlay_bg'    : 'rgba(0,0,0,.0)',
         'color'         : 'white',
-        'align'         : 'center',
+        'align'         : 'right',
         'padding'       : '21vh 0px 45vh 0px',
         'title_class'   : 'h1 m-0',
         'subtitle_class': 'p',

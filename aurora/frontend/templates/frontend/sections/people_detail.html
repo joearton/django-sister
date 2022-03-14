@@ -11,7 +11,11 @@
 {% block content %}
 <div class="container mx-auto my-3">
     <div class="text-center mb-3">
-        <img class='sdm-picture' src="{{ object.metadata.picture_url }}" alt="{{ object.nama_sdm }}" />
+        {% if object.metadata.picture_url %}
+            <img class='sdm-picture' src="{{ object.metadata.picture_url }}" alt="{{ object.nama_sdm }}" />
+        {% else %}
+            <img class='sdm-picture' src="{% static 'backend/media/no-profile-picture.jpg' %}" alt="{{ object.nama_sdm }}" />
+        {% endif %}
     </div>
     <div class="row">
         <div class="col-md-1"></div>
@@ -132,6 +136,11 @@
                     </div>
                 </div>
 
+            </div>
+            <div class='py-3 text-center'>
+                <a href="#" class="btn btn-primary btn-lg">
+                    <span class="fa fa-download"></span> {% trans "Download" %}
+                </a>
             </div>
         </div>
         <div class="col-md-1"></div>

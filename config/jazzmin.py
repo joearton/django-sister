@@ -25,8 +25,8 @@ backend_menu = [
 
 
 JAZZMIN_SETTINGS = {
-    'site_title': _('Simlitabmas'),
-    'site_header': _('Simlitabmas'),
+    'site_title': _('Human Resource'),
+    'site_header': _('Human Resource'),
     'site_logo': 'backend/media/favicon.png',
     'welcome_sign': _('Welcome, Administrator!'),
     'copyright': 'ArtonLabs',

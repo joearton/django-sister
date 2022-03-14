@@ -20,7 +20,7 @@ class BaseSignUpView(AuthView):
 
     def get_auth_info(self):
         auth_info = super().get_auth_info()
-        auth_info['title'] = _('SIM Penelitian dan Pengabdian Pada Masyarakat')
+        auth_info['title'] = _('Human Resource')
         auth_info['description'] = _('This is sign up page. Sign up using your e-mail to get more features')
         return auth_info
 

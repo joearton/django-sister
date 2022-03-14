@@ -31,7 +31,7 @@
     {% endwith %}
 
     {% with config.navbar as navbar %}
-        <nav id='navbar' class='navbar navbar-expand-lg {{ navbar.class }} navbar-{{ config.theme_mode }} navbar-{{ navbar.transparent }} {{ navbar.position|default:"sticky-top" }}'>
+        <nav id='navbar' class='navbar navbar-expand-lg {{ navbar.class }} shadow navbar-{{ config.theme_mode }} navbar-{{ navbar.transparent }} {{ navbar.position|default:"sticky-top" }}'>
             <div class="{{ navbar.container|default:'container' }}">
                 {% include 'frontend/elements/navbar.html' %}
             </div>

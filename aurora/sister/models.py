@@ -37,7 +37,7 @@ class SDM(BaseModel):
     nip = models.CharField(_('NIP'), max_length=28, null=True, blank=True)
     jenis_sdm = models.CharField(_('Jenis SDM'), max_length=16, null=True, blank=True)
     unit = models.ForeignKey(Unit, on_delete=models.SET_NULL, null=True, blank=True, related_name='people')
-    metadata = models.JSONField(_('Metadata'), null=True, blank=True)
+    metadata = models.JSONField(_('Metadata'), null=True, blank=True, default=dict)
     status = models.IntegerField(_('Status'), default=1, choices=CHOICES_STATUS)
 
 

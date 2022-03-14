@@ -1,3 +1,4 @@
+from django import dispatch
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -11,6 +12,7 @@ from aurora.backend.library import site
 from aurora.sister.models import Unit, SDM
 from aurora.backend.vendors.sister import sister
 from django.utils.text import slugify
+from django.db.models import Q
 from django.conf import settings
 import os
 
@@ -56,29 +58,14 @@ class PeopleLV(frontendView, ListView):
         unit_id = self.request.GET.get('unit')
         if unit_id:
             qs = qs.filter(unit__unit_id=unit_id)
+        keyword = self.request.GET.get('keyword')
+        if keyword:
+            qs = qs.filter(
+                Q(nama_sdm__icontains=keyword) |
+                Q(nidn__icontains=keyword)
+            )
         return qs
 
-
-
-def peoplePicture(request, slugname):
-    sdm = get_object_or_404(SDM, slugname=slugname)
-    if not os.path.isfile(sdm.metadata.get('picture_file')):
-        foto    = sister_api.get_data_pribadi_foto_bypath(id_sdm=str(sdm.id_sdm))
-        ct_foto = foto.get('content-type')
-        if ct_foto in ['image/jpeg', 'image/bmp', 'image/gif', 'image/png', 'image/webp']:
-            image, ext  = ct_foto.split('/')
-            picture_dir = os.path.join(settings.MEDIA_ROOT, 'SDM', 'pictures')
-            if not os.path.exists(picture_dir):
-                os.makedirs(picture_dir)
-            picture_name = f'{sdm.id_sdm}.{ext}'
-            picture_file = os.path.join(picture_dir, picture_name)
-            with open(picture_file, 'wb') as writer:
-                writer.write(foto.get('data'))
-            sdm.metadata['picture_file'] = picture_file
-            sdm.metadata['picture_url']  = f'{settings.MEDIA_URL}SDM/pictures/{picture_name}'
-            sdm.save()
-    return HttpResponse(sdm.metadata['picture_url'])
-        
 
 
 class PeopleDV(frontendView, DetailView):
@@ -88,8 +75,7 @@ class PeopleDV(frontendView, DetailView):
     model = SDM
     
     def get_context_data(self, *args, **kwargs):
-        obj    = self.get_object()
-        id_sdm = str(obj.id_sdm)
+        id_sdm = str(self.obj.id_sdm)
         smt     = sister_api.get_referensi_semester()
         context_data = super().get_context_data(*args, **kwargs)
         context_data['profil']     = sister_api.get_data_pribadi_profil_bypath(id_sdm=id_sdm)
@@ -108,6 +94,35 @@ class PeopleDV(frontendView, DetailView):
         context_data['ki']         = sister_api.get_kekayaan_intelektual(id_sdm=id_sdm)
         return context_data
 
+
+    def get_people_picture(self, sdm):
+        if not sdm.metadata:
+            sdm.metadata['picture_file'] = os.sep
+            sdm.metadata['picture_url']  = settings.MEDIA_URL
+            sdm.save()
+        if not os.path.isfile(sdm.metadata.get('picture_file')):
+            foto    = sister_api.get_data_pribadi_foto_bypath(id_sdm=str(sdm.id_sdm))
+            ct_foto = foto.get('content-type')
+            if ct_foto in ['image/jpeg', 'image/bmp', 'image/gif', 'image/png', 'image/webp']:
+                image, ext  = ct_foto.split('/')
+                picture_dir = os.path.join(settings.MEDIA_ROOT, 'SDM', 'pictures')
+                if not os.path.exists(picture_dir):
+                    os.makedirs(picture_dir)
+                picture_name = f'{sdm.id_sdm}.{ext}'
+                picture_file = os.path.join(picture_dir, picture_name)
+                with open(picture_file, 'wb') as writer:
+                    writer.write(foto.get('data'))
+                sdm.metadata['picture_file'] = picture_file
+                sdm.metadata['picture_url']  = f'{settings.MEDIA_URL}SDM/pictures/{picture_name}'
+                sdm.save()
+        return sdm.metadata['picture_url']
+
+
+    def dispatch(self, request, *args, **kwargs):
+        self.obj = get_object_or_404(self.model, slugname=self.kwargs.get('slugname'))
+        picture  = self.get_people_picture(self.obj)
+        return super().dispatch(request, *args, **kwargs)
+    
+
     def get_object(self, queryset=None):
-        obj = get_object_or_404(self.model, slugname=self.kwargs.get('slugname'))
-        return obj
+        return self.obj

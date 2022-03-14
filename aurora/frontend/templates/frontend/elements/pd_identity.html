@@ -9,16 +9,6 @@
                 <td class="fw-bold" data-sdm="{{ object.id_sdm }}">{{ object.nama_sdm }}</td>
             </tr>
             <tr>
-                <td>{% trans "NIDN" %}</td>
-                <td>:</td>
-                <td class="fw-bold">{{ object.nidn }}</td>
-            </tr>
-            <tr>
-                <td>{% trans "Unit" %}</td>
-                <td>:</td>
-                <td class="fw-bold">{{ penugasan.data.0.unit_kerja  }}</td>
-            </tr>
-            <tr>
                 <td>{% trans "Sex" %}</td>
                 <td>:</td>
                 <td class="fw-bold">
@@ -34,17 +24,6 @@
                 <td>:</td>
                 <td class="fw-bold">{{ object.jenis_sdm }}</td>
             </tr>
-        </table>
-    </div>
-    <div class="col-md-6">
-        <table style="border: none; width: 100%;">
-            {% if object.nip|length > 1 %}
-                <tr>
-                    <td>{% trans "NIP" %}</td>
-                    <td>:</td>
-                    <td class="fw-bold">{{ object.nip }}</td>
-                </tr>
-            {% endif %}
             <tr>
                 <td style="width: 100px;">{% trans "E-mail" %}</td>
                 <td style="width: 5px;">:</td>
@@ -55,20 +34,31 @@
                     {% endif %}
                 </td>
             </tr>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <table style="border: none; width: 100%;">
+            <tr>
+                <td>{% trans "NIDN" %}</td>
+                <td>:</td>
+                <td class="fw-bold">{{ object.nidn }}</td>
+            </tr>
+            <tr>
+                <td>{% trans "Unit" %}</td>
+                <td>:</td>
+                <td class="fw-bold">{{ penugasan.data.0.unit_kerja  }}</td>
+            </tr>
+            {% if object.nip|length > 1 %}
+                <tr>
+                    <td>{% trans "NIP" %}</td>
+                    <td>:</td>
+                    <td class="fw-bold">{{ object.nip }}</td>
+                </tr>
+            {% endif %}
             <tr>
                 <td>{% trans "Sinta ID" %}</td>
                 <td>:</td>
-                <td class="fw-bold">{{ lain.data.nira  }}</td>
-            </tr>
-            <tr>
-                <td>{% trans "Scopus ID" %}</td>
-                <td>:</td>
-                <td class="fw-bold">{{ object.scopus_id|default_if_none:'-'  }}</td>
-            </tr>
-            <tr>
-                <td>{% trans "Google Scholar" %}</td>
-                <td>:</td>
-                <td class="fw-bold">{{ object.gs_url|default_if_none:'-'  }}</td>
+                <td class="fw-bold">{{ lain.data.nira|default_if_none:'-' }}</td>
             </tr>
         </table>
                 
