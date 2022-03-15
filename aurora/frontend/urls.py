@@ -4,7 +4,7 @@ from aurora.frontend.views.media import MediaDownload, media_unlock
 from aurora.frontend.views.page import ContactPage, AboutPage
 from aurora.frontend.views.post import *
 from aurora.frontend.views.directory import DirectoryLV
-from aurora.frontend.views.people import PeopleLV, PeopleDV
+from aurora.frontend.views.people import PeopleLV, PeopleDV, CvDownload
 from aurora.frontend.views.category import CategoryLV
 
 
@@ -16,6 +16,7 @@ urlpatterns = [
     path('directory', DirectoryLV.as_view(), name = 'aurora.frontend.directory'),
     path('people', PeopleLV.as_view(), name = 'aurora.frontend.people'),
     path('p/<slug:slugname>', PeopleDV.as_view(), name = 'aurora.frontend.people.detail'),
+    path('cv/<slug:slugname>/download/<uuid:id_sdm>', CvDownload.as_view(), name = 'aurora.frontend.people.download'),
     path('contact', ContactPage.as_view(), name = 'aurora.frontend.contact'),
     path('about', AboutPage.as_view(), name = 'aurora.frontend.about'),
 

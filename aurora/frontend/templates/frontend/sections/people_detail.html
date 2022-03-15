@@ -10,11 +10,29 @@
 
 {% block content %}
 <div class="container mx-auto my-3">
-    <div class="text-center mb-3">
+    <div class="text-center mb-1">
         {% if object.metadata.picture_url %}
             <img class='sdm-picture' src="{{ object.metadata.picture_url }}" alt="{{ object.nama_sdm }}" />
         {% else %}
             <img class='sdm-picture' src="{% static 'backend/media/no-profile-picture.jpg' %}" alt="{{ object.nama_sdm }}" />
+        {% endif %}
+    </div>
+    <div class="d-flex justify-content-center w-100 mt-3 mb-2">
+        <a class="me-2" href="https://pddikti.kemdikbud.go.id/search/{{ object.nidn }}" target="_blank">
+            <img class='img-thumbnail' style="height: 30px;" src="{% static 'backend/media/logo-pddikti.png' %}" alt="PDDikti" />
+        </a>
+        {% if lain.data.nira  %}
+            <a class="me-2" href="https://sinta.kemdikbud.go.id/authors/detail?id={{ lain.data.nira }}&view=overview" target="_blank">
+                <img class='img-thumbnail' style="height: 30px;" src="{% static 'backend/media/logo-sinta.jpg' %}" alt="Sinta" />
+            </a>
+            <a class="me-2" href="https://sinta3.kemdikbud.go.id/authors/profile/{{ lain.data.nira }}" target="_blank">
+                <img class='img-thumbnail' style="height: 30px;" src="{% static 'backend/media/logo-sinta3.jpg' %}" alt="Sinta 3" />
+            </a>
+        {% endif %}
+        {% if alamat.data.email %}
+            <a class="me-2" href="https://scholar.google.com/scholar?q={{ alamat.data.email }}" target="_blank">
+                <img class='img-thumbnail' style="height: 30px;" src="{% static 'backend/media/logo-gs.png' %}" alt="Google Scholar" />
+            </a>
         {% endif %}
     </div>
     <div class="row">
@@ -28,18 +46,18 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-education-history">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-education-history" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-education-history" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Education History" %}
                         </button>
                     </h2>
-                    <div id="content-education-history" class="accordion-collapse collapse" aria-labelledby="panel-education-history">
+                    <div id="content-education-history" class="accordion-collapse collapse show" aria-labelledby="panel-education-history">
                         <div class="accordion-body">{% include "frontend/elements/pd_education.html" %}</div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-specification">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-specification" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-specification" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Skill Specification" %}
                         </button>
                     </h2>
@@ -50,7 +68,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-functional">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-functional" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-functional" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Functional Position" %}
                         </button>
                     </h2>
@@ -61,7 +79,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-position">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-position" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-position" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Position" %}
                         </button>
                     </h2>
@@ -72,7 +90,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-assignment">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-assignment" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-assignment" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Assignment" %}
                         </button>
                     </h2>
@@ -83,7 +101,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-teaching">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-teaching" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-teaching" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Teaching" %}
                         </button>
                     </h2>
@@ -94,7 +112,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-research">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-research" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-research" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Research" %}
                         </button>
                     </h2>
@@ -105,7 +123,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-comservice">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-comservice" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-comservice" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Community Service" %}
                         </button>
                     </h2>
@@ -116,7 +134,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-publication">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-publication" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-publication" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Publication" %}
                         </button>
                     </h2>
@@ -127,7 +145,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-patent">
-                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-patent" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-patent" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Patent and Intelectual Property" %}
                         </button>
                     </h2>
@@ -136,9 +154,20 @@
                     </div>
                 </div>
 
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel-awards">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-awards" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            {% trans "Awards" %}
+                        </button>
+                    </h2>
+                    <div id="content-awards" class="accordion-collapse collapse" aria-labelledby="panel-awards">
+                        <div class="accordion-body">{% include "frontend/elements/pd_awards.html" %}</div>
+                    </div>
+                </div>
+                
             </div>
             <div class='py-3 text-center'>
-                <a href="#" class="btn btn-primary btn-lg">
+                <a href="{% url 'aurora.frontend.people.download' object.slugname object.id_sdm %}" class="btn btn-primary btn-lg">
                     <span class="fa fa-download"></span> {% trans "Download" %}
                 </a>
             </div>

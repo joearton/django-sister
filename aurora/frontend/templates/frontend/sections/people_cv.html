@@ -1,0 +1,151 @@
+{% extends "frontend/layouts/curriculum_vitae.html" %}
+{% load i18n static humanize %}
+
+{% block before_sub_content %}
+    <div class="my-5">
+        <h1 class="text-center">{% trans "Portofolio/Curriculum Vitae" %}</h1>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+<div class="container mx-auto my-3">
+    <div class="text-center mb-2">
+        {% if object.metadata.picture_url %}
+            <img class='sdm-picture img-thumbnail' style='width: 150px;' src="{{ site_url }}{{ object.metadata.picture_url }}" alt="{{ object.nama_sdm }}" />
+        {% else %}
+            <img class='sdm-picture' src="{{ site_url }}{% static 'backend/media/no-profile-picture.jpg' %}" alt="{{ object.nama_sdm }}" />
+        {% endif %}
+    </div>
+    <div class="d-flex justify-content-center w-100 mt-3 mb-2">
+        <a class="me-2" href="https://pddikti.kemdikbud.go.id/search/{{ object.nidn }}" target="_blank">
+            <img class='img-thumbnail' style="height: 30px;" src="{{ site_url }}{% static 'backend/media/logo-pddikti.png' %}" alt="PDDikti" />
+        </a>
+        {% if lain.data.nira  %}
+            <a class="me-2" href="https://sinta.kemdikbud.go.id/authors/detail?id={{ lain.data.nira }}&view=overview" target="_blank">
+                <img class='img-thumbnail' style="height: 30px;" src="{{ site_url }}{% static 'backend/media/logo-sinta.jpg' %}" alt="Sinta" />
+            </a>
+            <a class="me-2" href="https://sinta3.kemdikbud.go.id/authors/profile/{{ lain.data.nira }}" target="_blank">
+                <img class='img-thumbnail' style="height: 30px;" src="{{ site_url }}{% static 'backend/media/logo-sinta3.jpg' %}" alt="Sinta 3" />
+            </a>
+        {% endif %}
+        {% if alamat.data.email %}
+            <a class="me-2" href="https://scholar.google.com/scholar?q={{ alamat.data.email }}" target="_blank">
+                <img class='img-thumbnail' style="height: 30px;" src="{{ site_url }}{% static 'backend/media/logo-gs.png' %}" alt="Google Scholar" />
+            </a>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="px-1 py-2 bg-light border my-3">
+                {% include "frontend/elements/pd_identity.html" %}
+            </div>
+
+            <div class="my-3" id="peopleDetail">
+
+                <div class="mb-2">
+                    <h2 class="mt-5 mb-0 h4" id="panel-education-history">
+                        {% trans "Education History" %}
+                    </h2>
+                    <div id="content-education-history" class="mb-2">
+                        {% include "frontend/elements/pd_education.html" %}
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <h2 class="mt-5 mb-0 h4" id="panel-specification">
+                        {% trans "Skill Specification" %}
+                    </h2>
+                    <div id="content-specification" class="mb-2">
+                        {% include "frontend/elements/pd_specification.html" %}
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <h2 class="mt-5 mb-0 h4" id="panel-functional">
+                        {% trans "Functional Position" %}
+                    </h2>
+                    <div id="content-functional" class="mb-2">
+                        {% include "frontend/elements/pd_functional.html" %}
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <h2 class="mt-5 mb-0 h4" id="panel-position">
+                        {% trans "Position" %}
+                    </h2>
+                    <div id="content-position" class="mb-2">
+                        {% include "frontend/elements/pd_position.html" %}
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <h2 class="mt-5 mb-0 h4" id="panel-assignment">
+                        {% trans "Assignment" %}
+                    </h2>
+                    <div id="content-assignment" class="mb-2">
+                        {% include "frontend/elements/pd_assignment.html" %}
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <h2 class="mt-5 mb-0 h4" id="panel-teaching">
+                        {% trans "Teaching" %}
+                    </h2>
+                    <div id="content-teaching" class="mb-2">
+                        {% include "frontend/elements/pd_teaching.html" %}
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <h2 class="mt-5 mb-0 h4" id="panel-research">
+                        {% trans "Research" %}
+                    </h2>
+                    <div id="content-research" class="mb-2">
+                        {% include "frontend/elements/pd_research.html" %}
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <h2 class="mt-5 mb-0 h4" id="panel-comservice">
+                        {% trans "Community Service" %}
+                    </h2>
+                    <div id="content-comservice" class="mb-2">
+                        {% include "frontend/elements/pd_comservice.html" %}
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <h2 class="mt-5 mb-0 h4" id="panel-publication">
+                        {% trans "Publication" %}
+                    </h2>
+                    <div id="content-publication" class="mb-2">
+                        {% include "frontend/elements/pd_publication.html" %}
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <h2 class="mt-5 mb-0 h4" id="panel-patent">
+                        {% trans "Patent and Intelectual Property" %}
+                    </h2>
+                    <div id="content-patent" class="mb-2">
+                        {% include "frontend/elements/pd_patent.html" %}
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <h2 class="mt-5 mb-0 h4" id="panel-awards">
+                        {% trans "Awards" %}
+                    </h2>
+                    <div id="content-awards" class="xxxxx">
+                        {% include "frontend/elements/pd_awards.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+{% endblock %}

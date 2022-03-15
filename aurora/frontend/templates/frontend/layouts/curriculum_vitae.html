@@ -1,0 +1,65 @@
+{% load static i18n %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% trans "Curriculum Vitae" %}</title>
+    </head>
+    <body>
+        <div class="container">
+            {% block content %}
+                {{ data }}
+            {% endblock %}
+        </div>
+        <style type="text/css">
+            @page {
+                margin-top: 1.55cm;
+                margin-bottom: 1.55cm;
+                margin-left: 2.5cm;
+            }
+            body {
+                font-size: 11px;
+                line-height: 135%;
+                font-family: Arial;
+                color: #111111;
+            }
+            .text-center {
+                text-align: center;
+            }
+            .m-auto {
+                margin: auto;
+            }
+            .mb-0 {
+                margin-bottom: 3px;
+            }
+            .me-2 {
+                margin-right: 5px;
+            }
+            .mt-5 {
+                margin-top: 25px;
+            }
+            .mb-5 {
+                margin-bottom: 25px;
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            table td,
+            table th {
+                padding: 5px;
+                border: 1px solid #111111;
+            }
+            table th {
+                text-align: center;
+            }
+            table td {
+                font-size: 10.1px;
+            }
+            .h4 {
+                font-size: 15px;
+            }
+        </style>
+    </body>
+</html>

@@ -8,10 +8,8 @@ from aurora.frontend.views import frontendView
 from django.shortcuts import get_object_or_404
 from aurora.backend.library import site
 from aurora.sister.models import Unit, SDM
-from aurora.backend.vendors.sister import sister
+from aurora.backend.vendors.sister.sister import SisterAPI as sister_api
 
-
-sister_api = sister.SisterAPI()
 
 
 class DirectoryLV(frontendView, ListView):

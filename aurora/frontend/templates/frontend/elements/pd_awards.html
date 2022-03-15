@@ -1,0 +1,31 @@
+{% load i18n static humanize %}
+
+<div class='m-0'>
+    <table class="table m-0 mb-3">
+        <thead>
+            <tr>
+                <th></th>
+                <th>{% trans "Name" %}</th>
+                <th>{% trans "Type" %}</th>
+                <th>{% trans "Year" %}</th>
+                <th>{% trans "Instance" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in penghargaan.data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ p.nama|default_if_none:'-' }}</td>
+                    <td>{{ p.jenis_penghargaan|default_if_none:'-' }}</td>
+                    <td>{{ p.tahun|default_if_none:'-' }}</td>
+                    <td>{{ p.instansi_pemberi|default_if_none:'-' }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td class="text-center" colspan="5">{% trans "No data available" %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+

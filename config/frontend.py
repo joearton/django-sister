@@ -25,7 +25,7 @@ FRONTEND_SETTINGS = {
         'color'         : 'white',
         'align'         : 'right',
         'padding'       : '21vh 0px 45vh 0px',
-        'title_class'   : 'h1 m-0',
+        'title_class'   : 'h2 m-0',
         'subtitle_class': 'p',
         'buttons'       : [
             {

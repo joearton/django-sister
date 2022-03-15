@@ -34,13 +34,34 @@
                     {% endif %}
                 </td>
             </tr>
+            <tr>
+                <td style="width: 100px;">{% trans "Gelar Akademik" %}</td>
+                <td style="width: 5px;">:</td>
+                <td class="fw-bold">
+                    {% for p in pendidikan.data %}
+                        {{ p.gelar_akademik }}, 
+                    {% endfor %}
+                </td>
+            </tr>
         </table>
     </div>
     <div class="col-md-6">
         <table style="border: none; width: 100%;">
+            {% if request.user.is_authenticated %}
+                <tr>
+                    <td style="width: 100px;">{% trans "Place of Birth" %}</td>
+                    <td style="width: 5px;">:</td>
+                    <td class="fw-bold">{{ profil.data.tempat_lahir }}</td>
+                </tr>
+                <tr>
+                    <td>{% trans "Date of Birth" %}</td>
+                    <td>:</td>
+                    <td class="fw-bold">{{ profil.data.tanggal_lahir }}</td>
+                </tr>
+            {% endif %}
             <tr>
-                <td>{% trans "NIDN" %}</td>
-                <td>:</td>
+                <td style="width: 100px;">{% trans "NIDN" %}</td>
+                <td style="width: 5px;">:</td>
                 <td class="fw-bold">{{ object.nidn }}</td>
             </tr>
             <tr>
@@ -58,7 +79,14 @@
             <tr>
                 <td>{% trans "Sinta ID" %}</td>
                 <td>:</td>
-                <td class="fw-bold">{{ lain.data.nira|default_if_none:'-' }}</td>
+                <td class="fw-bold">
+                    {% if lain.data.nira %}
+                        {{ lain.data.nira }}
+                        <a class="ms-2" href="https://sinta.kemdikbud.go.id/authors/detail?id={{ lain.data.nira }}&view=overview" target="_blank">V1</a>
+                        <a class="ms-2"  href="https://sinta3.kemdikbud.go.id/authors/profile/{{ lain.data.nira }}" target="_blank">V3</a>
+                    {% else %} -
+                    {% endif %}
+                </td>
             </tr>
         </table>
                 
