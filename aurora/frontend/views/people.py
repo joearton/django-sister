@@ -32,6 +32,9 @@ class PeopleLV(frontendView, ListView):
         if unit_id:
             unit = Unit.objects.get(unit_id=unit_id)
             context_data['unit'] = unit
+        keyword = self.request.GET.get('keyword')
+        if keyword:
+            context_data['keyword'] = keyword
         return context_data
     
     def get_queryset(self):

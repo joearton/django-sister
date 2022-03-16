@@ -17,6 +17,9 @@
         {% if unit %}
             <h3 class='mb-3'>{{ unit.nama }}</h3>
         {% endif %}
+        {% if keyword %}
+            <h4 class='mb-3'>{% trans "Show results for: " %} <span class="text-success">{{ keyword }}</span></h4>
+        {% endif %}
         <table class='table table-hover table-striped'>
             <thead>
                 <tr>
@@ -39,6 +42,10 @@
                         <td>
                             <a href="{% url 'aurora.frontend.people' %}?unit={{ obj.unit.unit_id }}">{{ obj.unit }}</a>
                         </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td class="text-center" colspan="5">{% trans "No data available" %}</td>
                     </tr>
                 {% endfor %}
             </tbody>
