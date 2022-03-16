@@ -5,13 +5,6 @@
     <head>
         <meta charset="utf-8" />
         <title>{% trans "Curriculum Vitae" %}</title>
-    </head>
-    <body>
-        <div class="container">
-            {% block content %}
-                {{ data }}
-            {% endblock %}
-        </div>
         <style type="text/css">
             @page {
                 margin-top: 1.55cm;
@@ -36,10 +29,23 @@
             .me-2 {
                 margin-right: 5px;
             }
+            .my-5 {
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
             .mt-5 {
                 margin-top: 25px;
             }
             .mb-5 {
+                margin-bottom: 25px;
+            }
+            .sdm-picture {
+                width: 125px;
+            }
+            .sdm-ext-source {
+                width: 100%;
+                text-align: center;
+                margin-top: 5px;
                 margin-bottom: 25px;
             }
             table {
@@ -48,7 +54,7 @@
             }
             table td,
             table th {
-                padding: 5px;
+                padding: 3px;
                 border: 1px solid #111111;
             }
             table th {
@@ -60,6 +66,38 @@
             .h4 {
                 font-size: 15px;
             }
+            .pdf-no-border {
+                border-collapse: none;
+            }
+            .pdf-no-border td {
+                font-size: 12.1px;
+                border: none;
+                padding: 3px;
+                line-height: 100%;
+            }
+            a:link {
+                color: darkblue;
+                text-decoration: none;
+            }
+            a:visited {
+                text-decoration: none;
+            }
+            
+            a:hover {
+                text-decoration: underline;
+            }
+            
+            a:active {
+                text-decoration: underline;
+            }
         </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="my-5 text-center">{% trans "Curriculum Vitae" %}</h1>
+            {% block content %}
+                {{ data }}
+            {% endblock %}
+        </div>
     </body>
 </html>

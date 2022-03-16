@@ -4,19 +4,21 @@
     <table class="table m-0 mb-3">
         <thead>
             <tr>
-                <th>{% trans "Priority" %}</th>
+                <th></th>
+                <th class="text-center">{% trans "Priority" %}</th>
                 <th>{% trans "Scope" %}</th>
             </tr>
         </thead>
         <tbody>
             {% for p in ilmu.data %}
                 <tr>
-                    <td>{{ p.urutan }}</td>
+                    <td class="text-center" style="width: 17px;">{{ forloop.counter }}</td>
+                    <td class="text-center">{{ p.urutan }}</td>
                     <td>{{ p.kelompok_bidang }}</td>
                 </tr>
             {% empty %}
             <tr>
-                <td class="text-center" colspan="2">{% trans "No data available" %}</td>
+                <td class="text-center" colspan="3">{% trans "No data available" %}</td>
             </tr>
             {% endfor %}
         </tbody>

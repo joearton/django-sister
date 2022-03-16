@@ -17,21 +17,21 @@
             <img class='sdm-picture' src="{{ site_url }}{% static 'backend/media/no-profile-picture.jpg' %}" alt="{{ object.nama_sdm }}" />
         {% endif %}
     </div>
-    <div class="d-flex justify-content-center w-100 mt-3 mb-2">
+    <div class="sdm-ext-source">
         <a class="me-2" href="https://pddikti.kemdikbud.go.id/search/{{ object.nidn }}" target="_blank">
-            <img class='img-thumbnail' style="height: 30px;" src="{{ site_url }}{% static 'backend/media/logo-pddikti.png' %}" alt="PDDikti" />
+            <img class='img-thumbnail' style="height: 25px;" src="{{ site_url }}{% static 'backend/media/logo-pddikti.png' %}" alt="PDDikti" />
         </a>
         {% if lain.data.nira  %}
             <a class="me-2" href="https://sinta.kemdikbud.go.id/authors/detail?id={{ lain.data.nira }}&view=overview" target="_blank">
-                <img class='img-thumbnail' style="height: 30px;" src="{{ site_url }}{% static 'backend/media/logo-sinta.jpg' %}" alt="Sinta" />
+                <img class='img-thumbnail' style="height: 25px;" src="{{ site_url }}{% static 'backend/media/logo-sinta.jpg' %}" alt="Sinta" />
             </a>
             <a class="me-2" href="https://sinta3.kemdikbud.go.id/authors/profile/{{ lain.data.nira }}" target="_blank">
-                <img class='img-thumbnail' style="height: 30px;" src="{{ site_url }}{% static 'backend/media/logo-sinta3.jpg' %}" alt="Sinta 3" />
+                <img class='img-thumbnail' style="height: 25px;" src="{{ site_url }}{% static 'backend/media/logo-sinta3.jpg' %}" alt="Sinta 3" />
             </a>
         {% endif %}
-        {% if alamat.data.email %}
+        {% if alamat.data.email|length > 1 %}
             <a class="me-2" href="https://scholar.google.com/scholar?q={{ alamat.data.email }}" target="_blank">
-                <img class='img-thumbnail' style="height: 30px;" src="{{ site_url }}{% static 'backend/media/logo-gs.png' %}" alt="Google Scholar" />
+                <img class='img-thumbnail' style="height: 25px;" src="{{ site_url }}{% static 'backend/media/logo-gs.png' %}" alt="Google Scholar" />
             </a>
         {% endif %}
     </div>

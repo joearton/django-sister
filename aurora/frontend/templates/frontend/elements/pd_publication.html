@@ -8,17 +8,17 @@
                 <th>{% trans "Title" %}</th>
                 <th>{% trans "Category" %}</th>
                 <th>{% trans "Type" %}</th>
-                <th>{% trans "Date" %}</th>
+                <th class="text-center">{% trans "Date" %}</th>
             </tr>
         </thead>
         <tbody>
             {% for p in publikasi.data %}
                 <tr>
-                    <td>{{ forloop.counter }}</td>
+                    <td class="text-center" style="width: 17px;">{{ forloop.counter }}</td>
                     <td>{{ p.judul }}</td>
                     <td>{{ p.kategori_kegiatan }}</td>
                     <td>{{ p.jenis_publikasi }}</td>
-                    <td>{{ p.tanggal }}</td>
+                    <td class="text-center">{{ p.tanggal|default_if_none:'-' }}</td>
                 </tr>
             {% empty %}
                 <tr>

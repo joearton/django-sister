@@ -7,20 +7,20 @@
                 <th></th>
                 <th>{% trans "University" %}</th>
                 <th>{% trans "Unit" %}</th>
-                <th>{% trans "Education Level" %}</th>
+                <th class="text-center">{% trans "Education Level" %}</th>
                 <th>{% trans "Work Agreement" %}</th>
-                <th>{% trans "Status" %}</th>
+                <th class="text-center">{% trans "Status" %}</th>
             </tr>
         </thead>
         <tbody>
             {% for p in penugasan.data %}
                 <tr>
-                    <td>{{ forloop.counter }}</td>
+                    <td class="text-center" style="width: 17px;">{{ forloop.counter }}</td>
                     <td>{{ p.perguruan_tinggi }}</td>
                     <td>{{ p.unit_kerja }}</td>
-                    <td>{{ p.jenjang_pendidikan }}</td>
+                    <td class="text-center">{{ p.jenjang_pendidikan }}</td>
                     <td>{{ p.ikatan_kerja }}</td>
-                    <td>{{ p.status_kepegawaian }}</td>
+                    <td class="text-center">{{ p.status_kepegawaian }}</td>
                 </tr>
             {% empty %}
                 <tr>

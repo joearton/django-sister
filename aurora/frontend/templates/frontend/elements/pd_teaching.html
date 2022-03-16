@@ -6,23 +6,21 @@
             <tr>
                 <th></th>
                 <th>{% trans "Subject" %}</th>
-                <th>{% trans "Semester" %}</th>
-                <th>{% trans "Credit" %}</th>
-                <th>{% trans "Students" %}</th>
+                <th class="text-center">{% trans "Semester" %}</th>
+                <th class="text-center">{% trans "Credit" %}</th>
             </tr>
         </thead>
         <tbody>
             {% for p in pengajaran.data|slice:":30" %}
                 <tr>
-                    <td>{{ forloop.counter }}</td>
+                    <td class="text-center" style="width: 17px;">{{ forloop.counter }}</td>
                     <td>{{ p.mata_kuliah }}</td>
-                    <td>{{ p.semester }}</td>
-                    <td>{{ p.sks_mk }}</td>
-                    <td>{{ p.jumlah_mahasiswa }}</td>
+                    <td class="text-center">{{ p.semester }}</td>
+                    <td class="text-center">{{ p.sks_mk }}</td>
                 </tr>
             {% empty %}
                 <tr>
-                    <td class="text-center" colspan="5">{% trans "No data available" %}</td>
+                    <td class="text-center" colspan="4">{% trans "No data available" %}</td>
                 </tr>
             {% endfor %}
         </tbody>

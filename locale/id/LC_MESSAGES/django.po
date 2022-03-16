@@ -1,0 +1,1199 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-16 09:13+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: aurora/backend/admin.py:52
+msgid "Account"
+msgstr "Akun"
+
+#: aurora/backend/admin.py:59
+msgid "SUPER USER"
+msgstr "Super User"
+
+#: aurora/backend/admin.py:68
+msgid "NO GROUP"
+msgstr "Tak Ada Grup"
+
+#: aurora/backend/admin.py:70
+msgid "Group"
+msgstr "Grup"
+
+#: aurora/backend/admin.py:102
+msgid "You are signed in as "
+msgstr "Anda login sebagai"
+
+#: aurora/backend/admin.py:105
+msgid "Signed out, you are not authorized to use the system"
+msgstr "Keluar, Anda tidak memiliki hak untuk mengakses sistem"
+
+#: aurora/backend/admin.py:113
+msgid "User activation successful"
+msgstr "Aktivasi pengguna sukses"
+
+#: aurora/backend/admin.py:115
+msgid "Activate User"
+msgstr "Aktifkan Pengguna"
+
+#: aurora/backend/admin.py:124
+msgid "Accessibility"
+msgstr "Aksesibiliti"
+
+#: aurora/backend/admin.py:146
+msgid "User Counts"
+msgstr "Jumlah Pengguna"
+
+#: aurora/backend/apps.py:14
+msgid "Backend"
+msgstr ""
+
+#: aurora/backend/library/ajax.py:40
+msgid "The same handler has been activated"
+msgstr "Handler yang sama telah diaktifkan"
+
+#: aurora/backend/library/ajax.py:52
+msgid "No handler registered"
+msgstr "Tidak ada handler yang diregistrasi"
+
+#: aurora/backend/library/choices.py:5
+msgid "Yes"
+msgstr "Ya"
+
+#: aurora/backend/library/choices.py:6
+msgid "No"
+msgstr "Tidak"
+
+#: aurora/backend/library/forms.py:16
+msgid "Submit"
+msgstr "Kirim"
+
+#: aurora/backend/library/service.py:47 aurora/backend/library/service.py:54
+#: aurora/backend/templates/backend/admin/elements/sys_celery.html:21
+#: aurora/backend/templates/backend/admin/elements/sys_celery.html:42
+#: aurora/backend/templates/backend/admin/elements/sys_redis.html:21
+#: aurora/backend/templates/backend/admin/elements/sys_redis.html:43
+msgid "Deactivated"
+msgstr "Dinonaktifkan"
+
+#: aurora/backend/library/ui/html.py:41 aurora/backend/library/ui/html.py:50
+msgid "View"
+msgstr "Lihat"
+
+#: aurora/backend/library/ui/html.py:43
+msgid "File Not Found"
+msgstr "Berkas Tidak Ditemukan"
+
+#: aurora/backend/library/validators.py:39
+#: aurora/backend/library/validators.py:63
+msgid "Max size"
+msgstr "Ukuran Maksimal"
+
+#: aurora/backend/library/validators.py:47
+#: aurora/backend/library/validators.py:63
+msgid "Extentions"
+msgstr "Ekstensi"
+
+#: aurora/backend/models.py:51
+msgid "Picture"
+msgstr "Gambar"
+
+#: aurora/backend/models.py:56
+msgid "Sub Group"
+msgstr ""
+
+#: aurora/backend/models.py:57
+msgid "Device"
+msgstr "Perangkat"
+
+#: aurora/backend/models.py:58
+msgid "Browser"
+msgstr "Peramban"
+
+#: aurora/backend/models.py:59
+msgid "IP"
+msgstr ""
+
+#: aurora/backend/models.py:62
+msgid "User Property"
+msgstr "Properti Pengguna"
+
+#: aurora/backend/models.py:63
+msgid "User Properties"
+msgstr "Properti Pengguna"
+
+#: aurora/backend/tasks.py:20
+msgid "New User"
+msgstr "Pengguna Baru"
+
+#: aurora/backend/tasks.py:22
+msgid "New Staff"
+msgstr "Staf Baru"
+
+#: aurora/backend/tasks.py:31
+msgid "New Account Activation"
+msgstr "Aktivasi Akun Baru"
+
+#: aurora/backend/templates/404.html:8 aurora/backend/templates/500.html:8
+msgid "Not Found Page"
+msgstr "Halaman Tidak Ditemukan"
+
+#: aurora/backend/templates/404.html:54
+msgid "Sorry, we can't find your request"
+msgstr "Maaf, kami tidak dapat menemukan permintaan Anda"
+
+#: aurora/backend/templates/404.html:57 aurora/backend/templates/500.html:58
+msgid "Click Here"
+msgstr "Klik Disini"
+
+#: aurora/backend/templates/404.html:58 aurora/backend/templates/500.html:59
+msgid "to go to the front page"
+msgstr "untuk pergi ke laman beranda"
+
+#: aurora/backend/templates/500.html:54
+msgid "Sorry, We got problem when processing your request"
+msgstr "Maaf, kami mengalami masalah ketika memproses permintaan Anda"
+
+#: aurora/backend/templates/backend/admin/elements/sys_app.html:19
+msgid "Template Tags"
+msgstr ""
+
+#: aurora/backend/templates/backend/admin/elements/sys_app.html:24
+msgid "Midlewares"
+msgstr ""
+
+#: aurora/backend/templates/backend/admin/elements/sys_celery.html:4
+msgid "Celery Worker"
+msgstr ""
+
+#: aurora/backend/templates/backend/admin/elements/sys_celery.html:11
+#: aurora/backend/templates/backend/admin/elements/sys_celery.html:32
+#: aurora/backend/templates/backend/admin/elements/sys_redis.html:11
+#: aurora/backend/templates/backend/admin/elements/sys_redis.html:33
+msgid "On"
+msgstr "Aktif"
+
+#: aurora/backend/templates/backend/admin/elements/sys_celery.html:13
+#: aurora/backend/templates/backend/admin/elements/sys_celery.html:34
+#: aurora/backend/templates/backend/admin/elements/sys_redis.html:13
+#: aurora/backend/templates/backend/admin/elements/sys_redis.html:35
+msgid "Off"
+msgstr "Non Aktif"
+
+#: aurora/backend/templates/backend/admin/elements/sys_celery.html:19
+#: aurora/backend/templates/backend/admin/elements/sys_redis.html:19
+msgid "PID"
+msgstr ""
+
+#: aurora/backend/templates/backend/admin/elements/sys_celery.html:19
+#: aurora/backend/templates/backend/admin/elements/sys_redis.html:19
+msgid "User"
+msgstr "Pengguna"
+
+#: aurora/backend/templates/backend/admin/elements/sys_celery.html:45
+#: aurora/backend/templates/backend/admin/elements/sys_redis.html:46
+msgid "Failed"
+msgstr "Gagal"
+
+#: aurora/backend/templates/backend/admin/elements/sys_info.html:4
+msgid "System Information"
+msgstr "Sistem Informasi"
+
+#: aurora/backend/templates/backend/admin/elements/sys_info.html:7
+#: aurora/frontend/admin.py:196
+msgid "Site"
+msgstr "Situs"
+
+#: aurora/backend/templates/backend/admin/elements/sys_info.html:11
+msgid "Platform"
+msgstr ""
+
+#: aurora/backend/templates/backend/admin/elements/sys_info.html:15
+msgid "Operation System"
+msgstr "Sistem Operasi"
+
+#: aurora/backend/templates/backend/admin/elements/sys_info.html:19
+msgid "Architecture"
+msgstr "Arsitektur"
+
+#: aurora/backend/templates/backend/admin/elements/sys_info.html:23
+msgid "Processor"
+msgstr "Prosesor"
+
+#: aurora/backend/templates/backend/admin/elements/sys_info.html:27
+msgid "CPU Usage"
+msgstr "CPU"
+
+#: aurora/backend/templates/backend/admin/elements/sys_info.html:31
+msgid "RAM Usage"
+msgstr "RAM"
+
+#: aurora/backend/templates/backend/admin/elements/sys_info.html:33
+#: aurora/backend/templates/backend/admin/elements/sys_info.html:41
+msgid "of"
+msgstr "dari"
+
+#: aurora/backend/templates/backend/admin/elements/sys_info.html:34
+msgid "free"
+msgstr "bebas"
+
+#: aurora/backend/templates/backend/admin/elements/sys_info.html:38
+msgid "Storage Usage"
+msgstr " Penyimpanan"
+
+#: aurora/backend/templates/backend/admin/elements/sys_last_login.html:4
+msgid "Last User Login"
+msgstr "Login Terakhir"
+
+#: aurora/backend/templates/backend/admin/elements/sys_redis.html:4
+msgid "Redis Server"
+msgstr ""
+
+#: aurora/backend/templates/backend/elements/captcha.html:6
+msgid " Play CAPTCHA as audio file"
+msgstr ""
+
+#: aurora/backend/templates/backend/elements/credit.html:3
+msgid "Developed by"
+msgstr "Dikembangkan oleh"
+
+#: aurora/backend/templates/backend/elements/dropdown_user.html:20
+msgid "Administrator"
+msgstr ""
+
+#: aurora/backend/templates/backend/elements/dropdown_user.html:36
+#: aurora/backend/templates/backend/sections/auth/role_switcher.html:12
+#: aurora/frontend/templates/frontend/elements/navbar.html:65
+#: config/jazzmin.py:43
+msgid "Switch Role"
+msgstr "Alihkan Peran"
+
+#: aurora/backend/templates/backend/elements/dropdown_user.html:41
+#: aurora/backend/templates/backend/sections/auth/role_switcher.html:29
+#: aurora/frontend/templates/frontend/elements/navbar.html:71
+msgid "Sign Out"
+msgstr "Keluar"
+
+#: aurora/backend/templates/backend/elements/formset.html:25
+msgid "Add New Data"
+msgstr "Tambah Data Baru"
+
+#: aurora/backend/templates/backend/elements/formset.html:26
+msgid "Remove"
+msgstr "Hapus"
+
+#: aurora/backend/templates/backend/elements/navbar_bottom.html:31
+msgid "Navigation Menu"
+msgstr "Menu Navigasi"
+
+#: aurora/backend/templates/backend/elements/navbar_top.html:7
+msgid "Logo"
+msgstr ""
+
+#: aurora/backend/templates/backend/elements/navbar_top.html:12
+msgid "Aurora Backend"
+msgstr ""
+
+#: aurora/backend/templates/backend/elements/navbar_top.html:54
+#: aurora/backend/templates/backend/sections/auth/signedup.html:14
+#: aurora/backend/views/auth/signin.py:13
+#: aurora/frontend/templates/frontend/elements/navbar.html:79
+msgid "Sign In"
+msgstr "Masuk"
+
+#: aurora/backend/templates/backend/elements/pagination.html:5
+msgid "Show"
+msgstr "Tampilkan"
+
+#: aurora/backend/templates/backend/elements/pagination.html:5
+msgid "from"
+msgstr "dari"
+
+#: aurora/backend/templates/backend/elements/pagination.html:5
+msgid "data"
+msgstr ""
+
+#: aurora/backend/templates/backend/elements/pagination.html:13
+msgid "Previous"
+msgstr "Sebelumnya"
+
+#: aurora/backend/templates/backend/elements/pagination.html:35
+msgid "Next"
+msgstr "Berikutnya"
+
+#: aurora/backend/templates/backend/layouts/auth.html:15
+msgid "Homepage"
+msgstr "Beranda"
+
+#: aurora/backend/templates/backend/layouts/maintenance.html:4
+msgid "Site Maintenance"
+msgstr "Pemeliharaan Situs"
+
+#: aurora/backend/templates/backend/sections/auth/mail_activation.html:4
+msgid "Hello"
+msgstr "Halo"
+
+#: aurora/backend/templates/backend/sections/auth/mail_activation.html:5
+msgid "Please click the link below to complete registration:"
+msgstr "Silakan klik link di bawah ini untuk melengkapi registrasi"
+
+#: aurora/backend/templates/backend/sections/auth/role_chooser.html:12
+msgid "Choose Role"
+msgstr "Pilih Peran"
+
+#: aurora/backend/templates/backend/sections/auth/role_chooser.html:20
+#: aurora/backend/templates/backend/sections/auth/role_switcher.html:21
+msgid "Activate"
+msgstr "Aktivasi"
+
+#: aurora/backend/templates/backend/sections/auth/role_switcher.html:27
+msgid "You don't have any roles, please contact administrator"
+msgstr "Anda tidak memiliki peran, silakan kontak administrator"
+
+#: aurora/backend/templates/backend/sections/auth/signedup.html:8
+msgid "Account created, we have sent activation email to "
+msgstr "Akun dibuat, kami telah mengirimkan email aktivasi ke "
+
+#: aurora/backend/templates/backend/sections/auth/signedup.html:11
+msgid "Please check your inbox or spam folder"
+msgstr "Silakan cek kotak masuk atau spam"
+
+#: aurora/backend/templates/backend/sections/auth/signin.html:15
+msgid "Sign Up New Account Here"
+msgstr "Daftar Pengguna Baru"
+
+#: aurora/backend/templates/backend/sections/auth/signin.html:19
+msgid "No Account"
+msgstr "Tidak ada Akun"
+
+#: aurora/backend/templates/backend/sections/auth/signin.html:20
+msgid "Sign Up Here"
+msgstr "Daftar Disini"
+
+#: aurora/backend/templates/backend/sections/auth/signup.html:11
+msgid "Already Have Account"
+msgstr "Telah Memiliki Akun"
+
+#: aurora/backend/templates/backend/sections/auth/signup.html:12
+msgid "Sign In Here"
+msgstr "Masuk Disini"
+
+#: aurora/backend/templates/backend/sections/maintenance.html:7
+msgid "System Updating"
+msgstr "Memperbarui Sistem"
+
+#: aurora/backend/templates/backend/sections/maintenance.html:10
+msgid ""
+"Sorry, we are currently updating the website to get more features and "
+"stability. Please come again another time."
+msgstr ""
+
+#: aurora/backend/templates/backend/sections/maintenance.html:14
+msgid "Web Administrator"
+msgstr ""
+
+#: aurora/backend/views/admin/backend.py:59
+msgid "Service Configuration"
+msgstr ""
+
+#: aurora/backend/views/admin/backend.py:81
+msgid "Application Configuration"
+msgstr ""
+
+#: aurora/backend/views/admin/features.py:24
+msgid "Download as CSV"
+msgstr ""
+
+#: aurora/backend/views/admin/forms.py:12
+msgid "Celery Service"
+msgstr ""
+
+#: aurora/backend/views/auth/__init__.py:79
+msgid "You are signed in..."
+msgstr "Anda telah masuk..."
+
+#: aurora/backend/views/auth/activation.py:40
+msgid "Account activation failed, please call web administrator"
+msgstr "Aktivasi akun gagal, silakan hubungi administrator"
+
+#: aurora/backend/views/auth/forms.py:16 aurora/backend/views/auth/forms.py:42
+#: aurora/frontend/models.py:192
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:28
+#: aurora/frontend/templates/frontend/sections/contact.html:19
+#: aurora/sister/models.py:16
+msgid "E-mail"
+msgstr ""
+
+#: aurora/backend/views/auth/forms.py:19 aurora/backend/views/auth/forms.py:57
+#: aurora/frontend/models.py:100
+msgid "Password"
+msgstr "Kata Sandi"
+
+#: aurora/backend/views/auth/forms.py:22
+msgid "Confirmation"
+msgstr "Konfirmasi"
+
+#: aurora/backend/views/auth/forms.py:35
+msgid "Create New Account"
+msgstr "Buat Akun Baru"
+
+#: aurora/backend/views/auth/forms.py:52
+msgid "E-mail or username"
+msgstr "E-mail atau Nama Pengguna"
+
+#: aurora/backend/views/auth/forms.py:62
+msgid "Forgot Password?"
+msgstr "Lupa Kata Sandi"
+
+#: aurora/backend/views/auth/role.py:21
+msgid "Your Account"
+msgstr "Akun Anda"
+
+#: aurora/backend/views/auth/role.py:44
+msgid "Role Chooser"
+msgstr "Pemilih Peran"
+
+#: aurora/backend/views/auth/role.py:58
+msgid "You are authorized as "
+msgstr "Anda terautentifikasi sebagai "
+
+#: aurora/backend/views/auth/signin.py:37
+#: aurora/backend/views/auth/signup.py:80
+msgid ""
+"You have not confirmed your e-mail, please check your inbox or spam folder"
+msgstr "Anda belum mengkonfirmasi e-mail, silakan cek kotak masuk atau spam"
+
+#: aurora/backend/views/auth/signin.py:42
+msgid "Account not found, please sign up if you have not created yet"
+msgstr "Akun tidak ditemukan, silakan daftar jika belum membuatnya"
+
+#: aurora/backend/views/auth/signout.py:22
+msgid "You are sign in as "
+msgstr "Anda masuk sebagai "
+
+#: aurora/backend/views/auth/signout.py:30
+msgid "You are signed out"
+msgstr "Anda telah keluar"
+
+#: aurora/backend/views/auth/signup.py:23 config/backend.py:6
+#: config/backend.py:26 config/jazzmin.py:28 config/jazzmin.py:29
+msgid "Human Resource"
+msgstr "Sumber Daya Manusia"
+
+#: aurora/backend/views/auth/signup.py:24
+msgid "This is sign up page. Sign up using your e-mail to get more features"
+msgstr "Ini adalah laman pendaftaran. Silakan mendaftar menggunakan e-mail"
+
+#: aurora/backend/views/auth/signup.py:29
+msgid "Thank You"
+msgstr "Terima Kasih"
+
+#: aurora/backend/views/auth/signup.py:47
+msgid "Sign Up"
+msgstr "Daftar"
+
+#: aurora/backend/views/auth/signup.py:57
+msgid "Account created, please check your inbox or spam folder"
+msgstr "Akun dibuat, silakan cek kotak masuk atau spam"
+
+#: aurora/backend/views/auth/signup.py:63
+msgid "Account created, please sign in"
+msgstr "Akun dibuat, silakan masuk"
+
+#: aurora/backend/views/auth/signup.py:73
+msgid "Password and confirmation do not match"
+msgstr "Kata sandi dan konfirmasi tidak sesuai"
+
+#: aurora/backend/views/backend/default.py:9
+msgid "Panel Administrasi"
+msgstr ""
+
+#: aurora/frontend/admin.py:86 aurora/frontend/models.py:160
+msgid "Icon"
+msgstr "Ikon"
+
+#: aurora/frontend/admin.py:114
+msgid "Contents"
+msgstr "Konten"
+
+#: aurora/frontend/admin.py:197
+msgid "Appearance"
+msgstr "Tampilan"
+
+#: aurora/frontend/admin.py:198 aurora/frontend/models.py:54
+#: aurora/frontend/models.py:103
+msgid "Meta"
+msgstr ""
+
+#: aurora/frontend/admin.py:199 aurora/frontend/views/page.py:8
+msgid "Contact"
+msgstr "Kontak"
+
+#: aurora/frontend/admin.py:200
+msgid "Social Media"
+msgstr "Media Sosial"
+
+#: aurora/frontend/apps.py:7
+msgid "Frontend"
+msgstr ""
+
+#: aurora/frontend/models.py:24 aurora/frontend/models.py:92
+#: aurora/frontend/models.py:137 aurora/frontend/models.py:157
+#: aurora/frontend/models.py:177
+#: aurora/frontend/templates/frontend/elements/pd_comservice.html:8
+#: aurora/frontend/templates/frontend/elements/pd_patent.html:8
+#: aurora/frontend/templates/frontend/elements/pd_publication.html:8
+#: aurora/frontend/templates/frontend/elements/pd_research.html:8
+msgid "Title"
+msgstr "Judul"
+
+#: aurora/frontend/models.py:25
+msgid "URL"
+msgstr ""
+
+#: aurora/frontend/models.py:26
+msgid "icon"
+msgstr "Ikon"
+
+#: aurora/frontend/models.py:27 aurora/frontend/models.py:159
+msgid "Order"
+msgstr "Urutan"
+
+#: aurora/frontend/models.py:29
+#: aurora/frontend/templates/frontend/sections/directory.html:22
+msgid "Parent"
+msgstr "Induk"
+
+#: aurora/frontend/models.py:33
+msgid "Navigation Bar"
+msgstr ""
+
+#: aurora/frontend/models.py:51 aurora/frontend/models.py:76
+#: aurora/frontend/templates/frontend/elements/pd_awards.html:8
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:7
+#: aurora/frontend/templates/frontend/sections/people.html:24
+msgid "Name"
+msgstr "Nama"
+
+#: aurora/frontend/models.py:52
+msgid "Upload"
+msgstr "Unggah"
+
+#: aurora/frontend/models.py:60
+msgid "File"
+msgstr "Berkas"
+
+#: aurora/frontend/models.py:61 aurora/frontend/models.py:99
+#: aurora/frontend/templates/frontend/sections/post.html:42
+msgid "Files"
+msgstr "Berkas"
+
+#: aurora/frontend/models.py:75 aurora/frontend/models.py:91
+msgid "Slugname"
+msgstr "Nama Unik"
+
+#: aurora/frontend/models.py:82 aurora/frontend/models.py:95
+#: aurora/frontend/templates/frontend/elements/pd_patent.html:9
+#: aurora/frontend/templates/frontend/elements/pd_publication.html:9
+#: aurora/frontend/views/category.py:9
+msgid "Category"
+msgstr "Kategori"
+
+#: aurora/frontend/models.py:83
+msgid "Categories"
+msgstr "Kategori"
+
+#: aurora/frontend/models.py:93 aurora/frontend/models.py:158
+msgid "Content"
+msgstr "Konten"
+
+#: aurora/frontend/models.py:97 aurora/frontend/models.py:124
+#: aurora/frontend/models.py:130
+msgid "Thumbnail"
+msgstr ""
+
+#: aurora/frontend/models.py:98
+msgid "Author"
+msgstr "Penulis"
+
+#: aurora/frontend/models.py:101
+msgid "Post Type"
+msgstr "Tipe Pos"
+
+#: aurora/frontend/models.py:102
+msgid "Publish Date"
+msgstr "Tanggal Publikasi"
+
+#: aurora/frontend/models.py:136
+msgid "Image"
+msgstr "Gambar"
+
+#: aurora/frontend/models.py:138
+msgid "Mobile UI"
+msgstr "Tampilan Mobile"
+
+#: aurora/frontend/models.py:142
+msgid "Slideshow"
+msgstr ""
+
+#: aurora/frontend/models.py:164
+msgid "Sidebar"
+msgstr ""
+
+#: aurora/frontend/models.py:173
+msgid "Light"
+msgstr "Terang"
+
+#: aurora/frontend/models.py:174
+msgid "Dark"
+msgstr "Gelap"
+
+#: aurora/frontend/models.py:178
+msgid "Slogan"
+msgstr ""
+
+#: aurora/frontend/models.py:179
+msgid "Short Description"
+msgstr "Deskripsi Singkat"
+
+#: aurora/frontend/models.py:180
+msgid "Keywords"
+msgstr "Kata kunci"
+
+#: aurora/frontend/models.py:182
+msgid "Logo (16:9)"
+msgstr ""
+
+#: aurora/frontend/models.py:184
+msgid "Icon (1:1)"
+msgstr "Ikon (1:1)"
+
+#: aurora/frontend/models.py:185
+msgid "Use Slideshow"
+msgstr "Gunakan Slideshow"
+
+#: aurora/frontend/models.py:186
+msgid "Use Jumbotron"
+msgstr "Gunakan Jumbotron"
+
+#: aurora/frontend/models.py:188
+msgid "Jumbotron Background"
+msgstr "Latar Jumbotron"
+
+#: aurora/frontend/models.py:189
+msgid "Jumbotron Color"
+msgstr "Warna Jumbotron"
+
+#: aurora/frontend/models.py:191
+#: aurora/frontend/templates/frontend/sections/contact.html:15
+msgid "Address"
+msgstr "Alamat"
+
+#: aurora/frontend/models.py:193 aurora/sister/models.py:17
+msgid "Website"
+msgstr "Situs"
+
+#: aurora/frontend/models.py:194
+msgid "Phone"
+msgstr "Telepon"
+
+#: aurora/frontend/models.py:195
+msgid "Facebook"
+msgstr ""
+
+#: aurora/frontend/models.py:196
+msgid "Instagram"
+msgstr ""
+
+#: aurora/frontend/models.py:197
+msgid "Youtube"
+msgstr ""
+
+#: aurora/frontend/models.py:201
+msgid "Configuration"
+msgstr "Konfigurasi"
+
+#: aurora/frontend/templates/frontend/elements/footer.html:7
+msgid "Contact Us"
+msgstr "Kontak Kami"
+
+#: aurora/frontend/templates/frontend/elements/hr_general_info.html:25
+msgid "Units"
+msgstr "Unit"
+
+#: aurora/frontend/templates/frontend/elements/hr_general_info.html:33
+msgid "User Registered"
+msgstr "Pengguna Teregistrasi"
+
+#: aurora/frontend/templates/frontend/elements/jumbotron.html:16
+msgid "Search People"
+msgstr "Cari Seseorang"
+
+#: aurora/frontend/templates/frontend/elements/jumbotron.html:17
+msgid "Search"
+msgstr "Cari"
+
+#: aurora/frontend/templates/frontend/elements/modal_protected_media.html:7
+msgid "Media Diproteksi"
+msgstr ""
+
+#: aurora/frontend/templates/frontend/elements/modal_protected_media.html:15
+msgid "Enter Password"
+msgstr "Masukan Kata Sandi"
+
+#: aurora/frontend/templates/frontend/elements/modal_protected_media.html:20
+msgid "Close"
+msgstr "Tutup"
+
+#: aurora/frontend/templates/frontend/elements/modal_protected_media.html:21
+#: aurora/frontend/templates/frontend/sections/people_detail.html:171
+msgid "Download"
+msgstr "Unduh"
+
+#: aurora/frontend/templates/frontend/elements/navbar.html:19
+msgid "Home"
+msgstr "Beranda"
+
+#: aurora/frontend/templates/frontend/elements/navbar.html:53
+msgid "My Account"
+msgstr "Akun Anda"
+
+#: aurora/frontend/templates/frontend/elements/pd_assignment.html:8
+#: aurora/frontend/templates/frontend/elements/pd_education.html:11
+#: aurora/sister/models.py:30
+msgid "University"
+msgstr "Universitas"
+
+#: aurora/frontend/templates/frontend/elements/pd_assignment.html:9
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:68
+#: aurora/frontend/templates/frontend/sections/directory.html:21
+#: aurora/frontend/templates/frontend/sections/people.html:27
+#: aurora/sister/models.py:38 aurora/sister/models.py:44
+#: aurora/sister/models.py:45
+msgid "Unit"
+msgstr ""
+
+#: aurora/frontend/templates/frontend/elements/pd_assignment.html:10
+msgid "Education Level"
+msgstr "Jenjang Pendidikan"
+
+#: aurora/frontend/templates/frontend/elements/pd_assignment.html:11
+msgid "Work Agreement"
+msgstr "Ikatan Kerja"
+
+#: aurora/frontend/templates/frontend/elements/pd_assignment.html:12
+#: aurora/sister/models.py:27 aurora/sister/models.py:68
+msgid "Status"
+msgstr "Status"
+
+#: aurora/frontend/templates/frontend/elements/pd_assignment.html:27
+#: aurora/frontend/templates/frontend/elements/pd_awards.html:25
+#: aurora/frontend/templates/frontend/elements/pd_comservice.html:25
+#: aurora/frontend/templates/frontend/elements/pd_education.html:29
+#: aurora/frontend/templates/frontend/elements/pd_functional.html:23
+#: aurora/frontend/templates/frontend/elements/pd_patent.html:25
+#: aurora/frontend/templates/frontend/elements/pd_position.html:23
+#: aurora/frontend/templates/frontend/elements/pd_publication.html:25
+#: aurora/frontend/templates/frontend/elements/pd_research.html:25
+#: aurora/frontend/templates/frontend/elements/pd_specification.html:21
+#: aurora/frontend/templates/frontend/elements/pd_teaching.html:23
+msgid "No data available"
+msgstr "Tidak ada data yang tersedia"
+
+#: aurora/frontend/templates/frontend/elements/pd_awards.html:9
+#: aurora/frontend/templates/frontend/elements/pd_patent.html:10
+#: aurora/frontend/templates/frontend/elements/pd_publication.html:10
+#: aurora/frontend/templates/frontend/sections/people.html:26
+msgid "Type"
+msgstr "Tipe"
+
+#: aurora/frontend/templates/frontend/elements/pd_awards.html:10
+#: aurora/frontend/templates/frontend/elements/pd_comservice.html:10
+#: aurora/frontend/templates/frontend/elements/pd_education.html:12
+#: aurora/frontend/templates/frontend/elements/pd_research.html:10
+msgid "Year"
+msgstr "Tahun"
+
+#: aurora/frontend/templates/frontend/elements/pd_awards.html:11
+msgid "Instance"
+msgstr "Instansi"
+
+#: aurora/frontend/templates/frontend/elements/pd_comservice.html:9
+#: aurora/frontend/templates/frontend/elements/pd_education.html:9
+#: aurora/frontend/templates/frontend/elements/pd_research.html:9
+#: aurora/frontend/templates/frontend/elements/pd_specification.html:9
+msgid "Scope"
+msgstr "Ruang Lingkup"
+
+#: aurora/frontend/templates/frontend/elements/pd_comservice.html:11
+#: aurora/frontend/templates/frontend/elements/pd_research.html:11
+msgid "Duration"
+msgstr "Durasi"
+
+#: aurora/frontend/templates/frontend/elements/pd_education.html:8
+msgid "Level"
+msgstr "Tingkat"
+
+#: aurora/frontend/templates/frontend/elements/pd_education.html:10
+msgid "Academic"
+msgstr "Akademik"
+
+#: aurora/frontend/templates/frontend/elements/pd_functional.html:8
+#: aurora/frontend/templates/frontend/sections/people_cv.html:67
+#: aurora/frontend/templates/frontend/sections/people_detail.html:72
+msgid "Functional Position"
+msgstr "Jabatan Fungsional"
+
+#: aurora/frontend/templates/frontend/elements/pd_functional.html:9
+#: aurora/frontend/templates/frontend/elements/pd_position.html:9
+msgid "Legality"
+msgstr "Nomor SK"
+
+#: aurora/frontend/templates/frontend/elements/pd_functional.html:10
+#: aurora/frontend/templates/frontend/elements/pd_position.html:10
+msgid "Start Date"
+msgstr "Tanggal Mulai"
+
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:12
+msgid "Sex"
+msgstr "Jenis Kelamin"
+
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:16
+msgid "Female"
+msgstr "Perempuan"
+
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:18
+msgid "Male"
+msgstr "Laki-laki"
+
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:23
+#: aurora/frontend/templates/frontend/elements/pd_position.html:8
+#: aurora/frontend/templates/frontend/sections/people_cv.html:76
+#: aurora/frontend/templates/frontend/sections/people_detail.html:83
+msgid "Position"
+msgstr "Jabatan"
+
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:38
+msgid "Gelar Akademik"
+msgstr "Gelar Akademik"
+
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:52
+msgid "Place of Birth"
+msgstr "Tempat Lahir"
+
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:57
+msgid "Date of Birth"
+msgstr "Tanggal Lahir"
+
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:63
+#: aurora/frontend/templates/frontend/sections/people.html:25
+#: aurora/sister/models.py:63
+msgid "NIDN"
+msgstr "NIDN"
+
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:74
+#: aurora/sister/models.py:64
+msgid "NIP"
+msgstr "NIP"
+
+#: aurora/frontend/templates/frontend/elements/pd_identity.html:80
+msgid "Sinta ID"
+msgstr "ID Sinta"
+
+#: aurora/frontend/templates/frontend/elements/pd_patent.html:11
+#: aurora/frontend/templates/frontend/elements/pd_publication.html:11
+msgid "Date"
+msgstr "Tanggal"
+
+#: aurora/frontend/templates/frontend/elements/pd_specification.html:8
+msgid "Priority"
+msgstr "Prioritas"
+
+#: aurora/frontend/templates/frontend/elements/pd_teaching.html:8
+msgid "Subject"
+msgstr "Mata Kuliah"
+
+#: aurora/frontend/templates/frontend/elements/pd_teaching.html:9
+msgid "Semester"
+msgstr "Semester"
+
+#: aurora/frontend/templates/frontend/elements/pd_teaching.html:10
+msgid "Credit"
+msgstr "SKS"
+
+#: aurora/frontend/templates/frontend/elements/post_list.html:4
+msgid "Latest Posts"
+msgstr "Pos Terbaru"
+
+#: aurora/frontend/templates/frontend/elements/post_list.html:64
+msgid "View More Posts"
+msgstr "Muat Pos Lebih Banyak"
+
+#: aurora/frontend/templates/frontend/layouts/curriculum_vitae.html:7
+#: aurora/frontend/templates/frontend/layouts/curriculum_vitae.html:97
+msgid "Curriculum Vitae"
+msgstr "Portofolio"
+
+#: aurora/frontend/templates/frontend/layouts/post.html:11
+msgid "Related Posts"
+msgstr "Pos yang Berhubungan"
+
+#: aurora/frontend/templates/frontend/sections/contact.html:23
+msgid "Phonenumber"
+msgstr "Nomor Telepon"
+
+#: aurora/frontend/templates/frontend/sections/directory.html:23
+#: aurora/frontend/views/people.py:23
+msgid "People"
+msgstr "Sumber Daya Manusia"
+
+#: aurora/frontend/templates/frontend/sections/people_cv.html:6
+#: aurora/frontend/templates/frontend/sections/people_detail.html:6
+msgid "Portofolio/Curriculum Vitae"
+msgstr "Portofolio/Riwayat Hidup"
+
+#: aurora/frontend/templates/frontend/sections/people_cv.html:49
+#: aurora/frontend/templates/frontend/sections/people_detail.html:50
+msgid "Education History"
+msgstr "Rekam Jejak Pendidikan"
+
+#: aurora/frontend/templates/frontend/sections/people_cv.html:58
+#: aurora/frontend/templates/frontend/sections/people_detail.html:61
+msgid "Skill Specification"
+msgstr "Spesifikasi Keilmuan"
+
+#: aurora/frontend/templates/frontend/sections/people_cv.html:85
+#: aurora/frontend/templates/frontend/sections/people_detail.html:94
+msgid "Assignment"
+msgstr "Penugasan"
+
+#: aurora/frontend/templates/frontend/sections/people_cv.html:94
+#: aurora/frontend/templates/frontend/sections/people_detail.html:105
+msgid "Teaching"
+msgstr "Pendidikan dan Pengajaran"
+
+#: aurora/frontend/templates/frontend/sections/people_cv.html:103
+#: aurora/frontend/templates/frontend/sections/people_detail.html:116
+msgid "Research"
+msgstr "Penelitian"
+
+#: aurora/frontend/templates/frontend/sections/people_cv.html:112
+#: aurora/frontend/templates/frontend/sections/people_detail.html:127
+msgid "Community Service"
+msgstr "Pengabdian pada Masyarakat"
+
+#: aurora/frontend/templates/frontend/sections/people_cv.html:121
+#: aurora/frontend/templates/frontend/sections/people_detail.html:138
+msgid "Publication"
+msgstr "Publikasi"
+
+#: aurora/frontend/templates/frontend/sections/people_cv.html:130
+#: aurora/frontend/templates/frontend/sections/people_detail.html:149
+msgid "Patent and Intelectual Property"
+msgstr "Paten dan KI"
+
+#: aurora/frontend/templates/frontend/sections/people_cv.html:139
+#: aurora/frontend/templates/frontend/sections/people_detail.html:160
+msgid "Awards"
+msgstr "Penghargaan"
+
+#: aurora/frontend/templates/frontend/sections/post.html:22
+msgid "views"
+msgstr "pemirsa"
+
+#: aurora/frontend/templates/frontend/sections/post.html:51
+#: aurora/frontend/templates/frontend/sections/post.html:58
+msgid "download"
+msgstr "unduh"
+
+#: aurora/frontend/templates/frontend/sections/posts.html:51
+msgid "No posts available"
+msgstr "Tak ada pos"
+
+#: aurora/frontend/views/directory.py:16
+msgid "University Directory"
+msgstr "Direktori Perguruan Tinggi"
+
+#: aurora/frontend/views/homepage.py:16
+msgid "Welcome"
+msgstr "Selamat Datang"
+
+#: aurora/frontend/views/homepage.py:114
+msgid "Sister server can't be reached"
+msgstr "Server Sister tidak dapat diakses"
+
+#: aurora/frontend/views/media.py:35
+msgid "Incorrect password"
+msgstr "Kata sandi salah"
+
+#: aurora/frontend/views/media.py:37
+msgid "Password must be filled"
+msgstr "Kata sandi harus diisi"
+
+#: aurora/frontend/views/page.py:14
+msgid "About"
+msgstr "Tentang"
+
+#: aurora/frontend/views/people.py:72 aurora/frontend/views/people.py:115
+msgid "People Detail"
+msgstr "Rincian SDM"
+
+#: aurora/frontend/views/people.py:123
+msgid "CV"
+msgstr "CV"
+
+#: aurora/frontend/views/post.py:14
+msgid "Posts"
+msgstr "Pos"
+
+#: aurora/frontend/views/post.py:22
+msgid "Post"
+msgstr "Pos"
+
+#: aurora/sister/admin.py:29
+msgid "SubUnit"
+msgstr "Sub Unit"
+
+#: aurora/sister/models.py:11
+msgid "ID PT"
+msgstr "ID PT"
+
+#: aurora/sister/models.py:12
+msgid "Kode"
+msgstr "Kode"
+
+#: aurora/sister/models.py:13 aurora/sister/models.py:39
+msgid "Nama"
+msgstr "Nama"
+
+#: aurora/sister/models.py:14
+msgid "Telepon"
+msgstr "Telepon"
+
+#: aurora/sister/models.py:15
+msgid "Faximile"
+msgstr "Faximile"
+
+#: aurora/sister/models.py:18
+msgid "Jalan"
+msgstr "Jalan"
+
+#: aurora/sister/models.py:19
+msgid "Dusun"
+msgstr "Dusun"
+
+#: aurora/sister/models.py:20
+msgid "RT"
+msgstr "RT"
+
+#: aurora/sister/models.py:21
+msgid "RW"
+msgstr "RW"
+
+#: aurora/sister/models.py:22
+msgid "Kelurahan"
+msgstr "Kelurahan"
+
+#: aurora/sister/models.py:23
+msgid "Kode Pos"
+msgstr "Kode Pos"
+
+#: aurora/sister/models.py:24
+msgid "Nama Wilayah"
+msgstr "Nama Wilayah"
+
+#: aurora/sister/models.py:25
+msgid "SK Pendirian"
+msgstr "SK Pendirian"
+
+#: aurora/sister/models.py:26
+msgid "Tanggal SK Pendirian"
+msgstr "Tanggal SK Pendirian"
+
+#: aurora/sister/models.py:31
+msgid "Universities"
+msgstr "Perguruan Tinggi"
+
+#: aurora/sister/models.py:40
+msgid "Jenis"
+msgstr "Jenis"
+
+#: aurora/sister/models.py:57
+msgid "Active"
+msgstr "Aktif"
+
+#: aurora/sister/models.py:58
+msgid "Inactive"
+msgstr "Tidak Aktif"
+
+#: aurora/sister/models.py:60
+msgid "ID SDM"
+msgstr "ID SDM"
+
+#: aurora/sister/models.py:61
+msgid "Nama SDM"
+msgstr "Nama SDM"
+
+#: aurora/sister/models.py:62
+msgid "ID Unik"
+msgstr "ID Unik"
+
+#: aurora/sister/models.py:65
+msgid "Jenis SDM"
+msgstr "Jenis SDM"
+
+#: aurora/sister/models.py:67
+msgid "Metadata"
+msgstr "Metadata"
+
+#: aurora/sister/models.py:71 aurora/sister/models.py:72
+msgid "SDM"
+msgstr "SDM"
+
+#: config/backend.py:27
+msgid ""
+"This is sign in page. Use your e-mail or username and password before using "
+"our system."
+msgstr ""
+
+#: config/backend.py:35
+msgid "Readmore"
+msgstr "Lebih Lanjut"
+
+#: config/frontend.py:32
+msgid "Getting Started"
+msgstr "Memulai"
+
+#: config/frontend.py:38
+msgid "Register Now"
+msgstr "Daftar Sekarang"
+
+#: config/jazzmin.py:13
+msgid "Services"
+msgstr "Layanan"
+
+#: config/jazzmin.py:19
+msgid "Applications"
+msgstr "Aplikasi"
+
+#: config/jazzmin.py:31
+msgid "Welcome, Administrator!"
+msgstr "Selamat Datang, Administrator"
+
+#: config/jazzmin.py:39
+msgid "View Site"
+msgstr "Tampilkan Situs"

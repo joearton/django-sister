@@ -5,23 +5,25 @@
         <thead>
             <tr>
                 <th></th>
-                <th>{% trans "Level" %}</th>
+                <th class="text-center">{% trans "Level" %}</th>
                 <th>{% trans "Scope" %}</th>
-                <th>{% trans "Academic" %}</th>
+                <th class="text-center">{% trans "Academic" %}</th>
                 <th>{% trans "University" %}</th>
-                <th>{% trans "Year" %}</th>
+                <th class="text-center">{% trans "Year" %}</th>
             </tr>
         </thead>
         <tbody>
             {% for p in pendidikan.data %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ p.jenjang_pendidikan }}</td>
-                    <td>{{ p.bidang_studi }}</td>
-                    <td>{{ p.gelar_akademik }}</td>
-                    <td>{{ p.nama_perguruan_tinggi }}</td>
-                    <td>{{ p.tahun_lulus }}</td>
-                </tr>
+                {% if p.gelar_akademik %}
+                    <tr>
+                        <td class="text-center" style="width: 17px;">{{ forloop.counter }}</td>
+                        <td class="text-center">{{ p.jenjang_pendidikan }}</td>
+                        <td>{{ p.bidang_studi }}</td>
+                        <td class="text-center">{{ p.gelar_akademik }}</td>
+                        <td>{{ p.nama_perguruan_tinggi }}</td>
+                        <td class="text-center">{{ p.tahun_lulus }}</td>
+                    </tr>
+                {% endif %}
             {% empty %}
                 <tr>
                     <td class="text-center" colspan="6">{% trans "No data available" %}</td>

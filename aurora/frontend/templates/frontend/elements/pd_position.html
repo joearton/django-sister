@@ -6,17 +6,17 @@
             <tr>
                 <th></th>
                 <th>{% trans "Position" %}</th>
-                <th>{% trans "Legality" %}</th>
-                <th>{% trans "Start Date" %}</th>
+                <th class="text-center">{% trans "Legality" %}</th>
+                <th class="text-center">{% trans "Start Date" %}</th>
             </tr>
         </thead>
         <tbody>
             {% for p in pangkat.data %}
                 <tr>
-                    <td>{{ forloop.counter }}</td>
+                    <td class="text-center" style="width: 17px;">{{ forloop.counter }}</td>
                     <td>{{ p.pangkat_golongan }}</td>
-                    <td>{{ p.sk }}</td>
-                    <td>{{ p.tanggal_mulai }}</td>
+                    <td class="text-center">{{ p.sk }}</td>
+                    <td class="text-center">{{ p.tanggal_mulai }}</td>
                 </tr>
             {% empty %}
                 <tr>

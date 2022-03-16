@@ -14,7 +14,7 @@
         <tbody>
             {% for p in penghargaan.data %}
                 <tr>
-                    <td>{{ forloop.counter }}</td>
+                    <td class="text-center" style="width: 17px;">{{ forloop.counter }}</td>
                     <td>{{ p.nama|default_if_none:'-' }}</td>
                     <td>{{ p.jenis_penghargaan|default_if_none:'-' }}</td>
                     <td>{{ p.tahun|default_if_none:'-' }}</td>

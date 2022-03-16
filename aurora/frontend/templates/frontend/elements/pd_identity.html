@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <table style="border: none; width: 100%;">
+        <table class="pdf-no-border" style="border: none; width: 100%;">
             <tr>
                 <td style="width: 100px;">{% trans "Name" %}</td>
                 <td style="width: 5px;">:</td>
@@ -46,7 +46,7 @@
         </table>
     </div>
     <div class="col-md-6">
-        <table style="border: none; width: 100%;">
+        <table class="pdf-no-border" style="border: none; width: 100%;">
             {% if request.user.is_authenticated %}
                 <tr>
                     <td style="width: 100px;">{% trans "Place of Birth" %}</td>
