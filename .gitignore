@@ -8,3 +8,4 @@ __pycache__/
 reset.py
 *.pyc
 config.json
+email.py
