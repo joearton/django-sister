@@ -75,5 +75,11 @@ class SDM(BaseModel):
     def __str__(self):
         return self.nama_sdm
     
+    def get_picture(self):
+        picture_file = self.metadata.get('picture_file')
+        picture_url  = self.metadata.get('picture_url')
+        if picture_file and picture_url:
+            if os.path.isfile(picture_file):
+                return picture_url
     
 

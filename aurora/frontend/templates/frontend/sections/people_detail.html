@@ -4,21 +4,25 @@
 {% block before_sub_content %}
     <div class="my-5 text-center">
         <h1 class="mb-0">{% trans "Portofolio/Curriculum Vitae" %}</h1>
-        <div class='my-1 text-center'>
-            <span class='badge bg-light text-dark'>
-                {% trans "Data accessed" %} {{ profil.accessed_at|naturaltime }}
-                {% trans "from" %} <a href="{{ sister_config.sister_url }}" target="_blank">{{ sister_config.sister_url }}</a>
-                {% trans "and will be updated at" %} {{ profil.expired_at|naturaltime }}
-            </span>
+        <div class='text-center'>
+            <span class='badge bg-light text-secondary'>
+                <span class="me-3">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> 
+                    {% trans "Data accessed" %} {{ profil.accessed_at|naturaltime }}
+                    {% trans "from" %} <a href="{{ sister_config.sister_url }}" target="_blank">{{ sister_config.sister_url }}</a>
+                    {% trans "and will be updated at" %} {{ profil.expired_at|naturaltime }}
+                </span>
+                <span><i class="fa fa-eye" aria-hidden="true"></i> {{ object.metadata.viewers|intword }} {% trans "viewers" %}</span>
         </div>
     </div>
 {% endblock %}
 
+
 {% block content %}
 <div class="container mx-auto my-3">
     <div class="text-center mb-1">
-        {% if object.metadata.picture_url %}
-            <img class='sdm-picture' src="{{ object.metadata.picture_url }}" alt="{{ object.nama_sdm }}" />
+        {% if object.get_picture  %}
+            <img class='sdm-picture' src="{{ object.get_picture }}" alt="{{ object.nama_sdm }}" />
         {% else %}
             <img class='sdm-picture' src="{% static 'backend/media/no-profile-picture.jpg' %}" alt="{{ object.nama_sdm }}" />
         {% endif %}
@@ -184,6 +188,16 @@
                     </span>
                 </div>
             </div>
+            {% if object.metadata.referers %}
+                <div class="card">
+                    <div class="card-header fw-bold">{% trans "Referers" %}</div>
+                    <div class="card-body">
+                        {% for referer in object.metadata.referers %}
+                            <span class="badge bg-primary">{{ referer }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
         </div>
         <div class="col-md-1"></div>
     </div>

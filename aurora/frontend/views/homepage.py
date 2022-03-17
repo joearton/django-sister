@@ -16,6 +16,7 @@ from aurora.backend.vendors.sister.library.template import SisterTemplate
 
 st = SisterTemplate()
 
+
 class FrontendDefault(frontendView, ListView):
     section_title = _('Welcome')
     template_name = "frontend/sections/homepage.html"
@@ -28,25 +29,26 @@ class FrontendDefault(frontendView, ListView):
         university = sister_api.get_referensi_profil_pt()
         if university.data:
             uni = university.data
-            University.objects.create(
-                id_pt=uni['id_perguruan_tinggi'],
-                kode=uni['kode_perguruan_tinggi'],
-                nama=uni['nama_perguruan_tinggi'],
-                telepon=uni['telepon'],
-                faximile=uni['faximile'],
-                email=uni['email'],
-                website=uni['website'],
-                jalan=uni['jalan'],
-                dusun=uni['dusun'],
-                rt=uni['rt'],
-                rw=uni['rw'],
-                kelurahan=uni['kelurahan'],
-                kode_pos=uni['kode_pos'],
-                nama_wilayah=uni['nama_wilayah'],
-                sk_pendirian=uni['sk_pendirian'],
-                tanggal_sk=uni['tanggal_sk_pendirian'],
-                status=uni['status_perguruan_tinggi'],
-            )
+            if not University.objects.filter(id_pt=uni['id_perguruan_tinggi']).exists():
+                University.objects.create(
+                    id_pt=uni['id_perguruan_tinggi'],
+                    kode=uni['kode_perguruan_tinggi'],
+                    nama=uni['nama_perguruan_tinggi'],
+                    telepon=uni['telepon'],
+                    faximile=uni['faximile'],
+                    email=uni['email'],
+                    website=uni['website'],
+                    jalan=uni['jalan'],
+                    dusun=uni['dusun'],
+                    rt=uni['rt'],
+                    rw=uni['rw'],
+                    kelurahan=uni['kelurahan'],
+                    kode_pos=uni['kode_pos'],
+                    nama_wilayah=uni['nama_wilayah'],
+                    sk_pendirian=uni['sk_pendirian'],
+                    tanggal_sk=uni['tanggal_sk_pendirian'],
+                    status=uni['status_perguruan_tinggi'],
+                )
         return University.objects.all()[0]
 
 
@@ -73,8 +75,8 @@ class FrontendDefault(frontendView, ListView):
         people = sister_api.get_referensi_sdm()
         for sdm in people.data:
             unit = Unit.objects.get(unit_id=sdm['id_sms'])
-            try:
-                SDM.objects.update_or_create(
+            if not SDM.objects.filter(id_sdm=sdm['id_sdm']).exists():
+                SDM.objects.create(
                     id_sdm=sdm['id_sdm'],
                     nama_sdm=sdm['nama_sdm'],
                     slugname=slugify(sdm['nama_sdm']),
@@ -83,8 +85,15 @@ class FrontendDefault(frontendView, ListView):
                     jenis_sdm=sdm['jenis_sdm'],
                     unit=unit
                 )
-            except:
-                pass
+            else:
+                person = SDM.objects.get(id_sdm=sdm['id_sdm'])
+                person.nama_sdm = sdm['nama_sdm']
+                person.slugname = slugify(sdm['nama_sdm'])
+                person.nidn = sdm['nidn']
+                person.nip = sdm['nip']
+                person.jenis_sdm =sdm['jenis_sdm']
+                unit = unit
+                person.save()
         return SDM.objects.all()
                         
 
@@ -101,14 +110,18 @@ class FrontendDefault(frontendView, ListView):
         units = Unit.objects.all()
         if not units:
             units = self.fetch_units(university)
+        else:
             expired_units = st.get_expired_datetime(units[0].date_modified, days=7)
-            if st.get_now_datetime() > expired_univ:
+            if st.get_now_datetime() > expired_units:
                 units = self.fetch_units(university)
 
         people = SDM.objects.all()
         if not people:
             people = self.fetch_people()
-
+        else:
+            expired_people = st.get_expired_datetime(people[0].date_modified, days=7)
+            if st.get_now_datetime() > expired_people:
+                people = self.fetch_people()
         return [university, units, people]
 
 

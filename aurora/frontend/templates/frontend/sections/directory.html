@@ -30,7 +30,12 @@
                         <td>
                             <a href="{% url 'aurora.frontend.people' %}?unit={{ object.unit_id }}" class='fw-bold'>{{ object.nama }}</a>
                         </td>
-                        <td>{{ object.parent.nama }}</td>
+                        <td>
+                            {% if object.parent.nama %}
+                                {{ object.parent.nama }}
+                            {% else %} -
+                            {% endif %}
+                        </td>
                         <td>{{ object.people.count }}</td>
                     </tr>
                 {% endfor %}
