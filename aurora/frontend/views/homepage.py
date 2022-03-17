@@ -1,3 +1,4 @@
+import imp
 from typing import Iterable
 from django.views.generic import View, ListView
 from django.urls import reverse_lazy
@@ -6,11 +7,14 @@ from django.views.generic.base import TemplateView
 from aurora.frontend.models import Slideshow, Post, Configuration
 from aurora.frontend.views import frontendView
 from django.utils.translation import gettext as _
-from aurora.backend.vendors.sister.sister import SisterAPI as sister_api
 from django.conf import settings
 from django.utils.text import slugify
 from aurora.sister.models import Unit, SDM, University
+from aurora.backend.vendors.sister.sister import SisterAPI as sister_api
+from aurora.backend.vendors.sister.library.template import SisterTemplate
 
+
+st = SisterTemplate()
 
 class FrontendDefault(frontendView, ListView):
     section_title = _('Welcome')
@@ -49,12 +53,20 @@ class FrontendDefault(frontendView, ListView):
     def fetch_units(self, university):
         unit_kerja = sister_api.get_referensi_unit_kerja(id_perguruan_tinggi=str(university.id_pt))
         for unit in unit_kerja.data:
-            Unit.objects.update_or_create(
-                unit_id=unit['id'],
-                nama=unit['nama'],
-                jenis=unit['id_jenis_unit']
-            )
-        return Unit.objects.all()
+            if not Unit.objects.filter(unit_id=unit['id']).exists():
+                Unit.objects.create(
+                    unit_id=unit['id'],
+                    nama=unit['nama'],
+                    jenis=unit['id_jenis_unit']
+                )
+            else:
+                unit = Unit.objects.get(unit_id=unit['id'])
+                unit.unit_id = unit['id']
+                unit.nama = unit['nama']
+                unit.jenis = unit['id_jenis_unit']
+                unit.save()
+        units = Unit.objects.all()
+        return units
 
 
     def fetch_people(self):           
@@ -79,13 +91,19 @@ class FrontendDefault(frontendView, ListView):
     def get_university_info(self):
         university = University.objects.all()
         if not university:
-           university  = self.fetch_university()
+           university = self.fetch_university()
         else:
-            university = university[0]
+            university   = university[0]
+            expired_univ = st.get_expired_datetime(university.date_modified, days=7)
+            if st.get_now_datetime() > expired_univ:
+                university = self.fetch_university()
 
         units = Unit.objects.all()
         if not units:
             units = self.fetch_units(university)
+            expired_units = st.get_expired_datetime(units[0].date_modified, days=7)
+            if st.get_now_datetime() > expired_univ:
+                units = self.fetch_units(university)
 
         people = SDM.objects.all()
         if not people:

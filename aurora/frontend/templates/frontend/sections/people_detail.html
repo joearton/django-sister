@@ -2,11 +2,17 @@
 {% load i18n static humanize %}
 
 {% block before_sub_content %}
-    <div class="my-5">
-        <h1 class="text-center">{% trans "Portofolio/Curriculum Vitae" %}</h1>
+    <div class="my-5 text-center">
+        <h1 class="mb-0">{% trans "Portofolio/Curriculum Vitae" %}</h1>
+        <div class='my-1 text-center'>
+            <span class='badge bg-light text-dark'>
+                {% trans "Data accessed" %} {{ profil.accessed_at|naturaltime }}
+                {% trans "from" %} <a href="{{ sister_config.sister_url }}" target="_blank">{{ sister_config.sister_url }}</a>
+                {% trans "and will be updated at" %} {{ profil.expired_at|naturaltime }}
+            </span>
+        </div>
     </div>
 {% endblock %}
-
 
 {% block content %}
 <div class="container mx-auto my-3">
@@ -170,6 +176,13 @@
                 <a href="{% url 'aurora.frontend.people.download' object.slugname object.id_sdm %}" class="btn btn-primary btn-lg">
                     <span class="fa fa-download"></span> {% trans "Download" %}
                 </a>
+                <div class='my-1 text-center'>
+                    <span class='badge bg-light text-dark'>
+                        {% trans "Data accessed" %} {{ profil.accessed_at|naturaltime }}
+                        {% trans "from" %} <a href="{{ sister_config.sister_url }}" target="_blank">{{ sister_config.sister_url }}</a>
+                        {% trans "and will be updated at" %} {{ profil.expired_at|naturaltime }}
+                    </span>
+                </div>
             </div>
         </div>
         <div class="col-md-1"></div>

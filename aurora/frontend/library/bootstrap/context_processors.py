@@ -1,7 +1,14 @@
-from aurora.frontend.models import Navbar, Sidebar, Configuration
+import imp
 from django.db.utils import OperationalError
 from django.forms.models import model_to_dict
+from aurora.frontend.models import Navbar, Sidebar, Configuration
+from aurora.backend.vendors.sister.library import io
 
+
+def get_sister_config():
+    sister_io = io.SisterIO()
+    config    = sister_io.read_config()
+    return config    
 
 def get_context_navbar(request):
     navbar_items = Navbar.objects.filter(site=request.site)
@@ -40,6 +47,7 @@ def contextual(request):
     frontend_config['navbar']  = get_context_navbar(request)
     frontend_config['sidebar'] = get_sidebar(request)
     context_proccessor = {
-        'f_config': frontend_config
+        'f_config': frontend_config,
+        'sister_config': get_sister_config()
     }
     return context_proccessor
