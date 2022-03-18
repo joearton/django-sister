@@ -55,18 +55,26 @@ class FrontendDefault(frontendView, ListView):
     def fetch_units(self, university):
         unit_kerja = sister_api.get_referensi_unit_kerja(id_perguruan_tinggi=str(university.id_pt))
         for unit in unit_kerja.data:
+            # fix unit name sent by web service
+            nama = unit['nama']
+            if nama.lower().find('program studi') != -1:
+                nama = nama.replace('Program Studi', '')
+            if nama.lower().find('fakultas') != -1:
+                nama  = nama.replace('Fakultas', '')
+                nama  = "Fakultas" + nama
+
             if not Unit.objects.filter(unit_id=unit['id']).exists():
                 Unit.objects.create(
                     unit_id=unit['id'],
-                    nama=unit['nama'],
+                    nama=nama,
                     jenis=unit['id_jenis_unit']
                 )
             else:
-                unit = Unit.objects.get(unit_id=unit['id'])
-                unit.unit_id = unit['id']
-                unit.nama = unit['nama']
-                unit.jenis = unit['id_jenis_unit']
-                unit.save()
+                unit_obj = Unit.objects.get(unit_id=unit['id'])
+                unit_obj.unit_id = unit['id']
+                unit_obj.nama = nama
+                unit_obj.jenis = unit['id_jenis_unit']
+                unit_obj.save()
         units = Unit.objects.all()
         return units
 
@@ -108,7 +116,7 @@ class FrontendDefault(frontendView, ListView):
                 university = self.fetch_university()
 
         units = Unit.objects.all()
-        if not units:
+        if  units:
             units = self.fetch_units(university)
         else:
             expired_units = st.get_expired_datetime(units[0].date_modified, days=7)

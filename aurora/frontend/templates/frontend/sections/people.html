@@ -13,85 +13,116 @@
 
 {% block content %}
 <div class="container">
-    <div class="mb-5">
-        {% for obj in object_list %}
-            {% if forloop.counter0|divisibleby:6 %}<div class="row mb-3t">{% endif %}
-                <div class="col-md-2">
-                    <div class="card">
-                        {% if obj.get_picture %}
-                            <div class="card-img-top" style="
-                                background: url({{ obj.metadata.picture_url }}) center center;
-                                background-size: cover; width: 100%; height: 225px;">
+    {% if unit %}<h3 class='mb-3'>{{ unit.nama }}</h3>{% endif %}
+    {% if keyword %}
+        <h4 class='mb-3'>{% trans "Show results for: " %} <span class="text-success">{{ keyword }}</span></h4>
+    {% endif %}
+    {% if view == 'grid' %}
+        <div class="mb-5">
+            {% for obj in object_list %}
+                {% if forloop.counter0|divisibleby:4 %}<div class="row">{% endif %}
+                    <div class="col-md-3 mb-3">
+                        <div class="card py-1">
+                            <div class="card-img-top pt-2">
+                                <a class="fw-bold" href="{% url 'aurora.frontend.people.detail' obj.slugname %}">
+                                    {% if obj.get_picture %}
+                                        <div class="mx-auto" style="
+                                            background: url({{ obj.metadata.picture_url }}) center center;
+                                            background-size: cover; width: 85px; height: 115px;">
+                                        </div>
+                                    {% else %}
+                                        <div class="mx-auto" style="
+                                            background: url({% static 'backend/media/no-profile-picture.jpg' %}) center center;
+                                            background-size: cover; width: 85px; height: 115px;">
+                                        </div>
+                                    {% endif %}
+                                </a>
                             </div>
-                        {% else %}
-                            <div class="card-img-top" style="
-                                background: url({% static 'backend/media/no-profile-picture.jpg' %}) center center;
-                                background-size: cover; width: 100%; height: 225px;">
+                            <div class="card-body p-1 pb-1 text-center">
+                                <a class="fw-bold d-block" href="{% url 'aurora.frontend.people.detail' obj.slugname %}" style="line-height: 110%;">
+                                    {{ obj.nama_sdm }}
+                                </a>
+                                <div style="line-height: 110%;">
+                                    <small>{% trans "NIDN" %} {{ obj.nidn }}</small>
+                                </div>
+                                <div><small class="badge bg-light text-dark">{{ obj.unit }}</small></div>
+                                <div class="d-flex py-2">
+                                    <div class="small w-50 text-secondary">
+                                        <small>
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                            {% if obj.metadata.viewers %}
+                                                {{ obj.metadata.viewers|intword }}
+                                            {% else %} 0
+                                            {% endif %}
+                                            {% trans "viewers" %}
+                                        </small>
+                                    </div>
+                                    <div class="small w-50 text-secondary">
+                                        <small>
+                                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                            {% if obj.accessed_at %} {{ obj.accessed_at|naturaltime }}</td>
+                                            {% else %} {% trans "never" %}
+                                            {% endif %}
+                                        </small>
+                                    </div>
+                                </div>
                             </div>
-                        {% endif %}
-    
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
                     </div>
-                </div>
-            {% if forloop.counter|divisibleby:6 or forloop.last %}</div>{% endif %}
-        {% endfor %}
-    </div>
-
-    <div class="mb-5">
-        {% if unit %}<h3 class='mb-3'>{{ unit.nama }}</h3>{% endif %}
-        {% if keyword %}
-            <h4 class='mb-3'>{% trans "Show results for: " %} <span class="text-success">{{ keyword }}</span></h4>
-        {% endif %}
-        <table class='table table-hover table-striped'>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>{% trans "Name" %}</th>
-                    <th>{% trans "NIDN" %}</th>
-                    <th>{% trans "Unit" %}</th>
-                    <th>{% trans "Last Sync" %}</th>
-                    <th><i class="fa fa-eye" aria-hidden="true"></i></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for obj in object_list %}
+                {% if forloop.counter|divisibleby:4 or forloop.last %}</div>{% endif %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="mb-5">
+            <table class='table table-hover table-striped'>
+                <thead>
                     <tr>
-                        <td style='width: 25px;'>{{ forloop.counter0|add:page_obj.start_index }}</td>
-                        <td class='fw-bold'>
-                            {% if obj.get_picture %}
-                                <img style="width: 37px; height:41px;" src="{{ obj.get_picture }}" alt="{{ obj.nama_sdm }}" />
-                            {% else %}
-                                <img style="width: 37px; height:41px;" src="{% static 'backend/media/no-profile-picture.jpg' %}" alt="{{ obj.nama_sdm }}" />
-                            {% endif %}
-                            <a href="{% url 'aurora.frontend.people.detail' obj.slugname %}">{{ obj.nama_sdm }}</a>
-                        </td>
-                        <td>{{ obj.nidn }}</td>
-                        <td>
-                            <a href="{% url 'aurora.frontend.people' %}?unit={{ obj.unit.unit_id }}">{{ obj.unit }}</a>
-                        </td>
-                        <td>
-                            {% if obj.accessed_at %}
-                                {{ obj.accessed_at|naturaltime }}</td>
-                            {% else %}
-                                {% trans "never" %}
-                            {% endif %}
-                        <td>
-                            {% if obj.metadata.viewers %}
-                                {{ obj.metadata.viewers|intword }}
-                            {% else %} 0
-                            {% endif %}
-                        </td>
+                        <th></th>
+                        <th>{% trans "Name" %}</th>
+                        <th>{% trans "NIDN" %}</th>
+                        <th>{% trans "Unit" %}</th>
+                        <th>{% trans "Last Sync" %}</th>
+                        <th><i class="fa fa-eye" aria-hidden="true"></i></th>
                     </tr>
-                {% empty %}
-                    <tr>
-                        <td class="text-center" colspan="5">{% trans "No data available" %}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    {% for obj in object_list %}
+                        <tr>
+                            <td style='width: 25px;'>{{ forloop.counter0|add:page_obj.start_index }}</td>
+                            <td class='fw-bold'>
+                                {% if obj.get_picture %}
+                                    <img style="width: 37px; height:41px;" src="{{ obj.get_picture }}" alt="{{ obj.nama_sdm }}" />
+                                {% else %}
+                                    <img style="width: 37px; height:41px;" src="{% static 'backend/media/no-profile-picture.jpg' %}" alt="{{ obj.nama_sdm }}" />
+                                {% endif %}
+                                <a href="{% url 'aurora.frontend.people.detail' obj.slugname %}">{{ obj.nama_sdm }}</a>
+                            </td>
+                            <td>{{ obj.nidn }}</td>
+                            <td>
+                                <a href="{% url 'aurora.frontend.people' %}?unit={{ obj.unit.unit_id }}">{{ obj.unit }}</a>
+                            </td>
+                            <td>
+                                {% if obj.accessed_at %}
+                                    {{ obj.accessed_at|naturaltime }}</td>
+                                {% else %}
+                                    {% trans "never" %}
+                                {% endif %}
+                            <td>
+                                {% if obj.metadata.viewers %}
+                                    {{ obj.metadata.viewers|intword }}
+                                {% else %} 0
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td class="text-center" colspan="5">{% trans "No data available" %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
     {% include 'backend/elements/pagination.html' %}
 </div>
 {% endblock %}

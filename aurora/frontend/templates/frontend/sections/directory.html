@@ -28,7 +28,7 @@
                     <tr>
                         <td style='width: 25px;'>{{ forloop.counter0|add:page_obj.start_index }}</td>
                         <td>
-                            <a href="{% url 'aurora.frontend.people' %}?unit={{ object.unit_id }}" class='fw-bold'>{{ object.nama }}</a>
+                            <a href="{% url 'aurora.frontend.people' %}?unit={{ object.unit_id }}&view=grid" class='fw-bold'>{{ object.nama }}</a>
                         </td>
                         <td>
                             {% if object.parent.nama %}

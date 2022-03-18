@@ -40,13 +40,18 @@ class PeopleLV(frontendView, ListView):
         keyword = self.request.GET.get('keyword')
         if keyword:
             context_data['keyword'] = keyword
+        view = self.request.GET.get('view')
+        if view:
+            context_data['view'] = view
         return context_data
     
     def get_queryset(self):
         qs = self.model.objects.filter(status=SDM.ACTIVE)
         unit_id = self.request.GET.get('unit')
         if unit_id:
-            qs = qs.filter(unit__unit_id=unit_id)
+            qs = qs.filter(
+                unit__unit_id=unit_id
+            )
         keyword = self.request.GET.get('keyword')
         if keyword:
             qs = qs.filter(

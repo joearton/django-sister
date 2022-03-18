@@ -2,7 +2,7 @@
     {% load extra_filters i18n %}
     <div class="row">
         <div class="col-md-4">
-            <div class="text-muted">{% trans "Show" %} {{ object_list.count }} {% trans "from" %} {{ paginator.count }} {% trans "data" %}</div>
+            <div class="text-muted">{% trans "Show" %} {{ object_list|length }} {% trans "from" %} {{ paginator.count }} {% trans "data" %}</div>
         </div>
         <div class="col-md-8">
             <ul class="pagination justify-content-end">
