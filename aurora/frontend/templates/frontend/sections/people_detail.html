@@ -32,7 +32,7 @@
             <img class='img-thumbnail' style="height: 30px;" src="{% static 'backend/media/logo-pddikti.png' %}" alt="PDDikti" />
         </a>
         {% if lain.data.nira  %}
-            <a class="me-2" href="https://sinta.kemdikbud.go.id/authors/detail?id={{ lain.data.nira }}&view=overview" target="_blank">
+            <a class="me-2" href="https://sinta.kemdikbud.go.id/authors/detail?view=overview&id={{ lain.data.nira }}" target="_blank">
                 <img class='img-thumbnail' style="height: 30px;" src="{% static 'backend/media/logo-sinta.jpg' %}" alt="Sinta" />
             </a>
             <a class="me-2" href="https://sinta3.kemdikbud.go.id/authors/profile/{{ lain.data.nira }}" target="_blank">

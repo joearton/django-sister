@@ -177,6 +177,11 @@ class PeopleDV(frontendView, DetailView):
         self.get_viewer_info(self.obj)
         return super().dispatch(request, *args, **kwargs)
     
+    
+    def get_section_title(self):
+        obj = self.obj
+        return obj.nama_sdm
+    
     def get_object(self, queryset=None):
         return self.obj
 
