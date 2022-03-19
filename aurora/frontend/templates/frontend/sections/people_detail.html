@@ -6,13 +6,19 @@
         <h1 class="mb-0">{% trans "Portofolio/Curriculum Vitae" %}</h1>
         <div class='text-center'>
             <span class='badge bg-light text-secondary'>
-                <span class="me-3">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i> 
-                    {% trans "Data accessed" %} {{ profil.accessed_at|naturaltime }}
-                    {% trans "from" %} <a href="{{ sister_config.sister_url }}" target="_blank">{{ sister_config.sister_url }}</a>
-                    {% trans "and will be updated at" %} {{ profil.expired_at|naturaltime }}
+                <span class="me-1">
+                    <i class="fa fa-sync" aria-hidden="true"></i> 
+                    {% trans "Sync" %}: {{ profil.accessed_at|naturaltime }}
                 </span>
-                <span><i class="fa fa-eye" aria-hidden="true"></i> {{ object.metadata.viewers|intword }} {% trans "viewers" %}</span>
+                <span class="me-1">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i> 
+                    {% trans "Next Sync" %}: {{ profil.expired_at|naturaltime }}
+                </span>
+                <span>
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    {{ object.metadata.viewers|intword }}
+                    {% trans "viewers" %}
+                </span>
         </div>
     </div>
 {% endblock %}
@@ -67,7 +73,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-specification">
-                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-specification" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content-specification" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Skill Specification" %}
                         </button>
                     </h2>
@@ -78,7 +84,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-functional">
-                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-functional" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content-functional" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Functional Position" %}
                         </button>
                     </h2>
@@ -89,7 +95,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-position">
-                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-position" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content-position" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Position" %}
                         </button>
                     </h2>
@@ -100,7 +106,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-assignment">
-                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-assignment" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content-assignment" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Assignment" %}
                         </button>
                     </h2>
@@ -111,7 +117,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-teaching">
-                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-teaching" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content-teaching" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Teaching" %}
                         </button>
                     </h2>
@@ -122,7 +128,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-research">
-                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-research" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content-research" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Research" %}
                         </button>
                     </h2>
@@ -133,7 +139,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-comservice">
-                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-comservice" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content-comservice" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Community Service" %}
                         </button>
                     </h2>
@@ -144,7 +150,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-publication">
-                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-publication" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content-publication" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Publication" %}
                         </button>
                     </h2>
@@ -155,7 +161,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-patent">
-                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-patent" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content-patent" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Patent and Intelectual Property" %}
                         </button>
                     </h2>
@@ -166,7 +172,7 @@
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panel-awards">
-                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#content-awards" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#content-awards" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             {% trans "Awards" %}
                         </button>
                     </h2>
@@ -182,9 +188,19 @@
                 </a>
                 <div class='my-1 text-center'>
                     <span class='badge bg-light text-dark'>
-                        {% trans "Data accessed" %} {{ profil.accessed_at|naturaltime }}
-                        {% trans "from" %} <a href="{{ sister_config.sister_url }}" target="_blank">{{ sister_config.sister_url }}</a>
-                        {% trans "and will be updated at" %} {{ profil.expired_at|naturaltime }}
+                        <span class="me-1">
+                            <i class="fa fa-sync" aria-hidden="true"></i> 
+                            {% trans "Sync" %}: {{ profil.accessed_at|naturaltime }}
+                        </span>
+                        <span class="me-1">
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i> 
+                            {% trans "Next Sync" %}: {{ profil.expired_at|naturaltime }}
+                        </span>
+                        <span>
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            {{ object.metadata.viewers|intword }}
+                            {% trans "viewers" %}
+                        </span>
                     </span>
                 </div>
             </div>

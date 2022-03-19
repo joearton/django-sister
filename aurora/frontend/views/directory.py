@@ -17,7 +17,7 @@ class DirectoryLV(frontendView, ListView):
     template_name = 'frontend/sections/directory.html'
     fluid_width = True
     model = Unit
-    paginate_by = 10
+    paginate_by = 15
     
     def get_queryset(self):
         qs = super().get_queryset()

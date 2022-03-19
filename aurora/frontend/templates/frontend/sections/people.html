@@ -17,62 +17,7 @@
     {% if keyword %}
         <h4 class='mb-3'>{% trans "Show results for: " %} <span class="text-success">{{ keyword }}</span></h4>
     {% endif %}
-    {% if view == 'grid' %}
-        <div class="mb-5">
-            {% for obj in object_list %}
-                {% if forloop.counter0|divisibleby:4 %}<div class="row">{% endif %}
-                    <div class="col-md-3 mb-3">
-                        <div class="card py-1">
-                            <div class="card-img-top pt-2">
-                                <a class="fw-bold" href="{% url 'aurora.frontend.people.detail' obj.slugname %}">
-                                    {% if obj.get_picture %}
-                                        <div class="mx-auto" style="
-                                            background: url({{ obj.metadata.picture_url }}) center center;
-                                            background-size: cover; width: 85px; height: 115px;">
-                                        </div>
-                                    {% else %}
-                                        <div class="mx-auto" style="
-                                            background: url({% static 'backend/media/no-profile-picture.jpg' %}) center center;
-                                            background-size: cover; width: 85px; height: 115px;">
-                                        </div>
-                                    {% endif %}
-                                </a>
-                            </div>
-                            <div class="card-body p-1 pb-1 text-center">
-                                <a class="fw-bold d-block" href="{% url 'aurora.frontend.people.detail' obj.slugname %}" style="line-height: 110%;">
-                                    {{ obj.nama_sdm }}
-                                </a>
-                                <div style="line-height: 110%;">
-                                    <small>{% trans "NIDN" %} {{ obj.nidn }}</small>
-                                </div>
-                                <div><small class="badge bg-light text-dark">{{ obj.unit }}</small></div>
-                                <div class="d-flex py-2">
-                                    <div class="small w-50 text-secondary">
-                                        <small>
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                            {% if obj.metadata.viewers %}
-                                                {{ obj.metadata.viewers|intword }}
-                                            {% else %} 0
-                                            {% endif %}
-                                            {% trans "viewers" %}
-                                        </small>
-                                    </div>
-                                    <div class="small w-50 text-secondary">
-                                        <small>
-                                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                                            {% if obj.accessed_at %} {{ obj.accessed_at|naturaltime }}</td>
-                                            {% else %} {% trans "never" %}
-                                            {% endif %}
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% if forloop.counter|divisibleby:4 or forloop.last %}</div>{% endif %}
-            {% endfor %}
-        </div>
-    {% else %}
+    {% if view == 'table' %}
         <div class="mb-5">
             <table class='table table-hover table-striped'>
                 <thead>
@@ -121,6 +66,68 @@
                     {% endfor %}
                 </tbody>
             </table>
+        </div>
+    {% else %}
+        <div class="mb-5">
+            {% for obj in object_list %}
+                {% if forloop.counter0|divisibleby:4 %}<div class="row">{% endif %}
+                    <div class="col-md-3 mb-3">
+                        <div class="card py-1">
+                            <div class="card-img-top pt-2">
+                                <a class="fw-bold" href="{% url 'aurora.frontend.people.detail' obj.slugname %}">
+                                    {% if obj.get_picture %}
+                                        <div class="mx-auto" style="
+                                            background: url({{ obj.metadata.picture_url }}) center center;
+                                            background-size: cover; width: 85px; height: 115px;">
+                                        </div>
+                                    {% else %}
+                                        <div class="mx-auto" style="
+                                            background: url({% static 'backend/media/no-profile-picture.jpg' %}) center center;
+                                            background-size: cover; width: 85px; height: 115px;">
+                                        </div>
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="card-body p-1 pb-1 text-center">
+                                <a class="fw-bold d-block" href="{% url 'aurora.frontend.people.detail' obj.slugname %}" style="line-height: 110%;">
+                                    {{ obj.nama_sdm }}
+                                </a>
+                                <div style="line-height: 110%;">
+                                    <small>{% trans "NIDN" %} {{ obj.nidn }}</small>
+                                </div>
+                                <div><small class="badge bg-light text-dark">{{ obj.unit }}</small></div>
+                                <div class="row py-2 px-1">
+                                    <div class="small col-sm-2 text-secondary p-1">
+                                        <small>
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                            {% if obj.metadata.viewers %}
+                                                {{ obj.metadata.viewers|intword }}
+                                            {% else %} 0
+                                            {% endif %}
+                                        </small>
+                                    </div>
+                                    <div class="small col-sm-5 text-secondary p-1">
+                                        <small>
+                                            <i class="fa fa-sync" aria-hidden="true"></i>
+                                            {% if obj.accessed_at %} {{ obj.accessed_at|naturaltime }}</td>
+                                            {% else %} {% trans "never sync" %}
+                                            {% endif %}
+                                        </small>
+                                    </div>
+                                    <div class="small col-sm-5 text-secondary p-1">
+                                        <small>
+                                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                            {% if obj.expired_at %} {{ obj.expired_at|naturaltime }}</td>
+                                            {% else %} {% trans "wait sync" %}
+                                            {% endif %}
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% if forloop.counter|divisibleby:4 or forloop.last %}</div>{% endif %}
+            {% endfor %}
         </div>
     {% endif %}
     {% include 'backend/elements/pagination.html' %}
