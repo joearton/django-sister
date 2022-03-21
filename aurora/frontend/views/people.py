@@ -18,6 +18,7 @@ from urllib.parse import urlparse, urlencode
 from weasyprint import HTML
 from aurora.backend.vendors.sister.sister import SisterAPI as sister_api
 from aurora.backend.vendors.sister.library.template import SisterTemplate
+from urllib.parse import urlparse, parse_qs
 import os
 
 

@@ -12,7 +12,7 @@
                 </span>
                 <span class="me-1">
                     <i class="fa fa-paper-plane" aria-hidden="true"></i> 
-                    {% trans "Next Sync" %}: {{ profil.expired_at|naturaltime }}
+                    {% trans "Expired" %}: {{ profil.expired_at }}
                 </span>
                 <span>
                     <i class="fa fa-eye" aria-hidden="true"></i>
@@ -45,7 +45,7 @@
                 <img class='img-thumbnail' style="height: 30px;" src="{% static 'backend/media/logo-sinta3.jpg' %}" alt="Sinta 3" />
             </a>
         {% endif %}
-        {% if alamat.data.email %}
+        {% if alamat.data.email|length > 1 %}
             <a class="me-2" href="https://scholar.google.com/scholar?q={{ alamat.data.email }}" target="_blank">
                 <img class='img-thumbnail' style="height: 30px;" src="{% static 'backend/media/logo-gs.png' %}" alt="Google Scholar" />
             </a>
@@ -194,7 +194,7 @@
                         </span>
                         <span class="me-1">
                             <i class="fa fa-paper-plane" aria-hidden="true"></i> 
-                            {% trans "Next Sync" %}: {{ profil.expired_at|naturaltime }}
+                            {% trans "Expired" %}: {{ profil.expired_at }}
                         </span>
                         <span>
                             <i class="fa fa-eye" aria-hidden="true"></i>
