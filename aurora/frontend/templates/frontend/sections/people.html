@@ -97,28 +97,21 @@
                                 </div>
                                 <div><small class="badge bg-light text-dark">{{ obj.unit }}</small></div>
                                 <div class="row py-2 px-1">
-                                    <div class="small col-sm-2 text-secondary p-1">
+                                    <div class="small col-sm text-secondary p-1">
                                         <small>
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                             {% if obj.metadata.viewers %}
                                                 {{ obj.metadata.viewers|intword }}
                                             {% else %} 0
                                             {% endif %}
+                                            {% trans "viewers" %}
                                         </small>
                                     </div>
-                                    <div class="small col-sm-5 text-secondary p-1">
+                                    <div class="small col-sm text-secondary p-1">
                                         <small>
                                             <i class="fa fa-sync" aria-hidden="true"></i>
                                             {% if obj.accessed_at %} {{ obj.accessed_at|naturaltime }}</td>
                                             {% else %} {% trans "never sync" %}
-                                            {% endif %}
-                                        </small>
-                                    </div>
-                                    <div class="small col-sm-5 text-secondary p-1">
-                                        <small>
-                                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                                            {% if obj.expired_at %} {{ obj.expired_at|naturaltime }}</td>
-                                            {% else %} {% trans "wait sync" %}
                                             {% endif %}
                                         </small>
                                     </div>

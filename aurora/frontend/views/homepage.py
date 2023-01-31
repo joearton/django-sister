@@ -16,7 +16,6 @@ from aurora.backend.vendors.sister.library.template import SisterTemplate
 
 st = SisterTemplate()
 
-
 class FrontendDefault(frontendView, ListView):
     section_title = _('Welcome')
     template_name = "frontend/sections/homepage.html"
