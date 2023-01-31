@@ -111,7 +111,7 @@ class FrontendDefault(frontendView, ListView):
            university = self.fetch_university()
         else:
             university   = university[0]
-            expired_univ = st.get_expired_datetime(university.date_modified, days=7)
+            expired_univ = st.get_expired_datetime(university.date_modified, days=1)
             if st.get_now_datetime() > expired_univ:
                 university = self.fetch_university()
 
@@ -119,7 +119,7 @@ class FrontendDefault(frontendView, ListView):
         if  units:
             units = self.fetch_units(university)
         else:
-            expired_units = st.get_expired_datetime(units[0].date_modified, days=7)
+            expired_units = st.get_expired_datetime(units[0].date_modified, days=1)
             if st.get_now_datetime() > expired_units:
                 units = self.fetch_units(university)
 
@@ -127,7 +127,7 @@ class FrontendDefault(frontendView, ListView):
         if not people:
             people = self.fetch_people()
         else:
-            expired_people = st.get_expired_datetime(people[0].date_modified, days=7)
+            expired_people = st.get_expired_datetime(people[0].date_modified, days=1)
             if st.get_now_datetime() > expired_people:
                 people = self.fetch_people()
         return [university, units, people]

@@ -9,3 +9,4 @@ reset.py
 *.pyc
 config.json
 email.py
+pysister/
